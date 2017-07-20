@@ -18,7 +18,7 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                         <h1>{{$pageTitle}}</h1>
                     </div>
                     <div class="page-breadcrumb">
-                        <p><a href="{{url('/')}}">home </a> / Contact Us</p>
+                        <p><a href="{{url('/')}}">home </a> / {{$pageTitle}}</p>
                     </div>
                 </div>
             </div>

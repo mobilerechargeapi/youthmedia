@@ -87,3 +87,5 @@ Route::get('/contact', ['as' => 'contact', 'uses' => 'Frontend\ContactController
 Route::post('contactApplication', ['as' => 'contactApplication', 'uses' => 'Frontend\ContactController@contactApplication']);
 //route for uploading video from frontend
 Route::post('uploadVideo', ['as' => 'uploadVideo', 'uses' => 'Frontend\VideoController@uploadVideo']);
+//route for privacy policy page
+Route::get('/privacypolicy', ['as' => 'privacypolicy', 'uses' => 'Frontend\PrivacyPolicyController@index']);
