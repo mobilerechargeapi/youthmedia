@@ -49,10 +49,16 @@
     </div>
 </div>
 {{ csrf_field() }}
+<?php
+$pageNavId = 'nav-post';
+if(isset($pendingPosts)) {
+    $pageNavId = 'nav-pending';
+}
+?>
 <script>
     $(document).ready(function () {
     $(".sidebar-menu li").removeClass("active");
-    $('#nav-post').addClass('active');
+    $('#{{$pageNavId}}').addClass('active');
     });
 </script>
 @endsection

@@ -86,6 +86,14 @@
                                 <div class="title">Posts</div>
                             </a>
                         </li>
+                        <li id="nav-pending">
+                            <a href="{{url('pending')}}">
+                                <div class="icon">
+                                    <i class="fa fa-retweet" aria-hidden="true"></i>
+                                </div>
+                                <div class="title">Pending Posts</div>
+                            </a>
+                        </li>
                         @if ($userRoles[0]->permissions == 1)
                         <li id="nav-permissions">
                             <a href="{{url('permissions')}}">

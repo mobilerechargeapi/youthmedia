@@ -29,6 +29,15 @@ class PostsModel extends Model {
                         ->get();
     }
 
+    public static function GetAllPendingPosts() {
+        return DB::table('posts')
+                        ->leftJoin('websites', 'websites.websiteId', '=', 'posts.websiteId')
+                        ->leftJoin('categories', 'categories.categoryId', '=', 'posts.categoryId')
+                        ->select('posts.*', 'websites.websiteName', 'categories.categoryName')
+                        ->where('posts.postStatus', '=', 0)
+                        ->get();
+    }
+
     public static function GetSinglePost($data) {
         return DB::table('posts')
                         ->select('posts.*')

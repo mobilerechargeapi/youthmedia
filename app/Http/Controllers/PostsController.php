@@ -114,7 +114,7 @@ class PostsController extends Controller {
                     $data['isScrapped'] = 1;
                 }
             } else {
-                $data['isScrapped'] = 1;
+                $data['isScrapped'] = 0;
             }
             $message = "Post Updated Successfully";
             PostsModel::UpdatePost($data);
@@ -130,6 +130,13 @@ class PostsController extends Controller {
                         'status' => 1, 'message' => 'Post Deleted'
             ]);
         }
+    }
+
+    public function pending() {
+        $posts = PostsModel::GetAllPendingPosts();
+        $pendingPosts = 1;
+        return view('admin.posts')->with('pageheader', $this->pageheader)->with('userName', $this->userName)->with('userImg', $this->userImg)
+                        ->with('userRoles', $this->userRoles)->with('posts', $posts)->with('pendingPosts', $pendingPosts);
     }
 
     public function fileUpload($file, $isVideo = 0) {

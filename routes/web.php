@@ -67,6 +67,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('posts', ['as' => 'posts', 'uses' => 'PostsController@index']);
     Route::get('addPost', ['as' => 'addPost', 'uses' => 'PostsController@addPost']);
     Route::get('editPost/{postId}', ['as' => 'editPost', 'uses' => 'PostsController@getPost']);
+    Route::get('pending', ['as' => 'pending', 'uses' => 'PostsController@pending']);
     
     Route::post('insertPost', ['as' => 'insertPost', 'uses' => 'PostsController@insertPost']);
     Route::post('deletePost', ['as' => 'deletePost', 'uses' => 'PostsController@deletePost']);
