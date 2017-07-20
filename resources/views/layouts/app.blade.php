@@ -218,7 +218,7 @@
                                         <ul>
                                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                             <li class="fb-link"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li class="gp-link"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li class="gp-link"><a target="_blank" href="https://www.youtube.com/channel/UCrmX1CHUI9V5guPLDhzjJlQ"><i class="fa fa-youtube"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

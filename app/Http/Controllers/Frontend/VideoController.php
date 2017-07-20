@@ -55,7 +55,7 @@ class VideoController extends Controller {
                         'category_id' => 10
             ]);
             if ($video->getVideoId()) {
-                $data['post'] = 'https://www.youtube.com/watch?v=' . $video->getVideoId();
+                $data['post'] = 'https://www.youtube.com/embed/' . $video->getVideoId();
             }
         }
         $data['uniqueCustomKey'] = $data['post'];

@@ -119,6 +119,9 @@
                         </div>
                         @endif
                     </div>
+                    @if($postId != 'add' && $postText != '')
+                    <iframe width="560" height="315" src="{{$postText}}" frameborder="0" allowfullscreen></iframe>
+                    @endif
                 </div>
             </div>
             <div class="form-footer">
