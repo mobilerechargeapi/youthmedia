@@ -39,13 +39,14 @@ class PostsModel extends Model {
         DB::table('posts')->where('postId', $data['postId'])->update(['postTitle' => $data['postTitle'],
             'postDescription' => $data['postDescription'], 'websiteId' => $data['websiteId'], 'categoryId' => $data['categoryId'],
             'post' => $data['post'], 'userId' => $data['userId'], 'postStatus' => $data['postStatus'], 'postThumbnail' => $data['postThumbnail'],
-            'isScrapped' => $data['isScrapped']]);
+            'isScrapped' => $data['isScrapped'], 'uniqueCustomKey' => $data['uniqueCustomKey']]);
     }
 
     public static function SavePost($data) {
         return DB::table('posts')->insertGetId(['postTitle' => $data['postTitle'], 'postDescription' => $data['postDescription'],
                     'websiteId' => $data['websiteId'], 'categoryId' => $data['categoryId'], 'post' => $data['post'], 'userId' => $data['userId'],
-                    'postStatus' => $data['postStatus'], 'createdOn' => $data['createdOn'], 'postThumbnail' => $data['postThumbnail']]);
+                    'postStatus' => $data['postStatus'], 'createdOn' => $data['createdOn'], 'postThumbnail' => $data['postThumbnail'],
+                    'isScrapped' => $data['isScrapped'], 'uniqueCustomKey' => $data['uniqueCustomKey']]);
     }
 
     public static function DeletePost($data) {

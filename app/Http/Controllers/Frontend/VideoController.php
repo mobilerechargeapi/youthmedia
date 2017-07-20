@@ -10,6 +10,7 @@ use App\Http\Requests\UserPostRequest;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Dawson\Youtube\Facades\Youtube as Youtube;
+use Auth;
 
 class VideoController extends Controller {
 
@@ -17,14 +18,21 @@ class VideoController extends Controller {
         
     }
 
-    public function uploadVideo(UserPostRequest $request) {
+    public function uploadVideo(Request $request) {
+        $userId = 4;
+        $userMsg = '';
+        if ($user = Auth::user()) {
+            $userId = $user['attributes']['id'];
+        } else {
+            $userMsg = ' Login To Participate In Our Top Contributors And Win Exciting Prizes!';
+        }
         $data = array(
             'postTitle' => $request->postTitle,
             'postDescription' => $request->postDescription,
             'websiteId' => 3,
             'categoryId' => $request->categoryId,
             'post' => '',
-            'userId' => 1,
+            'userId' => $userId,
             'postStatus' => 0,
             'createdOn' => time(),
             'postThumbnail' => '',
@@ -50,8 +58,9 @@ class VideoController extends Controller {
                 $data['post'] = 'https://www.youtube.com/watch?v=' . $video->getVideoId();
             }
         }
+        $data['uniqueCustomKey'] = $data['post'];
         if ($data['post'] != '') {
-            $message = "Video Submitted For Admin Review!";
+            $message = "Video Submitted For Admin Review!" . $userMsg;
             PostsModel::SavePost($data);
         } else {
             $message = "Upload Video!";

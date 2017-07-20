@@ -102,6 +102,7 @@ class PostsController extends Controller {
                 $data['post'] = 'https://www.youtube.com/watch?v=' . $video->getVideoId();
             }
         }
+        $data['uniqueCustomKey'] = $data['post'];
         if ($request->postId == 'add') {
             $message = "Post Added Successfully";
             PostsModel::SavePost($data);
