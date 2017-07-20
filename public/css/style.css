@@ -1,0 +1,18 @@
+aside.app-sidebar {
+    height: auto !important;
+}
+.help-block{
+    color: red;
+}
+.margin-left-class{
+    margin-left: 10px;
+}
+.margin-top-class{
+    margin-top: 10px;
+}
+.middle-class {
+    margin-top: 15%;
+}
+ul.tabs-design > li{
+    width: 160px !important;
+}

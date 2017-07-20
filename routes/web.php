@@ -1,0 +1,86 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    //route for admin
+    Route::get('admin', ['as' => 'admin', 'uses' => 'AdminHomeController@index']);
+
+    Route::post('settings', ['as' => 'settings', 'uses' => 'AdminHomeController@settings']);
+    Route::post('deleteSocial', ['as' => 'deleteSocial', 'uses' => 'AdminHomeController@deleteSocial']);
+    Route::post('getSocial', ['as' => 'getSocial', 'uses' => 'AdminHomeController@getSocial']);
+    Route::post('updateSocial', ['as' => 'updateSocial', 'uses' => 'AdminHomeController@updateSocial']);
+    //route for user settings
+    Route::get('profile', ['as' => 'profile', 'uses' => 'UserController@profile']);
+    Route::get('userList', ['as' => 'userList', 'uses' => 'UserController@userList']);
+    Route::get('addUser', ['as' => 'addUser', 'uses' => 'UserController@addUser']);
+    Route::get('editUser/{userId}', ['as' => 'editUser', 'uses' => 'UserController@profile']);
+    Route::get('deleteUser/{userId}', ['as' => 'deleteUser', 'uses' => 'UserController@deleteUser']);
+
+    Route::post('updateProfile', ['as' => 'updateProfile', 'uses' => 'UserController@updateProfile']);
+    Route::post('insertUser', ['as' => 'insertUser', 'uses' => 'UserController@insertUser']);
+    //route for permissions
+    Route::get('permissions', ['as' => 'permissions', 'uses' => 'PermissionController@index']);
+    Route::get('roles', ['as' => 'manageRoles', 'uses' => 'PermissionController@manageRoles']);
+    Route::get('deleteRole/{roleId}', ['as' => 'deleteRole', 'uses' => 'PermissionController@deleteRole']);
+
+    Route::post('setModulePermissions', ['as' => 'set-module-permissions', 'uses' => 'PermissionController@setModulePermissions']);
+    Route::post('saveRole', ['as' => 'saveRole', 'uses' => 'PermissionController@saveRole']);
+    Route::post('getRole', ['as' => 'getRole', 'uses' => 'PermissionController@getRole']);
+    Route::post('updateRole', ['as' => 'updateRole', 'uses' => 'PermissionController@updateRole']);
+    //route for pages
+    Route::get('pages', ['as' => 'pages', 'uses' => 'PageController@index']);
+    Route::get('editPage/{pageId}', ['as' => 'editPage', 'uses' => 'PageController@editPage']);
+
+    Route::post('setPageSettings', ['as' => 'setPageSettings', 'uses' => 'PageController@setPageSettings']);
+    Route::post('deleteAfterParty', ['as' => 'deleteAfterParty', 'uses' => 'AdminAfterPartyController@deleteAfterParty']);
+    //route for faq
+    Route::get('insertFaq/{navId}', ['as' => 'insertFaq', 'uses' => 'FaqController@insertFaq']);
+    Route::get('editFaq/{navId}/{virtualId}', ['as' => 'editFaq', 'uses' => 'FaqController@getFaq']);
+    Route::post('addFaq', ['as' => 'addFaq', 'uses' => 'FaqController@addFaq']);
+    Route::post('deleteFaq', ['as' => 'deleteFaq', 'uses' => 'FaqController@deleteFaq']);
+    Route::post('getFaq', ['as' => 'getFaq', 'uses' => 'FaqController@getFaq']);
+    //route for website settings
+    Route::get('websites', ['as' => 'websites', 'uses' => 'WebsitesController@index']);
+    Route::get('addWebsite', ['as' => 'addWebsite', 'uses' => 'WebsitesController@addWebsite']);
+    Route::get('editWebsite/{websiteId}', ['as' => 'editWebsite', 'uses' => 'WebsitesController@getWebsite']);
+    
+    Route::post('insertWebsite', ['as' => 'insertWebsite', 'uses' => 'WebsitesController@insertWebsite']);
+    Route::post('deleteWebsite', ['as' => 'deleteWebsite', 'uses' => 'WebsitesController@deleteWebsite']);
+    //route for categories settings
+    Route::get('categories', ['as' => 'categories', 'uses' => 'CategoriesController@index']);
+    Route::get('addCategory', ['as' => 'addCategory', 'uses' => 'CategoriesController@addCategory']);
+    Route::get('editCategory/{categoryId}', ['as' => 'editCategory', 'uses' => 'CategoriesController@getCategory']);
+    
+    Route::post('insertCategory', ['as' => 'insertCategory', 'uses' => 'CategoriesController@insertCategory']);
+    Route::post('deleteCategory', ['as' => 'deleteCategory', 'uses' => 'CategoriesController@deleteCategory']);
+    //route for post settings
+    Route::get('posts', ['as' => 'posts', 'uses' => 'PostsController@index']);
+    Route::get('addPost', ['as' => 'addPost', 'uses' => 'PostsController@addPost']);
+    Route::get('editPost/{postId}', ['as' => 'editPost', 'uses' => 'PostsController@getPost']);
+    
+    Route::post('insertPost', ['as' => 'insertPost', 'uses' => 'PostsController@insertPost']);
+    Route::post('deletePost', ['as' => 'deletePost', 'uses' => 'PostsController@deletePost']);
+    //route for image upload via tinymce
+    Route::post('postAcceptor', ['as' => 'postAcceptor', 'uses' => 'GalleryController@postAcceptor']);
+    //route for logout
+    Route::get('logout', 'AdminHomeController@logout');
+});
+
+Auth::routes();
+//routes for frontend
+//route for home page
+Route::get('/', 'Frontend\MainController@index');
+//route for contact page
+Route::get('/contact', ['as' => 'contact', 'uses' => 'Frontend\ContactController@index']);
+
+Route::post('contactApplication', ['as' => 'contactApplication', 'uses' => 'Frontend\ContactController@contactApplication']);
