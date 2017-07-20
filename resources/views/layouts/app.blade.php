@@ -56,6 +56,8 @@
         $contactPhoneOne = $settings['generalSettings'][0]->contactPhoneOne != '' ? $settings['generalSettings'][0]->contactPhoneOne : '';
         $contactPhoneTwo = $settings['generalSettings'][0]->contactPhoneTwo != '' ? $settings['generalSettings'][0]->contactPhoneTwo : '';
         $contactEmail = $settings['generalSettings'][0]->contactEmail != '' ? $settings['generalSettings'][0]->contactEmail : '';
+
+        $categories = $settings['categories'];
         ?>
         <!-- Start Header -->
         <header>
@@ -94,18 +96,32 @@
                                                 <button class="btn btn-sm btn-default close-btn" data-dismiss="modal">&times;</button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="#" method="post" class="upload-form" enctype="multipart/form-data">
+                                                <form action="{{ URL::route('uploadVideo') }}" method="post" class="upload-form" enctype="multipart/form-data">
+                                                    {{ csrf_field() }}
                                                     <div class="form-group">
-                                                        <label for="video_title">Video Title</label>
-                                                        <input type="text" class="form-control" id="video_title" placeholder="Video Title">
+                                                        <label for="video_title">Video Title *</label>
+                                                        <input required="" name="postTitle" type="text" class="form-control" id="video_title" placeholder="Video Title">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="video-desc">Video Description</label>
-                                                        <textarea name="video-desc" id="video-desc" class="form-control" placeholder="Video Description"></textarea>
+                                                        <textarea name="postDescription" id="video-desc" class="form-control" placeholder="Video Description"></textarea>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="upload_file" class="custom-file-upload">Select Your File
-                                                            <input type="file" name="upload_file" id="upload_file">
+                                                        <label for="categoryId">Category *</label>
+                                                        <select required="" id="categoryId" name="categoryId" class="form-control">
+                                                            @foreach ($categories as $categoriesRow)
+                                                            <option value="{{ $categoriesRow->categoryId }}">{{ $categoriesRow->categoryName }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="upload_file" class="custom-file-upload">Select Your File *
+                                                            <input required="" type="file" name="uploadVideo" id="upload_file">
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="postThumbnail" class="custom-file-upload">Select Thumbnail
+                                                            <input type="file" name="postThumbnail" id="postThumbnail">
                                                         </label>
                                                     </div>
                                                     <div class="form-group">
@@ -180,6 +196,7 @@
             </div>
             <!-- Navigation area ends -->
         </header>
+        @include('admin.layouts.errorView')
         <!-- End Header -->
         @yield('content')
         <!-- Start Footer Area -->
@@ -321,10 +338,10 @@
         <!-- Demo Panel Js -->
 
         <!--<script src="<?php echo asset('frontend/js/demo-panel.js') ?>"></script>-->
-        
+
         <!-- Google Map -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnh74UN6BKgq9U5fMNGhdZOSpmM_QnZqs"></script>
-        
+
         <!-- Main JS -->
         <script src="<?php echo asset('frontend/js/main.js') ?>"></script>
     </body>

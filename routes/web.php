@@ -84,3 +84,6 @@ Route::get('/', 'Frontend\MainController@index');
 Route::get('/contact', ['as' => 'contact', 'uses' => 'Frontend\ContactController@index']);
 
 Route::post('contactApplication', ['as' => 'contactApplication', 'uses' => 'Frontend\ContactController@contactApplication']);
+//route for uploading video from frontend
+Route::post('uploadVideo', ['as' => 'uploadVideo', 'uses' => 'Frontend\VideoController@uploadVideo']);
+Route::get('uploadVideo', ['as' => 'uploadVideo', 'uses' => 'Frontend\VideoController@uploadVideo']);

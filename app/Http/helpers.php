@@ -10,6 +10,7 @@ function productImagePath($pageCode) {
     $generalSettings = App\GeneralSettingsModel::GetGeneralSettings();
     $socialSettings = App\SocialSettingsModel::GetSocialSettings();
     $navigation = App\NavigationModel::GetNavigation();
+    $categories = App\CategoriesModel::GetAllCategories();
     $headerNav = array();
 
     foreach ($navigation as $navigationRow) {
@@ -23,7 +24,8 @@ function productImagePath($pageCode) {
         'navigation' => $navigation,
         'headerNav' => $headerNav,
         'pageDescription' => $pageDescription,
-        'pageKeywords' => $pageKeywords
+        'pageKeywords' => $pageKeywords,
+        'categories' => $categories
     );
     return $data;
 }
