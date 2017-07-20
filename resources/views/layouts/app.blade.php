@@ -286,7 +286,7 @@
                                 <div class="footer-links">
                                     <ul>
                                         <li><a href="{{url('privacypolicy')}}">Privacy Policy</a></li>
-                                        <li><a href="#">Terms And Conditions</a></li>
+                                        <li><a href="{{url('termsandconditions')}}">Terms And Conditions</a></li>
                                         <li><a href="{{url('contact')}}">Contact Us</a></li>
                                     </ul>
                                 </div>

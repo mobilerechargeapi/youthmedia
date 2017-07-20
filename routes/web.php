@@ -89,3 +89,5 @@ Route::post('contactApplication', ['as' => 'contactApplication', 'uses' => 'Fron
 Route::post('uploadVideo', ['as' => 'uploadVideo', 'uses' => 'Frontend\VideoController@uploadVideo']);
 //route for privacy policy page
 Route::get('/privacypolicy', ['as' => 'privacypolicy', 'uses' => 'Frontend\PrivacyPolicyController@index']);
+//route for terms and conditions page
+Route::get('/termsandconditions', ['as' => 'termsandconditions', 'uses' => 'Frontend\TocController@index']);
