@@ -113,6 +113,10 @@
                         <div class="col-md-offset-3 col-md-6">
                             <img src="{{ asset('assets/images/posts') }}/{{ $postThumbnail }}" alt="Image Not Found" width="100" height="80"> 
                         </div>
+                        @elseif($postThumbnail != '')
+                        <div class="col-md-offset-3 col-md-6">
+                            <img src="{{ $postThumbnail }}" alt="Image Not Found" width="100" height="80"> 
+                        </div>
                         @endif
                     </div>
                 </div>

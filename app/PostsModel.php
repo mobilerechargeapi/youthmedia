@@ -25,6 +25,7 @@ class PostsModel extends Model {
                         ->leftJoin('websites', 'websites.websiteId', '=', 'posts.websiteId')
                         ->leftJoin('categories', 'categories.categoryId', '=', 'posts.categoryId')
                         ->select('posts.*', 'websites.websiteName', 'categories.categoryName')
+                        ->where('posts.postStatus', '=', 1)
                         ->get();
     }
 
