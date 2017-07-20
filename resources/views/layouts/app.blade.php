@@ -248,8 +248,8 @@
                                     </div>
                                     <div class="footer-list">
                                         <ul>
-                                            <li><a href="#">Facebook Page</a></li>
-                                            <li><a href="#">YouTube Channel</a></li>
+                                            <li><a target="_blank" href="#">Facebook Page</a></li>
+                                            <li><a target="_blank" href="https://www.youtube.com/channel/UCrmX1CHUI9V5guPLDhzjJlQ">YouTube Channel</a></li>
                                         </ul>
                                     </div>
                                 </div>
