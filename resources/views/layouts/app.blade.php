@@ -83,6 +83,8 @@
                                         <a href="#upload-options" data-toggle="modal">upload video</a>
                                         <span class="sepator">|</span>
                                     </div>
+                                    <?php $auth = Auth::guard(); ?>
+                                    @if(!$auth->check())
                                     <div class="login-info">
                                         <i class="fa fa-lock"></i>
                                         <a href="#login-info" data-toggle="modal">login</a>
@@ -91,6 +93,12 @@
                                         <i class="fa fa-sign-in"></i>
                                         <a href="#register-info" data-toggle="modal">Register</a>
                                     </div>
+                                    @else
+                                    <div class="login-info">
+                                        <i class="fa fa-sign-in"></i>
+                                        <a href="{{ URL::route('logout') }}" data-toggle="modal">Logout</a>
+                                    </div>
+                                    @endif
                                 </div>
                                 <div id="upload-options" class="modal fade">
                                     <div class="modal-dialog">
@@ -144,14 +152,15 @@
                                                 <button data-dismiss="modal" class="btn btn-sm btn-default close-btn">&times;</button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="#" method="post" class="login-form">
+                                                <form action="{{ url('/login') }}" method="post" class="login-form">
+                                                    {{ csrf_field() }}
                                                     <div class="form-group">
-                                                        <label for="user_name">Username :</label>
-                                                        <input type="text" name="user_name" class="form-control" id="user_name" placeholder="username">
+                                                        <label for="email">Email : *</label>
+                                                        <input required="" type="email" name="email" class="form-control" id="email" placeholder="Email">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="user_password">Password :</label>
-                                                        <input type="password" name="user_password" class="form-control" id="user_password" placeholder="password">
+                                                        <label for="password">Password : *</label>
+                                                        <input required="" type="password" name="password" class="form-control" id="password" placeholder="Password">
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-primary btn-lg">Login</button>

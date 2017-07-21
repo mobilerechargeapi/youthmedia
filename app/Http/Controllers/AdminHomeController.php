@@ -167,13 +167,4 @@ class AdminHomeController extends Controller {
         return redirect()->route('admin');
     }
 
-    /**
-     * Logout User and redirect to home page.
-     *
-     */
-    public function logout() {
-        Auth::logout();
-        return redirect('/login');
-    }
-
 }

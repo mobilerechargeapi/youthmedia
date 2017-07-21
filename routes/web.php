@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     //route for admin
@@ -53,14 +53,14 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('websites', ['as' => 'websites', 'uses' => 'WebsitesController@index']);
     Route::get('addWebsite', ['as' => 'addWebsite', 'uses' => 'WebsitesController@addWebsite']);
     Route::get('editWebsite/{websiteId}', ['as' => 'editWebsite', 'uses' => 'WebsitesController@getWebsite']);
-    
+
     Route::post('insertWebsite', ['as' => 'insertWebsite', 'uses' => 'WebsitesController@insertWebsite']);
     Route::post('deleteWebsite', ['as' => 'deleteWebsite', 'uses' => 'WebsitesController@deleteWebsite']);
     //route for categories settings
     Route::get('categories', ['as' => 'categories', 'uses' => 'CategoriesController@index']);
     Route::get('addCategory', ['as' => 'addCategory', 'uses' => 'CategoriesController@addCategory']);
     Route::get('editCategory/{categoryId}', ['as' => 'editCategory', 'uses' => 'CategoriesController@getCategory']);
-    
+
     Route::post('insertCategory', ['as' => 'insertCategory', 'uses' => 'CategoriesController@insertCategory']);
     Route::post('deleteCategory', ['as' => 'deleteCategory', 'uses' => 'CategoriesController@deleteCategory']);
     //route for post settings
@@ -68,13 +68,11 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('addPost', ['as' => 'addPost', 'uses' => 'PostsController@addPost']);
     Route::get('editPost/{postId}', ['as' => 'editPost', 'uses' => 'PostsController@getPost']);
     Route::get('pending', ['as' => 'pending', 'uses' => 'PostsController@pending']);
-    
+
     Route::post('insertPost', ['as' => 'insertPost', 'uses' => 'PostsController@insertPost']);
     Route::post('deletePost', ['as' => 'deletePost', 'uses' => 'PostsController@deletePost']);
     //route for image upload via tinymce
     Route::post('postAcceptor', ['as' => 'postAcceptor', 'uses' => 'GalleryController@postAcceptor']);
-    //route for logout
-    Route::get('logout', 'AdminHomeController@logout');
 });
 
 Auth::routes();
@@ -91,3 +89,5 @@ Route::post('uploadVideo', ['as' => 'uploadVideo', 'uses' => 'Frontend\VideoCont
 Route::get('/privacypolicy', ['as' => 'privacypolicy', 'uses' => 'Frontend\PrivacyPolicyController@index']);
 //route for terms and conditions page
 Route::get('/termsandconditions', ['as' => 'termsandconditions', 'uses' => 'Frontend\TocController@index']);
+//route for logout
+Route::get('logout', 'Auth\LoginController@logout');
