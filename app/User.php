@@ -27,4 +27,8 @@ class User extends Authenticatable {
         'password', 'remember_token',
     ];
 
+    public function isAdmin() {
+        return $this->userRole; // this looks for an userRole column in your users table
+    }
+
 }
