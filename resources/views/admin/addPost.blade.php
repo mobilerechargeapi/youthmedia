@@ -120,7 +120,12 @@
                         @endif
                     </div>
                     @if($postId != 'add' && $postText != '')
-                    <iframe width="560" height="315" src="{{$postText}}" frameborder="0" allowfullscreen></iframe>
+                    <div class="form-group margin-top-class">
+                        <label class="col-md-3 control-label">Preview</label>
+                        <div class="col-md-9">
+                            <iframe width="560" height="315" src="{{$postText}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
                     @endif
                 </div>
             </div>
