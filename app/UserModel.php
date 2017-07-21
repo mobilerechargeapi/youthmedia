@@ -37,7 +37,7 @@ class UserModel extends Model {
 
     public static function UpdateUser($data) {
         DB::table('users')->where('id', $data['id'])->update(['name' => $data['name'],
-            'userName' => $data['userName'], 'email' => $data['email'], 'userRole' => $data['userRole'], 'profileImg' => $data['profileImg']
+            'email' => $data['email'], 'userRole' => $data['userRole'], 'profileImg' => $data['profileImg']
         ]);
         if (isset($data['password']) && $data['password'] != '') {
             DB::table('users')->where('id', $data['id'])->update(['password' => $data['password']]);
@@ -54,7 +54,7 @@ class UserModel extends Model {
 
     public static function SaveUser($data) {
         return DB::table('users')->insertGetId(
-                        ['name' => $data['name'], 'userName' => $data['userName'], 'email' => $data['email'],
+                        ['name' => $data['name'], 'email' => $data['email'],
                             'password' => $data['password'], 'profileImg' => $data['profileImg'], 'userRole' => $data['userRole']]
         );
     }

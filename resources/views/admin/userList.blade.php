@@ -13,7 +13,6 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Username</th>
                     <th>Email</th>
                     <th>Access</th>
                     <th>Profile Image</th>
@@ -24,7 +23,6 @@
                 @foreach ($user as $userRow)
                 <tr>
                     <td><a href="editUser/{{ $userRow->id }}">{{ $userRow->name }}</a></td>
-                    <td>{{ $userRow->userName }}</td>
                     <td>{{ $userRow->email }}</td>
                     <td>{{ $userRow->roleName }}</td>
                     <td>

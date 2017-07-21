@@ -63,7 +63,7 @@ class UserController extends Controller {
     public function updateProfile(Request $request) {
         $message = "Fill all Required Fields";
         $error = 0;
-        if ($request->name == '' || $request->userName == '' || $request->email == '' || $request->userRole == '') {
+        if ($request->name == '' || $request->email == '' || $request->userRole == '') {
             $error = 1;
         }
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
@@ -73,18 +73,12 @@ class UserController extends Controller {
         $data = array(
             'id' => $request->userId,
             'name' => $request->name,
-            'userName' => $request->userName,
             'email' => $request->email,
             'userRole' => $request->userRole,
             'profileImg' => $request->profileImg
         );
         if ($request->password != '' && $request->password == $request->password_confirmation) {
             $data['password'] = bcrypt($request->password);
-        }
-        //check if username is unique
-        if (UserModel::GetUser($data)) {
-            $message = "UserName Already Exist. Enter Unique UserName";
-            $error = 1;
         }
         if ($error) {
             \Session::flash('error_message', $message);
@@ -129,7 +123,6 @@ class UserController extends Controller {
     public function insertUser(UsersRequest $request) {
         $data = array(
             'name' => $request->name,
-            'userName' => $request->userName,
             'email' => $request->email,
             'userRole' => $request->userRole,
             'password' => bcrypt($request->password),

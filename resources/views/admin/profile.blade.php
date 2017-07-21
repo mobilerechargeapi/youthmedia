@@ -20,12 +20,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Username *</label>
-                        <div class="col-md-9">
-                            <input required="" type="text" id="userName" name="userName" class="form-control" value="{{ $users[0]->userName }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-md-3 control-label">Email *</label>
                         <div class="col-md-9">
                             <input type="email" id="email" name="email" class="form-control" readonly="" value="{{ $users[0]->email }}">
