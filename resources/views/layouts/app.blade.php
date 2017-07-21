@@ -87,6 +87,10 @@
                                         <i class="fa fa-lock"></i>
                                         <a href="#login-info" data-toggle="modal">login</a>
                                     </div>
+                                    <div class="login-info">
+                                        <i class="fa fa-sign-in"></i>
+                                        <a href="#register-info" data-toggle="modal">Register</a>
+                                    </div>
                                 </div>
                                 <div id="upload-options" class="modal fade">
                                     <div class="modal-dialog">
@@ -151,6 +155,41 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="register-info" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">Sign Up Here..</h3>
+                                                <button data-dismiss="modal" class="btn btn-sm btn-default close-btn">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form enctype="multipart/form-data" action="{{ route('register') }}" method="post" class="upload-form">
+                                                    {{ csrf_field() }}
+                                                    <div class="form-group">
+                                                        <label for="name">Name : *</label>
+                                                        <input required="" type="text" name="name" class="form-control" id="name" placeholder="Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email : *</label>
+                                                        <input required="" type="email" name="email" class="form-control" id="email" placeholder="Email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password">Password : *</label>
+                                                        <input required="" type="password" name="password" class="form-control" id="password" placeholder="password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="profileImg" class="custom-file-upload">Select Profile Image
+                                                            <input type="file" name="profileImg" id="profileImg">
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
                                                     </div>
                                                 </form>
                                             </div>
