@@ -206,7 +206,7 @@
                 <div class="themeix-section-h">
                     <span class="heading-icon"><i class="fa fa-book"></i></span>
                     <h3>Recent Uploaded</h3> 
-                    <a href="#" class="see-all-link">See all videos</a>
+                    <a href="{{url('recent-videos')}}" class="see-all-link">See all videos</a>
                 </div>
             </div>   
         </div>
@@ -332,7 +332,9 @@
                         <div class="contributor-content">
                             <h4><a href="#" class="heading-link">{{$topUsersRow->name}}</a></h4>
                             <p>{{$topUsersRow->videoCount}} videos</p>
-                            <p>joined {{$topUsersRow->created_at}}</p>
+                            @if($topUsersRow->created_at)
+                            <p>joined {{date('Y', strtotime($topUsersRow->created_at))}}</p>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -378,7 +380,7 @@
                 <div class="themeix-section-h">
                     <span class="heading-icon"><i class="fa fa-futbol-o" aria-hidden="true"></i></span>
                     <h3>Trending Videos</h3>
-                    <a href="#" class="see-all-link">See all videos</a>
+                    <a href="{{url('trending-videos')}}" class="see-all-link">See all videos</a>
                 </div>
             </div>
         </div>

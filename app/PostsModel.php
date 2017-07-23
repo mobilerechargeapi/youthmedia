@@ -94,4 +94,14 @@ class PostsModel extends Model {
                         ->get();
     }
 
+    public static function GetAllRecentUploadPost() {
+        return DB::table('posts')
+                        ->leftJoin('users', 'users.id', '=', 'posts.userId')
+                        ->select('posts.*', 'users.userRole')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('users.userRole', '!=', 4)
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
 }

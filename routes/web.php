@@ -91,3 +91,5 @@ Route::get('/privacypolicy', ['as' => 'privacypolicy', 'uses' => 'Frontend\Priva
 Route::get('/termsandconditions', ['as' => 'termsandconditions', 'uses' => 'Frontend\TocController@index']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
+//route for show all videos page
+Route::get('/{videoType}', ['as' => 'showallvideos', 'uses' => 'Frontend\PostsController@showAllVideos']);
