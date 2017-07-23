@@ -44,7 +44,7 @@ class PostsController extends Controller {
         if ($videoType == 'recent-videos') {
             $recentUpload = PostsModel::GetAllRecentUploadPost();
             $bannerTitle = 'Recent Videos';
-            return view('video')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
+            return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else {
             return redirect()->route('pagenotfound');
