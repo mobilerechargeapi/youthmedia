@@ -37,15 +37,17 @@ class PostsController extends Controller {
     
     public function video($postId) {
         $data = array(
-            'pageCode' => $this->pageCode
+            'pageCode' => $this->pageCode,
+            'postId' => base64_decode($postId)
         );
         $page = NavigationModel::GetPageSettings($data);
         $pageSettings = json_decode($page[0]->pageSettings);
-        if ($videoType == 'recent-videos') {
-            $recentUpload = PostsModel::GetAllRecentUploadPost();
-            $bannerTitle = 'Recent Videos';
+        $post = PostsModel::GetSinglePost($data);
+        $userUpload = PostsModel::GetAllUserUploadPost();
+        $recentUpload = PostsModel::GetRecentUploadPost();
+        if (count($post) > 0) {
             return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
-                            ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
+                            ->with('post', $post)->with('userUpload', $userUpload)->with('recentUpload', $recentUpload);
         } else {
             return redirect()->route('pagenotfound');
         }
