@@ -116,6 +116,7 @@ class PostsController extends Controller {
             } else {
                 $data['isScrapped'] = 0;
             }
+            $data['userId'] = $post[0]->userId;
             $message = "Post Updated Successfully";
             PostsModel::UpdatePost($data);
         }

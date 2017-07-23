@@ -63,4 +63,35 @@ class PostsModel extends Model {
         DB::table('posts')->where('postId', '=', $data)->delete();
     }
 
+    public static function GetAllSliderPost() {
+        return DB::table('posts')
+                        ->select('posts.*')
+                        ->where('posts.postStatus', '=', 1)
+                        ->take(3)
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
+    public static function GetRecentUploadPost() {
+        return DB::table('posts')
+                        ->leftJoin('users', 'users.id', '=', 'posts.userId')
+                        ->select('posts.*', 'users.userRole')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('users.userRole', '!=', 4)
+                        ->take(8)
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
+    public static function GetUserUploadPost() {
+        return DB::table('posts')
+                        ->leftJoin('users', 'users.id', '=', 'posts.userId')
+                        ->select('posts.*', 'users.userRole')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('users.userRole', '=', 4)
+                        ->take(4)
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
 }

@@ -63,4 +63,17 @@ class UserModel extends Model {
         DB::table('users')->where('id', '=', $data['id'])->delete();
     }
 
+    public static function GetTopUsers() {
+        return DB::table('users')
+                        ->leftJoin('posts', 'users.id', '=', 'posts.userId')
+                        ->select('users.id', 'users.name', 'users.profileImg', 'users.created_at', DB::raw('COUNT(`posts`.`postId`) AS videoCount'))
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('users.userRole', '=', 4)
+                        ->where('users.id', '!=', 4)
+                        ->take(5)
+                        ->groupBy('id')
+                        ->orderBy('videoCount', 'desc')
+                        ->get();
+    }
+
 }
