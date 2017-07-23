@@ -32,9 +32,6 @@ class MainController extends Controller {
         $recentUpload = PostsModel::GetRecentUploadPost();
         $userUpload = PostsModel::GetUserUploadPost();
         $topUsers = UserModel::GetTopUsers();
-//        echo '<pre>';
-//        print_r($topUsers);
-//        exit;
         return view('main')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('sliderVid', $sliderVid)
                         ->with('recentUpload', $recentUpload)->with('userUpload', $userUpload)->with('topUsers', $topUsers);
     }

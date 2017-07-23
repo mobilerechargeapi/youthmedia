@@ -89,6 +89,8 @@ Route::post('uploadVideo', ['as' => 'uploadVideo', 'uses' => 'Frontend\VideoCont
 Route::get('/privacypolicy', ['as' => 'privacypolicy', 'uses' => 'Frontend\PrivacyPolicyController@index']);
 //route for terms and conditions page
 Route::get('/termsandconditions', ['as' => 'termsandconditions', 'uses' => 'Frontend\TocController@index']);
+//route for detail video page
+Route::get('/video/{postId}', ['as' => 'video', 'uses' => 'Frontend\PostsController@video']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
 //route for show all videos page

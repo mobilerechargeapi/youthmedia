@@ -215,7 +215,7 @@
             <div class="col-sm-6 col-md-3 themeix-half">
                 <div class="single-video">
                     <div class="video-img">
-                        <a href="single-video.html">
+                        <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}">
                             <?php $image = ''; ?>
                             @if ($recentUploadRow->postThumbnail && !$recentUploadRow->isScrapped)
                             <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail; ?>
@@ -232,7 +232,7 @@
                         <span class="video-duration">5.28</span>
                     </div>
                     <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">{{$recentUploadRow->postTitle}}</a></h4>
+                        <h4><a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}" class="video-title">{{$recentUploadRow->postTitle}}</a></h4>
                         <div class="video-counter">
                             <div class="video-viewers">
                                 <span class="fa fa-eye view-icon"></span>

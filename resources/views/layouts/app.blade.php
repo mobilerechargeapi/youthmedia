@@ -279,11 +279,10 @@
                                     </div>
                                     <div class="footer-list">
                                         <ul>
-                                            <li><a href="#">Submit New Video</a></li>
                                             <li><a href="#">Popular Videos</a></li>
-                                            <li><a href="#">Trending Videos</a></li>
+                                            <li><a href="{{url('trending-videos')}}">Trending Videos</a></li>
                                             <li><a href="#">Most watched Videos</a></li>
-                                            <li><a href="#">Latest Videos</a></li>
+                                            <li><a href="{{url('recent-videos')}}">Recent Videos</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -34,5 +34,21 @@ class PostsController extends Controller {
             return redirect()->route('pagenotfound');
         }
     }
+    
+    public function video($postId) {
+        $data = array(
+            'pageCode' => $this->pageCode
+        );
+        $page = NavigationModel::GetPageSettings($data);
+        $pageSettings = json_decode($page[0]->pageSettings);
+        if ($videoType == 'recent-videos') {
+            $recentUpload = PostsModel::GetAllRecentUploadPost();
+            $bannerTitle = 'Recent Videos';
+            return view('video')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
+                            ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
+        } else {
+            return redirect()->route('pagenotfound');
+        }
+    }
 
 }
