@@ -29,12 +29,13 @@ class PostsController extends Controller {
                             ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else if ($videoType == 'trending-videos') {
             $recentUpload = PostsModel::GetAllRecentUploadPost();
-            echo 'in progress';exit;
+            echo 'in progress';
+            exit;
         } else {
             return redirect()->route('pagenotfound');
         }
     }
-    
+
     public function video($postId) {
         $data = array(
             'pageCode' => $this->pageCode,
@@ -48,6 +49,24 @@ class PostsController extends Controller {
         if (count($post) > 0) {
             return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('post', $post)->with('userUpload', $userUpload)->with('recentUpload', $recentUpload);
+        } else {
+            return redirect()->route('pagenotfound');
+        }
+    }
+
+    public function showuservideos($userId) {
+        $data = array(
+            'pageCode' => $this->pageCode,
+            'id' => base64_decode($userId)
+        );
+        $page = NavigationModel::GetPageSettings($data);
+        $pageSettings = json_decode($page[0]->pageSettings);
+        $userUpload = PostsModel::GetUserPosts($data);
+        if (count($userUpload) > 0) {
+            $recentUpload = $userUpload;
+            $bannerTitle = $userUpload[0]->name;
+            return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
+                            ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else {
             return redirect()->route('pagenotfound');
         }

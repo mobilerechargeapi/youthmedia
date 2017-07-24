@@ -114,4 +114,14 @@ class PostsModel extends Model {
                         ->get();
     }
 
+    public static function GetUserPosts($data) {
+        return DB::table('posts')
+                        ->leftJoin('users', 'users.id', '=', 'posts.userId')
+                        ->select('posts.*', 'users.id', 'users.name')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('users.id', '=', $data['id'])
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
 }

@@ -270,7 +270,7 @@
                     @foreach ($userUpload as $userUploadRow)
                     <div class="single-review">
                         <div class="review-img">
-                            <a href="single-video.html">
+                            <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}">
                                 @if ($userUploadRow->postThumbnail)
                                 <?php $image = asset('assets/images/posts') . '/' . $userUploadRow->postThumbnail; ?>
                                 @else
@@ -284,7 +284,7 @@
                             <span class="video-duration">5.28</span>
                         </div>
                         <div class="review-content">
-                            <h4><a href="single-video.html" class="video-title">{{$userUploadRow->postTitle}}</a></h4>
+                            <h4><a href="{{url('video/'.base64_encode($userUploadRow->postId))}}" class="video-title">{{$userUploadRow->postTitle}}</a></h4>
                             <div class="video-counter-plan">
                                 <div class="video-viewers">
                                     <span class="fa fa-eye view-icon"></span>
@@ -324,13 +324,13 @@
                     <div class="single-contributor">
                         <div class="contributor-img">
                             @if($topUsersRow->profileImg != '')
-                            <a href="#"><img src="{{ asset('assets/images/users') }}/{{ $topUsersRow->profileImg }}" alt="{{$topUsersRow->name}}"></a>
+                            <a href="{{url('user/'.base64_encode($topUsersRow->id))}}"><img src="{{ asset('assets/images/users') }}/{{ $topUsersRow->profileImg }}" alt="{{$topUsersRow->name}}"></a>
                             @else
-                            <a href="#"><img src="{{ asset('frontend/images/team/1.jpg') }}" alt="{{$topUsersRow->name}}"></a>
+                            <a href="{{url('user/'.base64_encode($topUsersRow->id))}}"><img src="{{ asset('frontend/images/team/1.jpg') }}" alt="{{$topUsersRow->name}}"></a>
                             @endif
                         </div>
                         <div class="contributor-content">
-                            <h4><a href="#" class="heading-link">{{$topUsersRow->name}}</a></h4>
+                            <h4><a href="{{url('user/'.base64_encode($topUsersRow->id))}}" class="heading-link">{{$topUsersRow->name}}</a></h4>
                             <p>{{$topUsersRow->videoCount}} videos</p>
                             @if($topUsersRow->created_at)
                             <p>joined {{date('Y', strtotime($topUsersRow->created_at))}}</p>

@@ -406,7 +406,7 @@
                     @foreach ($userUpload as $userUploadRow)
                     <div class="single-video">
                         <div class="video-img">
-                            <a href="single-video.html">
+                            <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}">
                                 @if ($userUploadRow->postThumbnail)
                                 <?php $image = asset('assets/images/posts') . '/' . $userUploadRow->postThumbnail; ?>
                                 @else
@@ -420,7 +420,7 @@
                             <span class="video-duration">8.17</span>
                         </div>
                         <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">{{$userUploadRow->postTitle}}</a></h4>
+                            <h4><a href="{{url('video/'.base64_encode($userUploadRow->postId))}}" class="video-title">{{$userUploadRow->postTitle}}</a></h4>
                             <div class="video-counter">
                                 <div class="video-viewers">
                                     <span class="fa fa-eye view-icon"></span>
