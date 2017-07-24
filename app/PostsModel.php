@@ -48,15 +48,15 @@ class PostsModel extends Model {
     public static function UpdatePost($data) {
         DB::table('posts')->where('postId', $data['postId'])->update(['postTitle' => $data['postTitle'],
             'postDescription' => $data['postDescription'], 'websiteId' => $data['websiteId'], 'categoryId' => $data['categoryId'],
-            'post' => $data['post'], 'userId' => $data['userId'], 'postStatus' => $data['postStatus'], 'postThumbnail' => $data['postThumbnail'],
-            'isScrapped' => $data['isScrapped'], 'uniqueCustomKey' => $data['uniqueCustomKey']]);
+            'post' => $data['post'], 'postTags' => $data['postTags'], 'userId' => $data['userId'], 'postStatus' => $data['postStatus'],
+            'postThumbnail' => $data['postThumbnail'], 'isScrapped' => $data['isScrapped'], 'uniqueCustomKey' => $data['uniqueCustomKey']]);
     }
 
     public static function SavePost($data) {
         return DB::table('posts')->insertGetId(['postTitle' => $data['postTitle'], 'postDescription' => $data['postDescription'],
-                    'websiteId' => $data['websiteId'], 'categoryId' => $data['categoryId'], 'post' => $data['post'], 'userId' => $data['userId'],
-                    'postStatus' => $data['postStatus'], 'createdOn' => $data['createdOn'], 'postThumbnail' => $data['postThumbnail'],
-                    'isScrapped' => $data['isScrapped'], 'uniqueCustomKey' => $data['uniqueCustomKey']]);
+                    'websiteId' => $data['websiteId'], 'categoryId' => $data['categoryId'], 'post' => $data['post'], 'postTags' => $data['postTags'],
+                    'userId' => $data['userId'], 'postStatus' => $data['postStatus'], 'createdOn' => $data['createdOn'],
+                    'postThumbnail' => $data['postThumbnail'], 'isScrapped' => $data['isScrapped'], 'uniqueCustomKey' => $data['uniqueCustomKey']]);
     }
 
     public static function DeletePost($data) {
@@ -120,6 +120,34 @@ class PostsModel extends Model {
                         ->select('posts.*', 'users.id', 'users.name')
                         ->where('posts.postStatus', '=', 1)
                         ->where('users.id', '=', $data['id'])
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
+    public static function GetPostsByTags($data) {
+        $search = $data['postTags'];
+        return DB::table('posts')
+                        ->select('posts.*')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('posts.postTags', 'LIKE', "%$search%")
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
+    public static function GetSinglePostDetail($data) {
+        return DB::table('posts')
+                        ->leftJoin('categories', 'categories.categoryId', '=', 'posts.categoryId')
+                        ->select('posts.*', 'categories.categoryName')
+                        ->where('posts.postId', '=', $data['postId'])
+                        ->get();
+    }
+
+    public static function GetPostsByCategory($data) {
+        return DB::table('posts')
+                        ->leftJoin('categories', 'categories.categoryId', '=', 'posts.categoryId')
+                        ->select('posts.*', 'categories.categoryName')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('posts.categoryId', '=', $data['categoryId'])
                         ->orderBy('posts.createdOn', 'desc')
                         ->get();
     }

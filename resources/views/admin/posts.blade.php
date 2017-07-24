@@ -16,6 +16,7 @@
                     <th>Category</th>
                     <th>Post</th>
                     <th>Thumbnail</th>
+                    <th>Tags</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                         <img src="{{ $postRow->postThumbnail }}" width="100" height="100">
                         @endif
                     </td>
+                    <td>{{ $postRow->postTags }}</td>
                     <td>
                         <div class="dropdown">
                             <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Actions

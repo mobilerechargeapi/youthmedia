@@ -77,6 +77,7 @@ class PostsController extends Controller {
             'websiteId' => $request->websiteId,
             'categoryId' => $request->categoryId,
             'post' => $request->post,
+            'postTags' => $request->postTags,
             'userId' => $this->user['attributes']['id'],
             'postStatus' => $request->postStatus,
             'createdOn' => time(),

@@ -43,7 +43,7 @@ class PostsController extends Controller {
         );
         $page = NavigationModel::GetPageSettings($data);
         $pageSettings = json_decode($page[0]->pageSettings);
-        $post = PostsModel::GetSinglePost($data);
+        $post = PostsModel::GetSinglePostDetail($data);
         $userUpload = PostsModel::GetAllUserUploadPost();
         $recentUpload = PostsModel::GetRecentUploadPost();
         if (count($post) > 0) {
@@ -70,6 +70,35 @@ class PostsController extends Controller {
         } else {
             return redirect()->route('pagenotfound');
         }
+    }
+
+    public function showtagvideos($tag) {
+        $data = array(
+            'pageCode' => $this->pageCode,
+            'postTags' => base64_decode($tag)
+        );
+        $page = NavigationModel::GetPageSettings($data);
+        $pageSettings = json_decode($page[0]->pageSettings);
+        $recentUpload = PostsModel::GetPostsByTags($data);
+        $bannerTitle = base64_decode($tag);
+        return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
+                        ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
+    }
+
+    public function showcatvideos($catId) {
+        $data = array(
+            'pageCode' => $this->pageCode,
+            'categoryId' => base64_decode($catId)
+        );
+        $page = NavigationModel::GetPageSettings($data);
+        $pageSettings = json_decode($page[0]->pageSettings);
+        $recentUpload = PostsModel::GetPostsByCategory($data);
+        $bannerTitle = '';
+        if (count($recentUpload) > 0) {
+            $bannerTitle = $recentUpload[0]->categoryName;
+        }
+        return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
+                        ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
     }
 
 }

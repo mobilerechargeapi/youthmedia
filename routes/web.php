@@ -93,6 +93,10 @@ Route::get('/termsandconditions', ['as' => 'termsandconditions', 'uses' => 'Fron
 Route::get('/video/{postId}', ['as' => 'video', 'uses' => 'Frontend\PostsController@video']);
 //route for show all user videos page
 Route::get('/user/{userId}', ['as' => 'showuservideos', 'uses' => 'Frontend\PostsController@showuservideos']);
+//route for show all videos by tag page
+Route::get('/videoTag/{tag}', ['as' => 'showtagvideos', 'uses' => 'Frontend\PostsController@showtagvideos']);
+//route for show all videos by category page
+Route::get('/vidcategory/{catId}', ['as' => 'showcatvideos', 'uses' => 'Frontend\PostsController@showcatvideos']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
 //route for show all videos page

@@ -2,6 +2,12 @@
 
 @section('content')
 @include('admin.tinymceSettings')
+<link rel="stylesheet" type="text/css" href="<?php echo asset('css/bootstrap-tagsinput.css') ?>">
+<style>
+    .bootstrap-tagsinput{
+        width: 100% !important;
+    }
+</style>
 <div class="card">
     <div class="card-header">
         Add Post
@@ -24,6 +30,7 @@
         $websiteId = $post[0]->websiteId;
         $categoryId = $post[0]->categoryId;
         $postText = $post[0]->post;
+        $postTags = $post[0]->postTags;
         $postStatus = $post[0]->postStatus;
         $postThumbnail = $post[0]->postThumbnail;
         $isScrapped = $post[0]->isScrapped;
@@ -34,6 +41,7 @@
         $websiteId = '';
         $categoryId = '';
         $postText = '';
+        $postTags = '';
         $postStatus = 1;
         $postThumbnail = '';
         $isScrapped = 0;
@@ -93,6 +101,12 @@
                             <input class="form-control" type="file" name="uploadVideo" id="uploadVideo">
                         </div>
                     </div>
+                    <div class="form-group margin-top-class">
+                        <label class="col-md-3 control-label">Tags</label>
+                        <div class="col-md-9">
+                            <input data-role="tagsinput" type="text" id="postTags" name="postTags" class="form-control" value="{{ $postTags }}">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="postStatus" class="col-md-3 control-label">Post Status</label>
                         <div class="col-md-9">
@@ -140,7 +154,7 @@
         </form>
     </div>
 </div>
-
+<script src="<?php echo asset('js/bootstrap-tagsinput.min.js') ?>" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $(".sidebar-menu li").removeClass("active");

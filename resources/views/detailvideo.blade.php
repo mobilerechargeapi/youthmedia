@@ -43,7 +43,7 @@
                                     @endif
                                     <span class="video-posts-author">
                                         <i class="fa fa-folder-o"></i>
-                                        <a href="#">Animals Videos</a>
+                                        <a href="{{url('vidcategory/'.base64_encode($post[0]->categoryId))}}">{{$post[0]->categoryName}} Videos</a>
                                     </span>
                                 </div>
                             </div>
@@ -69,10 +69,15 @@
                     <div class="tags-and-share video-share">
                         <div class="post-tags widget">
                             <ul class="tagcloud">
-                                <li><a href="#">Cat</a></li>
-                                <li><a href="#">my pets</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Songs</a></li>
+                                @if($post[0]->postTags != '')
+                                <?php
+                                $postTags = '';
+                                $postTags = explode(',', $post[0]->postTags);
+                                ?>
+                                @foreach ($postTags as $postTagsRow)
+                                <li><a href="{{url('videoTag/'.base64_encode($postTagsRow))}}">{{$postTagsRow}}</a></li>
+                                @endforeach
+                                @endif
                             </ul>
                         </div>
                         <div class="share-options">
