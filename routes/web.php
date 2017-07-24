@@ -43,12 +43,6 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::post('setPageSettings', ['as' => 'setPageSettings', 'uses' => 'PageController@setPageSettings']);
     Route::post('deleteAfterParty', ['as' => 'deleteAfterParty', 'uses' => 'AdminAfterPartyController@deleteAfterParty']);
-    //route for faq
-    Route::get('insertFaq/{navId}', ['as' => 'insertFaq', 'uses' => 'FaqController@insertFaq']);
-    Route::get('editFaq/{navId}/{virtualId}', ['as' => 'editFaq', 'uses' => 'FaqController@getFaq']);
-    Route::post('addFaq', ['as' => 'addFaq', 'uses' => 'FaqController@addFaq']);
-    Route::post('deleteFaq', ['as' => 'deleteFaq', 'uses' => 'FaqController@deleteFaq']);
-    Route::post('getFaq', ['as' => 'getFaq', 'uses' => 'FaqController@getFaq']);
     //route for website settings
     Route::get('websites', ['as' => 'websites', 'uses' => 'WebsitesController@index']);
     Route::get('addWebsite', ['as' => 'addWebsite', 'uses' => 'WebsitesController@addWebsite']);
@@ -97,6 +91,8 @@ Route::get('/user/{userId}', ['as' => 'showuservideos', 'uses' => 'Frontend\Post
 Route::get('/videoTag/{tag}', ['as' => 'showtagvideos', 'uses' => 'Frontend\PostsController@showtagvideos']);
 //route for show all videos by category page
 Route::get('/vidcategory/{catId}', ['as' => 'showcatvideos', 'uses' => 'Frontend\PostsController@showcatvideos']);
+//route for updating video view in video detail page
+Route::post('updateVideoView', ['as' => 'updateVideoView', 'uses' => 'Frontend\PostsController@updateVideoView']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
 //route for show all videos page

@@ -171,4 +171,8 @@ class PostsModel extends Model {
                         ->get();
     }
 
+    public static function UpdateVideoView($data) {
+        DB::table('posts')->where('postId', $data['postId'])->update(['postViewed' => $data['postViewed']]);
+    }
+
 }

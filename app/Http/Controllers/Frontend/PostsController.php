@@ -102,4 +102,12 @@ class PostsController extends Controller {
                         ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
     }
 
+    public function updateVideoView(Request $request) {
+        $data = array(
+            'postId' => $request->postId,
+            'postViewed' => $request->postViewed
+        );
+        PostsModel::UpdateVideoView($data);
+    }
+
 }

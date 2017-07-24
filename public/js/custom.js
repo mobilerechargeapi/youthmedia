@@ -62,23 +62,6 @@ function editSocial(social_id) {
     });
 }
 
-//delete faq in faq setting page
-function deleteFaq(faqId) {
-    var url = '../deleteFaq';
-    var token = $('input[name=_token]').val();
-    var data = {faqId: faqId};
-    $.ajax({
-        url: url,
-        headers: {'X-CSRF-TOKEN': token},
-        data: data,
-        type: 'POST',
-        datatype: 'JSON',
-        success: function (resp) {
-            $('#faq_row_' + faqId).hide();
-        }
-    });
-}
-
 //delete website in websites module
 function deleteWebsite(websiteId) {
     var url = 'deleteWebsite';
@@ -126,6 +109,23 @@ function deletePost(postId) {
         datatype: 'JSON',
         success: function (resp) {
             $('#post_row_' + postId).hide();
+        }
+    });
+}
+
+//update video view on frontend video detail page
+function updateVideoView(postId, postViewed) {
+    var url = '../updateVideoView';
+    var token = $('input[name=_token]').val();
+    var data = {postId: postId, postViewed: postViewed};
+    $.ajax({
+        url: url,
+        headers: {'X-CSRF-TOKEN': token},
+        data: data,
+        type: 'POST',
+        datatype: 'JSON',
+        success: function (resp) {
+            
         }
     });
 }

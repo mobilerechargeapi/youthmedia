@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-md-8">
                 <!-- Start Video Post -->
-                <div class="video-post-wrapper">
+                <div id="detail-video-post" class="video-post-wrapper">
                     <div class="video-posts-video">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe src="{{$post[0]->post}}" class="embed-responsive-item"></iframe>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="video-post-counter">
                             <div class="video-post-viewers">
-                                <h3>241,050 views</h3>
+                                <h3>{{$post[0]->postViewed + 1}} views</h3>
                             </div>
                             <div class="video-like">
                                 <span><i class="fa fa-thumbs-o-up"></i></span>
@@ -429,7 +429,7 @@
                             <div class="video-counter">
                                 <div class="video-viewers">
                                     <span class="fa fa-eye view-icon"></span>
-                                    <span>881,021</span>
+                                    <span>{{$userUploadRow->postViewed}}</span>
                                 </div>
                                 <div class="video-feedback">
                                     <div class="video-like-counter">
@@ -470,4 +470,5 @@
     </div>
 </div>
 <!-- End Call To Action Area -->
+{{ csrf_field() }}
 @endsection

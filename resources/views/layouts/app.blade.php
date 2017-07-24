@@ -390,6 +390,17 @@
 
         <!-- Main JS -->
         <script src="<?php echo asset('frontend/js/main.js') ?>"></script>
+
+
+        <!-- Custom JS -->
+        <script src="<?php echo asset('js/custom.js') ?>" type="text/javascript"></script>
+        @if(isset($post[0]->postId))
+        <script>
+        if ($("#detail-video-post").length > 0) {
+            updateVideoView('<?php echo $post[0]->postId ?>', '<?php echo $post[0]->postViewed + 1 ?>');
+        }
+        </script>
+        @endif
     </body>
 
 </html>
