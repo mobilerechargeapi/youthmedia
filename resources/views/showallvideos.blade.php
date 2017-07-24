@@ -211,7 +211,11 @@
                         <span class="video-duration">5.28</span>
                     </div>
                     <div class="video-content">
-                        <h4><a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}" class="video-title">{{$recentUploadRow->postTitle}}</a></h4>
+                        <h4>
+                            <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}" class="video-title">
+                                {{(strlen($recentUploadRow->postTitle) > 55) ? substr($recentUploadRow->postTitle, 0, 55) . ' ...' : $recentUploadRow->postTitle}}
+                            </a>
+                        </h4>
                         <div class="video-counter">
                             <div class="video-viewers">
                                 <span class="fa fa-eye view-icon"></span>

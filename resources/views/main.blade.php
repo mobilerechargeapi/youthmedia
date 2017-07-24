@@ -19,7 +19,7 @@
                             @endif
                             <span>
                                 {{$sliderVidRow->postTitle}} <br>
-                                <i class="fa fa-eye"> 89,587</i>
+                                <i class="fa fa-eye"> {{$sliderVidRow->postViewed}}</i>
                                 <i class=" fa fa-thumbs-o-up"> 9,550</i> 
                                 <i class="fa fa-thumbs-o-down"> 104</i> 
                             </span>
@@ -236,7 +236,7 @@
                         <div class="video-counter">
                             <div class="video-viewers">
                                 <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
+                                <span>{{$recentUploadRow->postViewed}}</span>
                             </div>
                             <div class="video-feedback">
                                 <div class="video-like-counter">
@@ -288,7 +288,7 @@
                             <div class="video-counter-plan">
                                 <div class="video-viewers">
                                     <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
+                                    <span>{{$userUploadRow->postViewed}}</span>
                                 </div>
                                 <div class="video-feedback">
                                     <div class="video-like-counter">
@@ -305,8 +305,8 @@
                                 <p>{{$userUploadRow->postDescription}}</p>
                             </div>
                             <div class="review-btn">
-                                <a href="#" class="view-btn">View Details</a>
-                                <a href="#" class="watch-btn">Watch Now</a>
+                                <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}" class="view-btn">View Details</a>
+                                <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}" class="watch-btn">Watch Now</a>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
 use App\NavigationModel;
+use App\PostsModel;
 
 class ContactController extends Controller {
 
@@ -23,7 +24,9 @@ class ContactController extends Controller {
         $page = NavigationModel::GetPageSettings($data);
         $pageTitle = $page[0]->pageTitle;
         $pageSettings = json_decode($page[0]->pageSettings);
-        return view('contact')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('pageTitle', $pageTitle);
+        $userUpload = PostsModel::GetUserUploadPost();
+        return view('contact')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('pageTitle', $pageTitle)
+                        ->with('userUpload', $userUpload);
     }
 
     public function contactApplication(Request $request) {

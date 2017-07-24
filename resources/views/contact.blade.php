@@ -95,25 +95,31 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
             <div class="col-md-12">
                 <div class="themeix-section-h">
                     <span class="heading-icon"><i class="fa fa-copy"></i></span>
-                    <h3>releted Videos</h3>
+                    <h3>Users Uploaded</h3>
                 </div>
                 <div class="video-carousel">
+                    @foreach ($userUpload as $userUploadRow)
                     <div class="single-video">
                         <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/1.jpg') }}" alt="Video" />
+                            <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}">
+                                @if ($userUploadRow->postThumbnail)
+                                <?php $image = asset('assets/images/posts') . '/' . $userUploadRow->postThumbnail; ?>
+                                @else
+                                <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
+                                @endif
+                                <img class="lazy" data-src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/1.jpg') }}" alt="video" />
+                                <img src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 </noscript>
                             </a>
                             <span class="video-duration">8.17</span>
                         </div>
                         <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Greek-Style Pasta Bake (Pasticcio) - English Video</a></h4>
+                            <h4><a href="{{url('video/'.base64_encode($userUploadRow->postId))}}" class="video-title">{{$userUploadRow->postTitle}}</a></h4>
                             <div class="video-counter">
                                 <div class="video-viewers">
                                     <span class="fa fa-eye view-icon"></span>
-                                    <span>881,021</span>
+                                    <span>{{$userUploadRow->postViewed}}</span>
                                 </div>
                                 <div class="video-feedback">
                                     <div class="video-like-counter">
@@ -128,126 +134,7 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                             </div>
                         </div>
                     </div>
-                    <div class="single-video">
-                        <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/2.jpg') }}" alt="Video" />
-                                <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/2.jpg') }}" alt="video" />
-                                </noscript>
-                            </a>
-                            <span class="video-duration">3.11</span>
-                        </div>
-                        <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Double Chocolate-Stuffed Mini Churros </a></h4>
-                            <div class="video-counter">
-                                <div class="video-viewers">
-                                    <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
-                                </div>
-                                <div class="video-feedback">
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>996</span>
-                                    </div>
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-video">
-                        <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/3.jpg') }}" alt="Video" />
-                                <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/3.jpg') }}" alt="video" />
-                                </noscript>
-                            </a>
-                            <span class="video-duration">5.10</span>
-                        </div>
-                        <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Greek-Style Pasta Bake (Pasticcio - English Recipe)</a></h4>
-                            <div class="video-counter">
-                                <div class="video-viewers">
-                                    <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
-                                </div>
-                                <div class="video-feedback">
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>785</span>
-                                    </div>
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-video">
-                        <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/4.jpg') }}" alt="Video" />
-                                <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/4.jpg') }}" alt="video" />
-                                </noscript>
-                            </a>
-                            <span class="video-duration">2.29</span>
-                        </div>
-                        <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Rainbow Sprinkle Cinnamon Rolls (Gougeres Video)</a></h4>
-                            <div class="video-counter">
-                                <div class="video-viewers">
-                                    <span class="fa fa-eye view-icon"></span>
-                                    <span>991,021</span>
-                                </div>
-                                <div class="video-feedback">
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>7456</span>
-                                    </div>
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-video">
-                        <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/5.jpg') }}" alt="Video" />
-                                <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/5.jpg') }}" alt="video" />
-                                </noscript>
-                            </a>
-                            <span class="video-duration">5.28</span>
-                        </div>
-                        <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Buffalo Chicken Potato Skins  (Gougeres English Video)</a></h4>
-                            <div class="video-counter">
-                                <div class="video-viewers">
-                                    <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
-                                </div>
-                                <div class="video-feedback">
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
