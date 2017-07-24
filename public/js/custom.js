@@ -125,7 +125,51 @@ function updateVideoView(postId, postViewed) {
         type: 'POST',
         datatype: 'JSON',
         success: function (resp) {
-            
+
+        }
+    });
+}
+
+//like video on frontend video detail page
+function likeVideo(userId, postId, totalLikes, totalUnLikes) {
+    var url = '../updateVideoLikes';
+    var token = $('input[name=_token]').val();
+    var data = {postId: postId, userId: userId};
+    $.ajax({
+        url: url,
+        headers: {'X-CSRF-TOKEN': token},
+        data: data,
+        type: 'POST',
+        datatype: 'JSON',
+        success: function (resp) {
+            $('#vidTotalLikes').html('');
+            $('#vidTotalLikes').html(parseInt(totalLikes) + parseInt(1));
+            if (totalUnLikes > 0) {
+                $('#vidTotalUnLikes').html('');
+                $('#vidTotalUnLikes').html(parseInt(totalUnLikes) - parseInt(1));
+            }
+        }
+    });
+}
+
+//unlike video on frontend video detail page
+function unlikeVideo(userId, postId, totalUnLikes, totalLikes) {
+    var url = '../updateVideoUnLikes';
+    var token = $('input[name=_token]').val();
+    var data = {postId: postId, userId: userId};
+    $.ajax({
+        url: url,
+        headers: {'X-CSRF-TOKEN': token},
+        data: data,
+        type: 'POST',
+        datatype: 'JSON',
+        success: function (resp) {
+            $('#vidTotalUnLikes').html('');
+            $('#vidTotalUnLikes').html(parseInt(totalUnLikes) + parseInt(1));
+            if (totalLikes > 0) {
+                $('#vidTotalLikes').html('');
+                $('#vidTotalLikes').html(parseInt(totalLikes) - parseInt(1));
+            }
         }
     });
 }

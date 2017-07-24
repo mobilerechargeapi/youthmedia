@@ -35,7 +35,7 @@
                         <div class="video-post-title">
                             <span class="video-icons"><i class="fa fa-info-circle"></i></span>
                             <div class="video-post-info">
-                                <h4><a href="#">{{$post[0]->postTitle}}</a></h4>
+                                <h4><a href="javascript:void(0);">{{$post[0]->postTitle}}</a></h4>
                                 <div class="video-post-date">
                                     <span><i class="fa fa-calendar"></i></span>
                                     @if ($post[0]->createdOn != '')
@@ -52,13 +52,19 @@
                             <div class="video-post-viewers">
                                 <h3>{{$post[0]->postViewed + 1}} views</h3>
                             </div>
-                            <div class="video-like">
+                            <?php
+                            $userId = 0;
+                            if ($user = Auth::user()) {
+                                $userId = $user['attributes']['id'];
+                            }
+                            ?>
+                            <div <?php if($userId) { echo 'onclick="likeVideo('.$userId.', '.$post[0]->postId.', '.$totalLikes.', '.$totalUnLikes.')"'; } ?> class="video-like">
                                 <span><i class="fa fa-thumbs-o-up"></i></span>
-                                <p>421825</p>
+                                <p id="vidTotalLikes">{{$totalLikes}}</p>
                             </div>
-                            <div class="video-dislike">
+                            <div <?php if($userId) { echo 'onclick="unlikeVideo('.$userId.', '.$post[0]->postId.', '.$totalUnLikes.', '.$totalLikes.')"'; } ?> class="video-dislike">
                                 <span><i class="fa fa-thumbs-o-down"></i></span>
-                                <p>9694</p>
+                                <p id="vidTotalUnLikes">{{$totalUnLikes}}</p>
                             </div>
                         </div>
                     </div>

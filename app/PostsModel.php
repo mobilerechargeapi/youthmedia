@@ -175,4 +175,22 @@ class PostsModel extends Model {
         DB::table('posts')->where('postId', $data['postId'])->update(['postViewed' => $data['postViewed']]);
     }
 
+    public static function GetPostLikes($data) {
+        return DB::table('posts')
+                        ->leftJoin('likes_shares', 'likes_shares.postId', '=', 'posts.postId')
+                        ->select('posts.*')
+                        ->where('posts.postId', '=', $data['postId'])
+                        ->where('likes_shares.liked', '=', 1)
+                        ->count();
+    }
+
+    public static function GetPostUnLikes($data) {
+        return DB::table('posts')
+                        ->leftJoin('likes_shares', 'likes_shares.postId', '=', 'posts.postId')
+                        ->select('posts.*')
+                        ->where('posts.postId', '=', $data['postId'])
+                        ->where('likes_shares.unliked', '=', 1)
+                        ->count();
+    }
+
 }

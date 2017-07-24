@@ -47,9 +47,12 @@ class PostsController extends Controller {
         $post = PostsModel::GetSinglePostDetail($data);
         $userUpload = PostsModel::GetAllUserUploadPost();
         $recentUpload = PostsModel::GetRecentUploadPost();
+        $totalLikes = PostsModel::GetPostLikes($data);
+        $totalUnLikes = PostsModel::GetPostUnLikes($data);
         if (count($post) > 0) {
             return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
-                            ->with('post', $post)->with('userUpload', $userUpload)->with('recentUpload', $recentUpload);
+                            ->with('post', $post)->with('userUpload', $userUpload)->with('recentUpload', $recentUpload)->with('totalLikes', $totalLikes)
+                            ->with('totalUnLikes', $totalUnLikes);
         } else {
             return redirect()->route('pagenotfound');
         }

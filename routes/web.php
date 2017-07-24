@@ -93,6 +93,9 @@ Route::get('/videoTag/{tag}', ['as' => 'showtagvideos', 'uses' => 'Frontend\Post
 Route::get('/vidcategory/{catId}', ['as' => 'showcatvideos', 'uses' => 'Frontend\PostsController@showcatvideos']);
 //route for updating video view in video detail page
 Route::post('updateVideoView', ['as' => 'updateVideoView', 'uses' => 'Frontend\PostsController@updateVideoView']);
+//route for updating video likes/unlikes in video detail page
+Route::post('updateVideoLikes', ['as' => 'updateVideoLikes', 'uses' => 'Frontend\PostsLikesController@updateVideoLikes']);
+Route::post('updateVideoUnLikes', ['as' => 'updateVideoUnLikes', 'uses' => 'Frontend\PostsLikesController@updateVideoUnLikes']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
 //route for error page
