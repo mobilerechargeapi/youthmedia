@@ -152,4 +152,23 @@ class PostsModel extends Model {
                         ->get();
     }
 
+    public static function GetTrendingVideos() {
+        return DB::table('posts')
+                        ->select('posts.*')
+                        ->where('posts.postStatus', '=', 1)
+                        ->take(8)
+                        ->orderBy('posts.postViewed', 'desc')
+                        ->get();
+    }
+
+    public static function GetAllTrendingPost() {
+        return DB::table('posts')
+                        ->select('posts.*')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('posts.postViewed', '>', 30)
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->orderBy('posts.postViewed', 'desc')
+                        ->get();
+    }
+
 }

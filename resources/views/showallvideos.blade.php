@@ -219,7 +219,7 @@
                         <div class="video-counter">
                             <div class="video-viewers">
                                 <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
+                                <span>{{$recentUploadRow->postViewed}}</span>
                             </div>
                             <div class="video-feedback">
                                 <div class="video-like-counter">

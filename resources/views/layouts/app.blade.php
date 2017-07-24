@@ -281,7 +281,6 @@
                                         <ul>
                                             <li><a href="#">Popular Videos</a></li>
                                             <li><a href="{{url('trending-videos')}}">Trending Videos</a></li>
-                                            <li><a href="#">Most watched Videos</a></li>
                                             <li><a href="{{url('recent-videos')}}">Recent Videos</a></li>
                                         </ul>
                                     </div>

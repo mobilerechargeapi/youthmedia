@@ -28,9 +28,10 @@ class PostsController extends Controller {
             return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else if ($videoType == 'trending-videos') {
-            $recentUpload = PostsModel::GetAllRecentUploadPost();
-            echo 'in progress';
-            exit;
+            $recentUpload = PostsModel::GetAllTrendingPost();
+            $bannerTitle = 'Trending Videos';
+            return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
+                            ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else {
             return redirect()->route('pagenotfound');
         }

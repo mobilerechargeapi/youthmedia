@@ -232,7 +232,11 @@
                         <span class="video-duration">5.28</span>
                     </div>
                     <div class="video-content">
-                        <h4><a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}" class="video-title">{{$recentUploadRow->postTitle}}</a></h4>
+                        <h4>
+                            <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}" class="video-title">
+                                {{(strlen($recentUploadRow->postTitle) > 55) ? substr($recentUploadRow->postTitle, 0, 55) . ' ...' : $recentUploadRow->postTitle}}
+                            </a>
+                        </h4>
                         <div class="video-counter">
                             <div class="video-viewers">
                                 <span class="fa fa-eye view-icon"></span>
@@ -385,23 +389,36 @@
             </div>
         </div>
         <div class="row">
+            @foreach ($trendingVideos as $trendingVideosRow)
             <div class="col-sm-6 col-md-3 themeix-half">
                 <div class="single-video">
                     <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/55.jpg') ?>" alt="Video" />
+                        <a href="{{url('video/'.base64_encode($trendingVideosRow->postId))}}">
+                            <?php $image = ''; ?>
+                            @if ($trendingVideosRow->postThumbnail && !$trendingVideosRow->isScrapped)
+                            <?php $image = asset('assets/images/posts') . '/' . $trendingVideosRow->postThumbnail; ?>
+                            @elseif($trendingVideosRow->postThumbnail)
+                            <?php $image = $trendingVideosRow->postThumbnail; ?>
+                            @else
+                            <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                            @endif
+                            <img class="lazy" data-src="{{$image}}" alt="{{$trendingVideosRow->postTitle}}" />
                             <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/55.jpg') ?>" alt="video" />
+                            <img src="{{$image}}" alt="{{$trendingVideosRow->postTitle}}" />
                             </noscript>
                         </a>
                         <span class="video-duration">5.28</span>
                     </div>
                     <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh</a></h4>
+                        <h4>
+                            <a href="{{url('video/'.base64_encode($trendingVideosRow->postId))}}" class="video-title">
+                                {{(strlen($trendingVideosRow->postTitle) > 55) ? substr($trendingVideosRow->postTitle, 0, 55) . ' ...' : $trendingVideosRow->postTitle}}
+                            </a>
+                        </h4>
                         <div class="video-counter">
                             <div class="video-viewers">
                                 <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
+                                <span>{{$trendingVideosRow->postViewed}}</span>
                             </div>
                             <div class="video-feedback">
                                 <div class="video-like-counter">
@@ -417,230 +434,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3 themeix-half">
-                <div class="single-video">
-                    <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/48.jpg') ?>" alt="Video" />
-                            <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/48.jpg') ?>" alt="video" />
-                            </noscript>
-                        </a>
-                        <span class="video-duration">5.28</span>
-                    </div>
-                    <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh challenge</a></h4>
-                        <div class="video-counter">
-                            <div class="video-viewers">
-                                <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
-                            </div>
-                            <div class="video-feedback">
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 themeix-half">
-                <div class="single-video">
-                    <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/49.jpg') ?>" alt="Video" />
-                            <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/49.jpg') ?>" alt="video" />
-                            </noscript>
-                        </a>
-                        <span class="video-duration">5.28</span>
-                    </div>
-                    <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh challenge</a></h4>
-                        <div class="video-counter">
-                            <div class="video-viewers">
-                                <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
-                            </div>
-                            <div class="video-feedback">
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 themeix-half">
-                <div class="single-video">
-                    <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/50.jpg') ?>" alt="Video" />
-                            <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/50.jpg') ?>" alt="video" />
-                            </noscript>
-                        </a>
-                        <span class="video-duration">5.28</span>
-                    </div>
-                    <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh challenge</a></h4>
-                        <div class="video-counter">
-                            <div class="video-viewers">
-                                <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
-                            </div>
-                            <div class="video-feedback">
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 themeix-half">
-                <div class="single-video">
-                    <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/51.jpg') ?>" alt="Video" />
-                            <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/51.jpg') ?>" alt="video" />
-                            </noscript>
-                        </a>
-                        <span class="video-duration">5.28</span>
-                    </div>
-                    <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh challenge</a></h4>
-                        <div class="video-counter">
-                            <div class="video-viewers">
-                                <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
-                            </div>
-                            <div class="video-feedback">
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 themeix-half">
-                <div class="single-video">
-                    <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/52.jpg') ?>" alt="Video" />
-                            <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/52.jpg') ?>" alt="video" />
-                            </noscript>
-                        </a>
-                        <span class="video-duration">5.28</span>
-                    </div>
-                    <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh challenge</a></h4>
-                        <div class="video-counter">
-                            <div class="video-viewers">
-                                <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
-                            </div>
-                            <div class="video-feedback">
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 themeix-half">
-                <div class="single-video">
-                    <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/53.jpg') ?>" alt="Video" />
-                            <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/53.jpg') ?>" alt="video" />
-                            </noscript>
-                        </a>
-                        <span class="video-duration">5.28</span>
-                    </div>
-                    <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh challenge</a></h4>
-                        <div class="video-counter">
-                            <div class="video-viewers">
-                                <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
-                            </div>
-                            <div class="video-feedback">
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-3 themeix-half">
-                <div class="single-video">
-                    <div class="video-img">
-                        <a href="single-video.html">
-                            <img class="lazy" data-src="<?php echo asset('frontend/images/thumbnails/54.jpg') ?>" alt="Video" />
-                            <noscript>
-                            <img src="<?php echo asset('frontend/images/thumbnails/54.jpg') ?>" alt="video" />
-                            </noscript>
-                        </a>
-                        <span class="video-duration">5.28</span>
-                    </div>
-                    <div class="video-content">
-                        <h4><a href="single-video.html" class="video-title">Funny videos 2016 funny pranks try not to laugh challenge</a></h4>
-                        <div class="video-counter">
-                            <div class="video-viewers">
-                                <span class="fa fa-eye view-icon"></span>
-                                <span>241,021</span>
-                            </div>
-                            <div class="video-feedback">
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                                <div class="video-like-counter">
-                                    <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
