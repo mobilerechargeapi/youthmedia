@@ -72,7 +72,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 Auth::routes();
 //routes for frontend
 //route for home page
-Route::get('/', 'Frontend\MainController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'Frontend\MainController@index']);
 //route for contact page
 Route::get('/contact', ['as' => 'contact', 'uses' => 'Frontend\ContactController@index']);
 
@@ -95,5 +95,7 @@ Route::get('/vidcategory/{catId}', ['as' => 'showcatvideos', 'uses' => 'Frontend
 Route::post('updateVideoView', ['as' => 'updateVideoView', 'uses' => 'Frontend\PostsController@updateVideoView']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
+//route for error page
+Route::get('pagenotfound', ['as' => 'pagenotfound', 'uses' => 'Frontend\ErrorController@pagenotfound']);
 //route for show all videos page
 Route::get('/{videoType}', ['as' => 'showallvideos', 'uses' => 'Frontend\PostsController@showAllVideos']);
