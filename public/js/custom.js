@@ -142,11 +142,13 @@ function likeVideo(userId, postId, totalLikes, totalUnLikes) {
         type: 'POST',
         datatype: 'JSON',
         success: function (resp) {
-            $('#vidTotalLikes').html('');
-            $('#vidTotalLikes').html(parseInt(totalLikes) + parseInt(1));
-            if (totalUnLikes > 0) {
-                $('#vidTotalUnLikes').html('');
-                $('#vidTotalUnLikes').html(parseInt(totalUnLikes) - parseInt(1));
+            if (!resp.alreadyLike) {
+                $('#vidTotalLikes').html('');
+                $('#vidTotalLikes').html(parseInt(totalLikes) + parseInt(1));
+                if (totalUnLikes > 0) {
+                    $('#vidTotalUnLikes').html('');
+                    $('#vidTotalUnLikes').html(parseInt(totalUnLikes) - parseInt(1));
+                }
             }
         }
     });
@@ -164,11 +166,13 @@ function unlikeVideo(userId, postId, totalUnLikes, totalLikes) {
         type: 'POST',
         datatype: 'JSON',
         success: function (resp) {
-            $('#vidTotalUnLikes').html('');
-            $('#vidTotalUnLikes').html(parseInt(totalUnLikes) + parseInt(1));
-            if (totalLikes > 0) {
-                $('#vidTotalLikes').html('');
-                $('#vidTotalLikes').html(parseInt(totalLikes) - parseInt(1));
+            if (!resp.alreadyUnLike) {
+                $('#vidTotalUnLikes').html('');
+                $('#vidTotalUnLikes').html(parseInt(totalUnLikes) + parseInt(1));
+                if (totalLikes > 0) {
+                    $('#vidTotalLikes').html('');
+                    $('#vidTotalLikes').html(parseInt(totalLikes) - parseInt(1));
+                }
             }
         }
     });

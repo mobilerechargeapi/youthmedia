@@ -17,8 +17,16 @@ class PostsLikesController extends Controller {
             'postId' => $request->postId,
             'userId' => $request->userId
         );
-        LikesSharesModel::DeleteVideoLikeUnlike($data);
-        LikesSharesModel::SaveVideoLikes($data);
+        $alreadyLike = LikesSharesModel::CheckVideoLike($data);
+        if (!$alreadyLike) {
+            LikesSharesModel::DeleteVideoLikeUnlike($data);
+            LikesSharesModel::SaveVideoLikes($data);
+        }
+        if ($request->ajax()) {
+            return response()->json([
+                        'alreadyLike' => $alreadyLike
+            ]);
+        }
     }
 
     public function updateVideoUnLikes(Request $request) {
@@ -26,8 +34,16 @@ class PostsLikesController extends Controller {
             'postId' => $request->postId,
             'userId' => $request->userId
         );
-        LikesSharesModel::DeleteVideoLikeUnlike($data);
-        LikesSharesModel::SaveVideoUnLikes($data);
+        $alreadyUnLike = LikesSharesModel::CheckVideoUnLike($data);
+        if (!$alreadyUnLike) {
+            LikesSharesModel::DeleteVideoLikeUnlike($data);
+            LikesSharesModel::SaveVideoUnLikes($data);
+        }
+        if ($request->ajax()) {
+            return response()->json([
+                        'alreadyUnLike' => $alreadyUnLike
+            ]);
+        }
     }
 
 }

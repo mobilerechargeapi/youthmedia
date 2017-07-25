@@ -34,4 +34,22 @@ class LikesSharesModel extends Model {
                     'liked' => 0, 'unliked' => 1]);
     }
 
+    public static function CheckVideoLike($data) {
+        return DB::table('likes_shares')
+                        ->select('likes_shares.*')
+                        ->where('likes_shares.postId', '=', $data['postId'])
+                        ->where('likes_shares.userId', '=', $data['userId'])
+                        ->where('likes_shares.liked', '=', 1)
+                        ->count();
+    }
+
+    public static function CheckVideoUnLike($data) {
+        return DB::table('likes_shares')
+                        ->select('likes_shares.*')
+                        ->where('likes_shares.postId', '=', $data['postId'])
+                        ->where('likes_shares.userId', '=', $data['userId'])
+                        ->where('likes_shares.unliked', '=', 1)
+                        ->count();
+    }
+
 }
