@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\NavigationModel;
+use App\PostsModel;
 
 class TocController extends Controller {
 
@@ -22,7 +23,9 @@ class TocController extends Controller {
         $page = NavigationModel::GetPageSettings($data);
         $pageTitle = $page[0]->pageTitle;
         $pageSettings = json_decode($page[0]->pageSettings);
-        return view('toc')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('pageTitle', $pageTitle);
+        $mostLikedVid = PostsModel::GetMostLikedPost();
+        return view('toc')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('pageTitle', $pageTitle)
+                        ->with('mostLikedVid', $mostLikedVid);
     }
 
 }

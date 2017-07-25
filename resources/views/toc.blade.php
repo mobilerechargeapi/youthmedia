@@ -58,126 +58,54 @@ $toc = $pageSettings->toc != '' ? $pageSettings->toc : '';
                         <span class="heading-icon"><i class="fa fa-fire" aria-hidden="true"></i></span>
                         <h3>Popular Videos</h3>
                     </div>
+                    <?php $counter = 0; ?>
+                    @foreach ($mostLikedVid as $mostLikedVidRow)
+                    @if ($mostLikedVidRow->postId != '' && $counter < 4)
                     <div class="single-video">
                         <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/6.jpg') }}" alt="Video" />
+                            <a href="{{url('video/'.base64_encode($mostLikedVidRow->postId))}}">
+                                <?php $image = ''; ?>
+                                @if ($mostLikedVidRow->postThumbnail && !$mostLikedVidRow->isScrapped)
+                                <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail; ?>
+                                @elseif($mostLikedVidRow->postThumbnail)
+                                <?php $image = $mostLikedVidRow->postThumbnail; ?>
+                                @else
+                                <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                                @endif
+                                <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$mostLikedVidRow->postTitle}}" />
                                 <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/6.jpg') }}" alt="video" />
+                                <img width="320px" height="180px" src="{{$image}}" alt="{{$mostLikedVidRow->postTitle}}" />
                                 </noscript>
                             </a>
                             <span class="video-duration">5.28</span>
                         </div>
                         <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Buffalo Chicken Potato Skins</a></h4>
+                            <h4>
+                                <a href="{{url('video/'.base64_encode($mostLikedVidRow->postId))}}" class="video-title">
+                                    {{(strlen($mostLikedVidRow->postTitle) > 55) ? substr($mostLikedVidRow->postTitle, 0, 55) . ' ...' : $mostLikedVidRow->postTitle}}
+                                </a>
+                            </h4>
                             <div class="video-counter">
                                 <div class="video-viewers">
                                     <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
+                                    <span>{{$mostLikedVidRow->postViewed}}</span>
                                 </div>
                                 <div class="video-feedback">
                                     <div class="video-like-counter">
                                         <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>2140</span>
+                                        <span>{{App\PostsModel::GetPostLikes(array('postId' => $mostLikedVidRow->postId))}}</span>
                                     </div>
                                     <div class="video-like-counter">
                                         <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
+                                        <span>{{App\PostsModel::GetPostUnLikes(array('postId' => $mostLikedVidRow->postId))}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="single-video">
-                        <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/7.jpg') }}" alt="Video" />
-                                <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/7.jpg') }}" alt="video" />
-                                </noscript>
-                            </a>
-                            <span class="video-duration">5.28</span>
-                        </div>
-                        <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Cheesy Stuffed Plantain Tots</a></h4>
-                            <div class="video-counter">
-                                <div class="video-viewers">
-                                    <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
-                                </div>
-                                <div class="video-feedback">
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-video">
-                        <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/8.jpg') }}" alt="Video" />
-                                <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/8.jpg') }}" alt="video" />
-                                </noscript>
-                            </a>
-                            <span class="video-duration">5.28</span>
-                        </div>
-                        <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">French Cheese Puffs (Gougeres)</a></h4>
-                            <div class="video-counter">
-                                <div class="video-viewers">
-                                    <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
-                                </div>
-                                <div class="video-feedback">
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-video">
-                        <div class="video-img">
-                            <a href="single-video.html">
-                                <img class="lazy" data-src="{{ asset('frontend/images/thumbnails/10.jpg') }}" alt="Video" />
-                                <noscript>
-                                <img src="{{ asset('frontend/images/thumbnails/10.jpg') }}" alt="video" />
-                                </noscript>
-                            </a>
-                            <span class="video-duration">5.28</span>
-                        </div>
-                        <div class="video-content">
-                            <h4><a href="single-video.html" class="video-title">Spicy Mango Chicken Wings</a></h4>
-                            <div class="video-counter">
-                                <div class="video-viewers">
-                                    <span class="fa fa-eye view-icon"></span>
-                                    <span>241,021</span>
-                                </div>
-                                <div class="video-feedback">
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                    <div class="video-like-counter">
-                                        <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $counter++; ?>
+                    @endif
+                    @endforeach
                 </div>
                 <!-- End Popular Videos -->
                 <!-- Start Sidebar Adds -->

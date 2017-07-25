@@ -107,9 +107,9 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                                 @else
                                 <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
                                 @endif
-                                <img class="lazy" data-src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
+                                <img width="320px" height="180px" class="lazy" data-src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 <noscript>
-                                <img src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
+                                <img width="320px" height="180px" src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 </noscript>
                             </a>
                             <span class="video-duration">8.17</span>

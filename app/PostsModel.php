@@ -193,4 +193,27 @@ class PostsModel extends Model {
                         ->count();
     }
 
+    public static function GetMostLikedPost() {
+        return DB::table('posts')
+                        ->leftJoin('likes_shares', 'likes_shares.postId', '=', 'posts.postId')
+                        ->select('posts.*', DB::raw('COUNT(`likes_shares`.`postId`) AS videoLikeCount'))
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('likes_shares.liked', '=', 1)
+                        ->take(8)
+                        ->groupBy('posts.postId')
+                        ->orderBy('videoLikeCount', 'desc')
+                        ->get();
+    }
+
+    public static function GetAllMostLikedPost() {
+        return DB::table('posts')
+                        ->leftJoin('likes_shares', 'likes_shares.postId', '=', 'posts.postId')
+                        ->select('posts.*', DB::raw('COUNT(`likes_shares`.`postId`) AS videoLikeCount'))
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('likes_shares.liked', '=', 1)
+                        ->groupBy('posts.postId')
+                        ->orderBy('videoLikeCount', 'desc')
+                        ->get();
+    }
+
 }

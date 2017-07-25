@@ -29,13 +29,14 @@ class MainController extends Controller {
         $page = NavigationModel::GetPageSettings($data);
         $pageSettings = json_decode($page[0]->pageSettings);
         $sliderVid = PostsModel::GetAllSliderPost();
+        $mostLikedVid = PostsModel::GetMostLikedPost();
         $recentUpload = PostsModel::GetRecentUploadPost();
         $userUpload = PostsModel::GetUserUploadPost();
         $topUsers = UserModel::GetTopUsers();
         $trendingVideos = PostsModel::GetTrendingVideos();
         return view('main')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('sliderVid', $sliderVid)
                         ->with('recentUpload', $recentUpload)->with('userUpload', $userUpload)->with('topUsers', $topUsers)
-                        ->with('trendingVideos', $trendingVideos);
+                        ->with('trendingVideos', $trendingVideos)->with('mostLikedVid', $mostLikedVid);
     }
 
 }

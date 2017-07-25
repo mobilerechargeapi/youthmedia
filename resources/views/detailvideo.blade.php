@@ -366,9 +366,9 @@
                                 @else
                                 <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
                                 @endif
-                                <img class="lazy" data-src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
+                                <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
                                 <noscript>
-                                <img src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
+                                <img width="320px" height="180px" src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
                                 </noscript>
                             </a>
                             <span class="video-duration">5.28</span>
@@ -423,9 +423,9 @@
                                 @else
                                 <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
                                 @endif
-                                <img class="lazy" data-src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
+                                <img width="320px" height="180px" class="lazy" data-src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 <noscript>
-                                <img src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
+                                <img width="320px" height="180px" src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 </noscript>
                             </a>
                             <span class="video-duration">8.17</span>

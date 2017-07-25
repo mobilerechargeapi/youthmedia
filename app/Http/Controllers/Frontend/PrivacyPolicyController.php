@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\NavigationModel;
+use App\PostsModel;
 
 class PrivacyPolicyController extends Controller {
 
@@ -22,8 +23,9 @@ class PrivacyPolicyController extends Controller {
         $page = NavigationModel::GetPageSettings($data);
         $pageTitle = $page[0]->pageTitle;
         $pageSettings = json_decode($page[0]->pageSettings);
+        $mostLikedVid = PostsModel::GetMostLikedPost();
         return view('privacypolicy')->with('settings', $this->settings)->with('pageSettings', $pageSettings)
-                ->with('pageTitle', $pageTitle);
+                ->with('pageTitle', $pageTitle)->with('mostLikedVid', $mostLikedVid);
     }
 
 }
