@@ -20,8 +20,8 @@
                             <span>
                                 {{$sliderVidRow->postTitle}} <br>
                                 <i class="fa fa-eye"> {{$sliderVidRow->postViewed}}</i>
-                                <i class=" fa fa-thumbs-o-up"> 9,550</i> 
-                                <i class="fa fa-thumbs-o-down"> 104</i> 
+                                <i class=" fa fa-thumbs-o-up">{{App\PostsModel::GetPostLikes(array('postId' => $sliderVidRow->postId))}}</i> 
+                                <i class="fa fa-thumbs-o-down">{{App\PostsModel::GetPostUnLikes(array('postId' => $sliderVidRow->postId))}}</i> 
                             </span>
                         </li>
                         @endforeach
@@ -245,11 +245,11 @@
                             <div class="video-feedback">
                                 <div class="video-like-counter">
                                     <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
+                                    <span>{{App\PostsModel::GetPostLikes(array('postId' => $recentUploadRow->postId))}}</span>
                                 </div>
                                 <div class="video-like-counter">
                                     <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
+                                    <span>{{App\PostsModel::GetPostUnLikes(array('postId' => $recentUploadRow->postId))}}</span>
                                 </div>
                             </div>
                         </div>
@@ -297,11 +297,11 @@
                                 <div class="video-feedback">
                                     <div class="video-like-counter">
                                         <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>2140</span>
+                                        <span>{{App\PostsModel::GetPostLikes(array('postId' => $userUploadRow->postId))}}</span>
                                     </div>
                                     <div class="video-like-counter">
                                         <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
+                                        <span>{{App\PostsModel::GetPostUnLikes(array('postId' => $userUploadRow->postId))}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -423,11 +423,11 @@
                             <div class="video-feedback">
                                 <div class="video-like-counter">
                                     <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
+                                    <span>{{App\PostsModel::GetPostLikes(array('postId' => $trendingVideosRow->postId))}}</span>
                                 </div>
                                 <div class="video-like-counter">
                                     <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
+                                    <span>{{App\PostsModel::GetPostUnLikes(array('postId' => $trendingVideosRow->postId))}}</span>
                                 </div>
                             </div>
                         </div>

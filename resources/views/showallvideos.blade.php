@@ -224,11 +224,11 @@
                             <div class="video-feedback">
                                 <div class="video-like-counter">
                                     <span class="fa fa-thumbs-o-up like-icon"></span>
-                                    <span>2140</span>
+                                    <span>{{App\PostsModel::GetPostLikes(array('postId' => $recentUploadRow->postId))}}</span>
                                 </div>
                                 <div class="video-like-counter">
                                     <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                    <span>2140</span>
+                                    <span>{{App\PostsModel::GetPostUnLikes(array('postId' => $recentUploadRow->postId))}}</span>
                                 </div>
                             </div>
                         </div>

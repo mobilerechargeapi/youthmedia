@@ -124,11 +124,11 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                                 <div class="video-feedback">
                                     <div class="video-like-counter">
                                         <span class="fa fa-thumbs-o-up like-icon"></span>
-                                        <span>120</span>
+                                        <span>{{App\PostsModel::GetPostLikes(array('postId' => $userUploadRow->postId))}}</span>
                                     </div>
                                     <div class="video-like-counter">
                                         <span class="fa fa-thumbs-o-down dislike-icon"></span>
-                                        <span>2140</span>
+                                        <span>{{App\PostsModel::GetPostUnLikes(array('postId' => $userUploadRow->postId))}}</span>
                                     </div>
                                 </div>
                             </div>
