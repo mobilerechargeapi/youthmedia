@@ -12,9 +12,31 @@
         <meta name="robots" content="all,follow">
         <meta name="googlebot" content="index,follow,snippet,archive">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="{{ $settings['pageDescription'] }}">
+        <meta name="description" content="{{ strip_tags($settings['pageDescription']) }}">
         <meta name="author" content="">
         <meta name="keywords" content="{{ $settings['pageKeywords'] }}">
+        
+        <meta property="og:type"          content="website" />
+        <meta property="og:description"   content="{{ strip_tags($settings['pageDescription']) }}" />
+        
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@BAF" />
+        <meta name="twitter:description" content="{{ strip_tags($settings['pageDescription']) }}" />
+        @if (!isset($facebookSetting))
+        <meta property="og:title"         content="Youth Media" />
+        <meta property="og:url"           content="http://localhost/youthmedia/public/" />
+        <meta property="og:image"         content="http://localhost/youthmedia/public/frontend/images/logo.png" />
+
+        <meta name="twitter:title" content="Youth Media" />
+        <meta name="twitter:image" content="http://localhost/youthmedia/public/frontend/images/logo.png" />
+        @else
+        <meta property="og:title"         content="{{ $facebookSetting['title'] }}" />
+        <meta property="og:url"           content="{{ $facebookSetting['url'] }}" />
+        <meta property="og:image"         content="{{ $facebookSetting['image'] }}" />
+
+        <meta name="twitter:title" content="{{ $facebookSetting['title'] }}" />
+        <meta name="twitter:image" content="{{ $facebookSetting['image'] }}" />
+        @endif
 
         <title>{{ $settings['generalSettings'][0]->webTitle }} @if (isset($pageTitle) && $pageTitle != '') - {{ strip_tags($pageTitle) }} @endif</title>
 
@@ -396,9 +418,9 @@
         <script src="<?php echo asset('js/custom.js') ?>" type="text/javascript"></script>
         @if(isset($post[0]->postId))
         <script>
-        if ($("#detail-video-post").length > 0) {
-            updateVideoView('<?php echo $post[0]->postId ?>', '<?php echo $post[0]->postViewed + 1 ?>');
-        }
+if ($("#detail-video-post").length > 0) {
+    updateVideoView('<?php echo $post[0]->postId ?>', '<?php echo $post[0]->postViewed + 1 ?>');
+}
         </script>
         @endif
     </body>

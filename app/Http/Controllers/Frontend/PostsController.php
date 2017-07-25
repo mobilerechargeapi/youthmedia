@@ -54,10 +54,24 @@ class PostsController extends Controller {
         $recentUpload = PostsModel::GetRecentUploadPost();
         $totalLikes = PostsModel::GetPostLikes($data);
         $totalUnLikes = PostsModel::GetPostUnLikes($data);
+        $mostLikedVid = PostsModel::GetMostLikedPost();
         if (count($post) > 0) {
+            $image = '';
+            if ($post[0]->postThumbnail && !$post[0]->isScrapped) {
+                $image = asset('assets/images/posts') . '/' . $post[0]->postThumbnail;
+            } elseif ($post[0]->postThumbnail) {
+                $image = $post[0]->postThumbnail;
+            } else {
+                $image = asset('frontend/images/thumbnails/6.jpg');
+            }
+            $facebookSetting = array(
+                'title' => $post[0]->postTitle,
+                'url' => 'http://localhost/youthmedia/public/video/' . $postId,
+                'image' => $image
+            );
             return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('post', $post)->with('userUpload', $userUpload)->with('recentUpload', $recentUpload)->with('totalLikes', $totalLikes)
-                            ->with('totalUnLikes', $totalUnLikes);
+                            ->with('totalUnLikes', $totalUnLikes)->with('facebookSetting', $facebookSetting)->with('mostLikedVid', $mostLikedVid);
         } else {
             return redirect()->route('pagenotfound');
         }
