@@ -131,7 +131,7 @@ function updateVideoView(postId, postViewed) {
 }
 
 //like video on frontend video detail page
-function likeVideo(userId, postId, totalLikes, totalUnLikes) {
+function likeVideo(userId, postId) {
     var url = '../updateVideoLikes';
     var token = $('input[name=_token]').val();
     var data = {postId: postId, userId: userId};
@@ -143,8 +143,10 @@ function likeVideo(userId, postId, totalLikes, totalUnLikes) {
         datatype: 'JSON',
         success: function (resp) {
             if (!resp.alreadyLike) {
+                var totalLikes = $('#vidTotalLikes').html();
                 $('#vidTotalLikes').html('');
                 $('#vidTotalLikes').html(parseInt(totalLikes) + parseInt(1));
+                var totalUnLikes = $('#vidTotalUnLikes').html();
                 if (totalUnLikes > 0) {
                     $('#vidTotalUnLikes').html('');
                     $('#vidTotalUnLikes').html(parseInt(totalUnLikes) - parseInt(1));
@@ -155,7 +157,7 @@ function likeVideo(userId, postId, totalLikes, totalUnLikes) {
 }
 
 //unlike video on frontend video detail page
-function unlikeVideo(userId, postId, totalUnLikes, totalLikes) {
+function unlikeVideo(userId, postId) {
     var url = '../updateVideoUnLikes';
     var token = $('input[name=_token]').val();
     var data = {postId: postId, userId: userId};
@@ -167,8 +169,10 @@ function unlikeVideo(userId, postId, totalUnLikes, totalLikes) {
         datatype: 'JSON',
         success: function (resp) {
             if (!resp.alreadyUnLike) {
+                var totalUnLikes = $('#vidTotalUnLikes').html();
                 $('#vidTotalUnLikes').html('');
                 $('#vidTotalUnLikes').html(parseInt(totalUnLikes) + parseInt(1));
+                var totalLikes = $('#vidTotalLikes').html();
                 if (totalLikes > 0) {
                     $('#vidTotalLikes').html('');
                     $('#vidTotalLikes').html(parseInt(totalLikes) - parseInt(1));
