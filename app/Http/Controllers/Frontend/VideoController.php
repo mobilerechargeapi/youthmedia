@@ -32,6 +32,7 @@ class VideoController extends Controller {
             'websiteId' => 3,
             'categoryId' => $request->categoryId,
             'post' => '',
+            'postTags' => 'youthmedia',
             'userId' => $userId,
             'postStatus' => 0,
             'createdOn' => time(),
