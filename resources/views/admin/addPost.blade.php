@@ -131,6 +131,15 @@
                         <div class="col-md-offset-3 col-md-6">
                             <img src="{{ $postThumbnail }}" alt="Image Not Found" width="100" height="80"> 
                         </div>
+                        @elseif($postThumbnail == '' && $websiteId == 3 && $postId != 'add' && $isScrapped == 0 && $postText != '')
+                        <?php
+                        $videoId = explode('embed/', $postText);
+                        ?>
+                        @if (isset($videoId[1]) && $videoId[1] != '')
+                        <button type="button" class="btn btn-success" onclick="window.location = '{{url('createThumb')}}/{{$postId}}/{{$videoId[1]}}';">
+                            <span class="fa fa-plus"></span> Create Thumbnail
+                        </button>
+                        @endif
                         @endif
                     </div>
                     @if($postId != 'add' && $postText != '')
@@ -156,9 +165,9 @@
 </div>
 <script src="<?php echo asset('js/bootstrap-tagsinput.min.js') ?>" type="text/javascript"></script>
 <script>
-    $(document).ready(function () {
-        $(".sidebar-menu li").removeClass("active");
-        $('#nav-post').addClass('active');
-    });
+                            $(document).ready(function () {
+                            $(".sidebar-menu li").removeClass("active");
+                            $('#nav-post').addClass('active');
+                            });
 </script>
 @endsection

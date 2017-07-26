@@ -216,4 +216,8 @@ class PostsModel extends Model {
                         ->get();
     }
 
+    public static function UpdateThumbnailPost($data) {
+        DB::table('posts')->where('postId', $data['postId'])->update(['postThumbnail' => $data['postThumbnail']]);
+    }
+
 }

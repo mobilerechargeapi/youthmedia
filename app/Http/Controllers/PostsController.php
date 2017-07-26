@@ -141,6 +141,20 @@ class PostsController extends Controller {
                         ->with('userRoles', $this->userRoles)->with('posts', $posts)->with('pendingPosts', $pendingPosts);
     }
 
+    public function createThumb($postId, $videoId) {
+        if ($videoId != '') {
+            $url = 'https://img.youtube.com/vi/' . $videoId . '/hqdefault.jpg';
+            $img = 'assets/images/posts/' . $videoId . '.jpg';
+            file_put_contents($img, file_get_contents($url));
+            $data = array(
+                'postId' => $postId,
+                'postThumbnail' => $videoId . '.jpg'
+            );
+            PostsModel::UpdateThumbnailPost($data);
+        }
+        return redirect()->route('editPost', ['postId' => $postId]);
+    }
+
     public function fileUpload($file, $isVideo = 0) {
         $rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
         if (!$isVideo) {
