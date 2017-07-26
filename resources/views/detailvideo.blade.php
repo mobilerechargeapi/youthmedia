@@ -58,11 +58,11 @@
                                 $userId = $user['attributes']['id'];
                             }
                             ?>
-                            <div <?php if($userId) { echo 'onclick="likeVideo('.$userId.', '.$post[0]->postId.', '.$totalLikes.', '.$totalUnLikes.')"'; } ?> class="video-like">
+                            <div <?php if($userId) { echo 'onclick="likeVideo('.$userId.', '.$post[0]->postId.')"'; } ?> class="video-like">
                                 <span><i class="fa fa-thumbs-o-up"></i></span>
                                 <p id="vidTotalLikes">{{$totalLikes}}</p>
                             </div>
-                            <div <?php if($userId) { echo 'onclick="unlikeVideo('.$userId.', '.$post[0]->postId.', '.$totalUnLikes.', '.$totalLikes.')"'; } ?> class="video-dislike">
+                            <div <?php if($userId) { echo 'onclick="unlikeVideo('.$userId.', '.$post[0]->postId.')"'; } ?> class="video-dislike">
                                 <span><i class="fa fa-thumbs-o-down"></i></span>
                                 <p id="vidTotalUnLikes">{{$totalUnLikes}}</p>
                             </div>
