@@ -81,6 +81,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/settings', ['as' => 'settings', 'uses' => 'Frontend\UserController@index']);
     
     Route::post('userSettings', ['as' => 'userSettings', 'uses' => 'Frontend\UserController@userSettings']);
+    //route for comments
+    Route::post('postComment', ['as' => 'postComment', 'uses' => 'Frontend\CommentsController@postComment']);
 });
 Auth::routes();
 //routes for frontend

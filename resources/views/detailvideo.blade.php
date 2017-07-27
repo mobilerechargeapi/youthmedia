@@ -58,11 +58,19 @@
                                 $userId = $user['attributes']['id'];
                             }
                             ?>
-                            <div <?php if($userId) { echo 'onclick="likeVideo('.$userId.', '.$post[0]->postId.')"'; } ?> class="video-like">
+                            <div <?php
+                            if ($userId) {
+                                echo 'onclick="likeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
+                            }
+                            ?> class="video-like">
                                 <span><i class="fa fa-thumbs-o-up"></i></span>
                                 <p id="vidTotalLikes">{{$totalLikes}}</p>
                             </div>
-                            <div <?php if($userId) { echo 'onclick="unlikeVideo('.$userId.', '.$post[0]->postId.')"'; } ?> class="video-dislike">
+                            <div <?php
+                            if ($userId) {
+                                echo 'onclick="unlikeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
+                            }
+                            ?> class="video-dislike">
                                 <span><i class="fa fa-thumbs-o-down"></i></span>
                                 <p id="vidTotalUnLikes">{{$totalUnLikes}}</p>
                             </div>
@@ -146,30 +154,46 @@
                                         <span class="heading-icon"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
                                         <h3>Leave a comment</h3>
                                     </div>
-                                    <form action="#" method="post">
+                                    <?php
+                                    $name = '';
+                                    $email = '';
+                                    $auth = Auth::guard();
+                                    if ($auth->check()) {
+                                        $user = Auth::user();
+                                        $name = $user['attributes']['name'];
+                                        $email = $user['attributes']['email'];
+                                    }
+                                    ?>
+                                    <form action="{{ URL::route('postComment') }}" method="post">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="postId" value="{{$post[0]->postId}}">
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <input class="form-control" name="name" placeholder="Name *" type="text" required>
+                                                    <input readonly="" class="form-control" name="name" placeholder="Name *" type="text" required value="{{$name}}">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <input class="form-control" name="email" placeholder="Email *" type="email" required>
+                                                    <input readonly="" class="form-control" name="email" placeholder="Email *" type="email" required value="{{$email}}">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <input class="form-control" name="website" placeholder="Website" type="text" required>
+                                                    <input class="form-control" name="website" placeholder="Website" type="text">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <textarea rows="5" class="form-control" name="comment" placeholder="Comment" required></textarea>
+                                                    <textarea rows="5" class="form-control" name="comment" placeholder="Comment *" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
+                                                @if(!$auth->check())
+                                                Login To Post Comment
+                                                @else
                                                 <button type="submit" class="themeix-btn-danger text-uppercase">post comment</button>
+                                                @endif
                                             </div>
                                         </div>
                                     </form>

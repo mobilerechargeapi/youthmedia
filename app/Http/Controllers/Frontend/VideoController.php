@@ -67,7 +67,7 @@ class VideoController extends Controller {
             $message = "Upload Video!";
         }
         \Session::flash('message', $message);
-        return Redirect::back()->withErrors(['message', $message]);
+        return Redirect::back()->withErrors(['videomessage', $message]);
     }
 
     public function fileUpload($file, $isVideo = 0) {
