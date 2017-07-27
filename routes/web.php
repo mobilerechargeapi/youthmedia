@@ -69,7 +69,12 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     //route for image upload via tinymce
     Route::post('postAcceptor', ['as' => 'postAcceptor', 'uses' => 'GalleryController@postAcceptor']);
 });
-
+Route::group(['middleware' => ['web', 'auth']], function () {
+    //route for profile settings
+    Route::get('/settings', ['as' => 'settings', 'uses' => 'Frontend\UserController@index']);
+    
+    Route::post('userSettings', ['as' => 'userSettings', 'uses' => 'Frontend\UserController@userSettings']);
+});
 Auth::routes();
 //routes for frontend
 //route for home page

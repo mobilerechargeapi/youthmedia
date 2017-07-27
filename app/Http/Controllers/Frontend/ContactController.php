@@ -24,7 +24,7 @@ class ContactController extends Controller {
         $page = NavigationModel::GetPageSettings($data);
         $pageTitle = $page[0]->pageTitle;
         $pageSettings = json_decode($page[0]->pageSettings);
-        $userUpload = PostsModel::GetUserUploadPost();
+        $userUpload = PostsModel::GetAllUserUploadPost();
         return view('contact')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('pageTitle', $pageTitle)
                         ->with('userUpload', $userUpload);
     }

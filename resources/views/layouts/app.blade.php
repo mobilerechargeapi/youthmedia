@@ -116,6 +116,11 @@
                                         <a href="#register-info" data-toggle="modal">Register</a>
                                     </div>
                                     @else
+                                    <?php $user = Auth::user(); ?>
+                                    <div class="login-info">
+                                        <i class="fa fa-sign-in"></i>
+                                        <a href="{{ URL::route('settings') }}">{{$user['attributes']['name']}}</a>
+                                    </div>
                                     <div class="login-info">
                                         <i class="fa fa-sign-in"></i>
                                         <a href="{{ URL::route('logout') }}" data-toggle="modal">Logout</a>
