@@ -271,7 +271,7 @@
             </div>
             <!-- Navigation area ends -->
         </header>
-        @include('admin.layouts.errorView')
+        @include('admin.layouts.videoErrorView')
         <!-- End Header -->
         @yield('content')
         <!-- Start Footer Area -->
