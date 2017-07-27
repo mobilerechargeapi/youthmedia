@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\NavigationModel;
 use App\PostsModel;
+use App\CommentModel;
 
 class PostsController extends Controller {
 
@@ -55,6 +56,8 @@ class PostsController extends Controller {
         $totalLikes = PostsModel::GetPostLikes($data);
         $totalUnLikes = PostsModel::GetPostUnLikes($data);
         $mostLikedVid = PostsModel::GetMostLikedPost();
+        $comments = CommentModel::GetPostComments($data);
+        $commentsCount = CommentModel::GetPostCommentsCount($data);
         if (count($post) > 0) {
             $image = '';
             if ($post[0]->postThumbnail && !$post[0]->isScrapped) {
@@ -71,7 +74,8 @@ class PostsController extends Controller {
             );
             return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('post', $post)->with('userUpload', $userUpload)->with('recentUpload', $recentUpload)->with('totalLikes', $totalLikes)
-                            ->with('totalUnLikes', $totalUnLikes)->with('facebookSetting', $facebookSetting)->with('mostLikedVid', $mostLikedVid);
+                            ->with('totalUnLikes', $totalUnLikes)->with('facebookSetting', $facebookSetting)->with('mostLikedVid', $mostLikedVid)
+                            ->with('comments', $comments)->with('commentsCount', $commentsCount);
         } else {
             return redirect()->route('pagenotfound');
         }

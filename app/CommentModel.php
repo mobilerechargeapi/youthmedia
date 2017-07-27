@@ -20,31 +20,24 @@ class CommentModel extends Model {
 
     protected $table = 'comments';
 
-    public static function DeleteSubscription($data) {
-        DB::table('subscription')->where('subscriptionId', '=', $data['subscriptionId'])->delete();
-    }
-
     public static function SaveComment($data) {
         return DB::table('comments')->insertGetId(['userId' => $data['userId'], 'postId' => $data['postId'], 'parent' => $data['parent'],
-            'commentText' => $data['commentText'], 'createdAt' => $data['createdAt']]);
+                    'commentText' => $data['commentText'], 'createdAt' => $data['createdAt']]);
     }
 
-    public static function GetAllUser() {
-        return DB::table('subscription')
-                        ->select('subscription.*')
+    public static function GetPostComments($data) {
+        return DB::table('comments')
+                        ->leftJoin('users', 'users.id', '=', 'comments.userId')
+                        ->select('comments.*', 'users.*')
+                        ->where('comments.postId', '=', $data['postId'])
                         ->get();
     }
 
-    public static function GetSingleSubscriber($data) {
-        return DB::table('subscription')
-                        ->select('subscription.*')
-                        ->where('subscription.subscriptionId', '=', $data['subscriptionId'])
-                        ->get();
-    }
-
-    public static function UpdateSubscription($data) {
-        DB::table('subscription')->where('subscriptionId', $data['subscriptionId'])->update(['subscriptionEmail' => $data['subscriptionEmail'],
-            'subscriptionUserId' => $data['subscriptionUserId']]);
+    public static function GetPostCommentsCount($data) {
+        return DB::table('comments')
+                        ->select('comments.*')
+                        ->where('comments.postId', '=', $data['postId'])
+                        ->count();
     }
 
 }

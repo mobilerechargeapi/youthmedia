@@ -110,39 +110,21 @@
                         <div id="comments">
                             <div class="themeix-section-h">
                                 <span class="heading-icon"><i class="fa fa-comments" aria-hidden="true"></i></span>
-                                <h3>3 comments</h3>
+                                <h3>{{$commentsCount}} comments</h3>
                             </div>
                             <ul class="comments-list">
+                                @foreach ($comments as $commentsRow)
                                 <li>
                                     <div class="comment">
-                                        <div class="comment-pic"><img src="images/comments.png" alt="comment"></div>
+                                        <div class="comment-pic"><img src="{{ asset('assets/images/users') }}/{{$commentsRow->profileImg}}" alt="comment"></div>
                                         <div class="comment-text">
-                                            <h5><a href="#">Mr. Micle James</a></h5><span class="comment-date">Posted on 18:20 December 12, 2016</span>
-                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulput ateat vero eros accumsan et iustoa medio blandit raesent lutatum zzril delenit auue duis dolore tefeuai tnulla amer desh.</p>
+                                            <h5><a href="#">{{$commentsRow->name}}</a></h5><span class="comment-date">Posted on 18:20 December 12, 2016</span>
+                                            <p>{{$commentsRow->commentText}}</p>
                                             <a href="#" class="comment-reply">Reply</a>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="children">
-                                    <div class="comment">
-                                        <div class="comment-pic"><img src="images/comments.png" alt="comment"></div>
-                                        <div class="comment-text">
-                                            <h5><a href="#">Mr. Micle James</a></h5><span class="comment-date">Posted on 18:20 December 12, 2016</span>
-                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulput ateat vero eros accumsan et iustoa medio blandit raesent lutatum zzril delenit auue duis dolore tefeuai tnulla amer desh.</p>
-                                            <a href="#" class="comment-reply">Reply</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="comment">
-                                        <div class="comment-pic"><img src="images/comments.png" alt="comment"></div>
-                                        <div class="comment-text">
-                                            <h5><a href="#">Mr. Micle James</a></h5><span class="comment-date">Posted on 18:20 December 12, 2016</span>
-                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulput ateat vero eros accumsan et iustoa medio blandit raesent lutatum zzril delenit auue duis dolore tefeuai tnulla amer desh.</p>
-                                            <a href="#" class="comment-reply">Reply</a>
-                                        </div>
-                                    </div>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                         <!-- End Single Comment -->
