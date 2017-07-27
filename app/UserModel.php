@@ -76,4 +76,18 @@ class UserModel extends Model {
                         ->get();
     }
 
+    public static function CheckUserByEmail($data) {
+        return DB::table('users')
+                        ->select('users.*')
+                        ->where('users.email', '=', $data['subscriptionEmail'])
+                        ->count();
+    }
+
+    public static function GetUserByEmail($data) {
+        return DB::table('users')
+                        ->select('users.*')
+                        ->where('users.email', '=', $data['subscriptionEmail'])
+                        ->get();
+    }
+
 }

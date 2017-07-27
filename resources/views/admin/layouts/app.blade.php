@@ -94,6 +94,14 @@
                                 <div class="title">Pending Posts</div>
                             </a>
                         </li>
+                        <li id="nav-subscribe">
+                            <a href="{{url('usersubscription')}}">
+                                <div class="icon">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </div>
+                                <div class="title">Subscription</div>
+                            </a>
+                        </li>
                         @if ($userRoles[0]->permissions == 1)
                         <li id="nav-permissions">
                             <a href="{{url('permissions')}}">

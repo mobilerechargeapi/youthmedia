@@ -66,6 +66,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::post('insertPost', ['as' => 'insertPost', 'uses' => 'PostsController@insertPost']);
     Route::post('deletePost', ['as' => 'deletePost', 'uses' => 'PostsController@deletePost']);
+    //route for subscription settings
+    Route::get('usersubscription', ['as' => 'usersubscription', 'uses' => 'SubscriptionController@index']);
+    Route::get('addSubscriber', ['as' => 'addSubscriber', 'uses' => 'SubscriptionController@addSubscriber']);
+    Route::get('editSubscriber/{subscriptionId}', ['as' => 'editSubscriber', 'uses' => 'SubscriptionController@getSubscriber']);
+    Route::get('deleteSubscriber/{subscriptionId}', ['as' => 'deleteSubscriber', 'uses' => 'SubscriptionController@deleteSubscriber']);
+    
+    Route::post('insertSubscriber', ['as' => 'insertSubscriber', 'uses' => 'SubscriptionController@insertSubscriber']);
     //route for image upload via tinymce
     Route::post('postAcceptor', ['as' => 'postAcceptor', 'uses' => 'GalleryController@postAcceptor']);
 });

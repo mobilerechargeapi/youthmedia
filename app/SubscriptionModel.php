@@ -36,4 +36,22 @@ class SubscriptionModel extends Model {
                         ->count();
     }
 
+    public static function GetAllUser() {
+        return DB::table('subscription')
+                        ->select('subscription.*')
+                        ->get();
+    }
+
+    public static function GetSingleSubscriber($data) {
+        return DB::table('subscription')
+                        ->select('subscription.*')
+                        ->where('subscription.subscriptionId', '=', $data['subscriptionId'])
+                        ->get();
+    }
+
+    public static function UpdateSubscription($data) {
+        DB::table('subscription')->where('subscriptionId', $data['subscriptionId'])->update(['subscriptionEmail' => $data['subscriptionEmail'],
+            'subscriptionUserId' => $data['subscriptionUserId']]);
+    }
+
 }
