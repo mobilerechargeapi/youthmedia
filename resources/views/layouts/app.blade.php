@@ -69,6 +69,9 @@
 
         <!-- Demo Panel Style -->
         <link rel="stylesheet" href="<?php echo asset('frontend/css/demo-panels.css') ?>">
+        
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="<?php echo asset('frontend/css/custom.css') ?>">
     </head>
 
     <body id=test>

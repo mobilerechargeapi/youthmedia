@@ -181,3 +181,17 @@ function unlikeVideo(userId, postId) {
         }
     });
 }
+
+//set comment parent on frontend video detail page
+function setCommentParent(commentId) {
+    var parentName = $('#parentName-' + commentId).html();
+    $('#replyToPara').removeClass('hide');
+    $('#parentUser').html(parentName);
+    $('#parent').val(commentId);
+}
+
+function cancelReplyComment() {
+    $('#replyToPara').addClass('hide');
+    $('#parentUser').html('');
+    $('#parent').val(0);
+}

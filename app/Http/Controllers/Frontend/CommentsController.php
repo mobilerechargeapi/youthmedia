@@ -21,7 +21,7 @@ class CommentsController extends Controller {
         $data = array(
             'userId' => $userId,
             'postId' => $request->postId,
-            'parent' => 0,
+            'parent' => $request->parent,
             'commentText' => $request->comment,
             'createdAt' => date("Y-m-d")
         );

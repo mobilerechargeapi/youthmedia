@@ -118,9 +118,14 @@
                                     <div class="comment">
                                         <div class="comment-pic"><img src="{{ asset('assets/images/users') }}/{{$commentsRow->profileImg}}" alt="comment"></div>
                                         <div class="comment-text">
-                                            <h5><a href="#">{{$commentsRow->name}}</a></h5><span class="comment-date">Posted on 18:20 December 12, 2016</span>
+                                            <h5>
+                                                <a href="javascript:void(0);">
+                                                    <span id="parentName-{{$commentsRow->commentId}}">{{$commentsRow->name}}</span>
+                                                </a>
+                                            </h5>
+                                            <span class="comment-date">Posted on {{date('F d, Y', strtotime($commentsRow->createdAt))}}</span>
                                             <p>{{$commentsRow->commentText}}</p>
-                                            <a href="#" class="comment-reply">Reply</a>
+                                            <a onclick="setCommentParent(<?php echo $commentsRow->commentId ?>);" href="javascript:void(0);" class="comment-reply">Reply</a>
                                         </div>
                                     </div>
                                 </li>
@@ -135,6 +140,12 @@
                                     <div class="themeix-section-h">
                                         <span class="heading-icon"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
                                         <h3>Leave a comment</h3>
+                                        <p id="replyToPara" class="alert alert-success comment-replyto-margin hide">
+                                            <em>Replying To <span id="parentUser"></span></em>
+                                            <a onclick="cancelReplyComment();" href="javascript:void(0);" class="cancel-comment-reply">
+                                                <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                                            </a>
+                                        </p>
                                     </div>
                                     <?php
                                     $name = '';
@@ -149,6 +160,7 @@
                                     <form action="{{ URL::route('postComment') }}" method="post">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="postId" value="{{$post[0]->postId}}">
+                                        <input type="hidden" name="parent" id="parent" value="0">
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
