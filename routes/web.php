@@ -102,6 +102,8 @@ Route::post('updateVideoView', ['as' => 'updateVideoView', 'uses' => 'Frontend\P
 //route for updating video likes/unlikes in video detail page
 Route::post('updateVideoLikes', ['as' => 'updateVideoLikes', 'uses' => 'Frontend\PostsLikesController@updateVideoLikes']);
 Route::post('updateVideoUnLikes', ['as' => 'updateVideoUnLikes', 'uses' => 'Frontend\PostsLikesController@updateVideoUnLikes']);
+//route for user subscription
+Route::post('subscription', ['as' => 'subscription', 'uses' => 'Frontend\SubscriptionController@index']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
 //route for error page

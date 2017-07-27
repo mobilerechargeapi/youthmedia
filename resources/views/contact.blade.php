@@ -98,7 +98,9 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                     <h3>Users Uploaded</h3>
                 </div>
                 <div class="video-carousel">
+                    <?php $counter = 0; ?>
                     @foreach ($userUpload as $userUploadRow)
+                    @if ($counter < 12)
                     <div class="single-video">
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}">
@@ -134,6 +136,8 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                             </div>
                         </div>
                     </div>
+                    @endif
+                    <?php $counter++; ?>
                     @endforeach
                 </div>
             </div>

@@ -244,9 +244,18 @@
                             <span class="heading-icon"><i class="fa fa-html5" aria-hidden="true"></i></span>
                             <h3>Subscribe now</h3>
                         </div>
-                        <form action="#" class="subscribe-form">
+                        <?php
+                        $userEmail = '';
+                        $auth = Auth::guard();
+                        if ($auth->check()) {
+                            $user = Auth::user();
+                            $userEmail = $user['attributes']['email'];
+                        }
+                        ?>
+                        <form action="{{ URL::route('subscription') }}" method="post" class="subscribe-form">
+                            {{ csrf_field() }}
                             <div class="form-group">
-                                <input type="email" name="email" id="email" placeholder="Give Your Email Address" required>
+                                <input type="email" name="email" id="email" placeholder="Give Your Email Address" required value="{{$userEmail}}">
                                 <button type="submit">Go</button>
                             </div>
                         </form>
