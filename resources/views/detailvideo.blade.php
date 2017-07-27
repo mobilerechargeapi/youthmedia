@@ -114,6 +114,7 @@
                             </div>
                             <ul class="comments-list">
                                 @foreach ($comments as $commentsRow)
+                                @if($commentsRow->parent == 0)
                                 <li>
                                     <div class="comment">
                                         <div class="comment-pic"><img src="{{ asset('assets/images/users') }}/{{$commentsRow->profileImg}}" alt="comment"></div>
@@ -129,6 +130,21 @@
                                         </div>
                                     </div>
                                 </li>
+                                @else
+                                <li class="children">
+                                    <div class="comment">
+                                        <div class="comment-pic"><img src="{{ asset('assets/images/users') }}/{{$commentsRow->profileImg}}" alt="comment"></div>
+                                        <div class="comment-text">
+                                            <h5>
+                                                <a href="javascript:void(0);">{{$commentsRow->name}}</a>
+                                            </h5>
+                                            <span class="comment-date">Posted on {{date('F d, Y', strtotime($commentsRow->createdAt))}}</span>
+                                            <p>{{$commentsRow->commentText}}</p>
+                                            <a onclick="setCommentParent(<?php echo $commentsRow->parent ?>);" href="javascript:void(0);" class="comment-reply">Reply</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                @endif
                                 @endforeach
                             </ul>
                         </div>
