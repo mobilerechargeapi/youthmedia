@@ -63,7 +63,11 @@
                                 echo 'onclick="likeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
                             }
                             ?> class="video-like">
-                                <span><i class="fa fa-thumbs-o-up"></i></span>
+                                @if($userId && $userLike)
+                                <span id="videoLikeSpan"><i class="fa fa-thumbs-o-up"></i></span>
+                                @else
+                                <span id="videoLikeSpan" style='color: #666666 !important;'><i class="fa fa-thumbs-o-up"></i></span>
+                                @endif
                                 <p id="vidTotalLikes">{{$totalLikes}}</p>
                             </div>
                             <div <?php
@@ -71,7 +75,11 @@
                                 echo 'onclick="unlikeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
                             }
                             ?> class="video-dislike">
-                                <span><i class="fa fa-thumbs-o-down"></i></span>
+                                @if($userId && $userUnLike)
+                                <span id="videoUnlikeSpan"><i class="fa fa-thumbs-o-down"></i></span>
+                                @else
+                                <span id="videoUnlikeSpan" style='color: #666666 !important;'><i class="fa fa-thumbs-o-down"></i></span>
+                                @endif
                                 <p id="vidTotalUnLikes">{{$totalUnLikes}}</p>
                             </div>
                         </div>

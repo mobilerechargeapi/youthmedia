@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\NavigationModel;
 use App\PostsModel;
 use App\CommentModel;
+use App\LikesSharesModel;
+use Auth;
 
 class PostsController extends Controller {
 
@@ -44,9 +46,17 @@ class PostsController extends Controller {
     }
 
     public function video($postId) {
+        $auth = Auth::guard();
+        if ($auth->check()) {
+            $user = Auth::user();
+            $userId = $user['attributes']['id'];
+        } else {
+            $userId = 0;
+        }
         $data = array(
             'pageCode' => $this->pageCode,
-            'postId' => base64_decode($postId)
+            'postId' => base64_decode($postId),
+            'userId' => $userId
         );
         $page = NavigationModel::GetPageSettings($data);
         $pageSettings = json_decode($page[0]->pageSettings);
@@ -58,6 +68,14 @@ class PostsController extends Controller {
         $mostLikedVid = PostsModel::GetMostLikedPost();
         $comments = CommentModel::GetPostComments($data);
         $commentsCount = CommentModel::GetPostCommentsCount($data);
+        $userUnLike = 0;
+        $userLike = 0;
+        if ($userId) {
+            $userLike = LikesSharesModel::CheckVideoLike($data);
+            if (!$userLike) {
+                $userUnLike = LikesSharesModel::CheckVideoUnLike($data);
+            }
+        }
         if (count($post) > 0) {
             $image = '';
             if ($post[0]->postThumbnail && !$post[0]->isScrapped) {
@@ -75,7 +93,8 @@ class PostsController extends Controller {
             return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('post', $post)->with('userUpload', $userUpload)->with('recentUpload', $recentUpload)->with('totalLikes', $totalLikes)
                             ->with('totalUnLikes', $totalUnLikes)->with('facebookSetting', $facebookSetting)->with('mostLikedVid', $mostLikedVid)
-                            ->with('comments', $comments)->with('commentsCount', $commentsCount);
+                            ->with('comments', $comments)->with('commentsCount', $commentsCount)->with('userLike', $userLike)
+                            ->with('userUnLike', $userUnLike);
         } else {
             return redirect()->route('pagenotfound');
         }

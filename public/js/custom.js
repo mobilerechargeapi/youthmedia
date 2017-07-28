@@ -146,6 +146,8 @@ function likeVideo(userId, postId) {
                 var totalLikes = $('#vidTotalLikes').html();
                 $('#vidTotalLikes').html('');
                 $('#vidTotalLikes').html(parseInt(totalLikes) + parseInt(1));
+                $('#videoLikeSpan').css('color', '#359261');
+                $('#videoUnlikeSpan').css('color', '#666666');
                 var totalUnLikes = $('#vidTotalUnLikes').html();
                 if (totalUnLikes > 0) {
                     $('#vidTotalUnLikes').html('');
@@ -172,6 +174,8 @@ function unlikeVideo(userId, postId) {
                 var totalUnLikes = $('#vidTotalUnLikes').html();
                 $('#vidTotalUnLikes').html('');
                 $('#vidTotalUnLikes').html(parseInt(totalUnLikes) + parseInt(1));
+                $('#videoUnlikeSpan').css('color', '#ff0000');
+                $('#videoLikeSpan').css('color', '#666666');
                 var totalLikes = $('#vidTotalLikes').html();
                 if (totalLikes > 0) {
                     $('#vidTotalLikes').html('');
