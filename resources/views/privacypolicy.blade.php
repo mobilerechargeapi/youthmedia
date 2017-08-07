@@ -124,13 +124,13 @@ $privacyText = $pageSettings->privacyText != '' ? $pageSettings->privacyText : '
         <div class="row">
             <div class="col-sm-8">
                 <div class="action-content">
-                    <h2>Do you want to get the latest version ?</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+                    <h2>Do you want to get selected in our Prize Competition?</h2>
+                    <p>Register yourself at youthmedia and win different prizes.</p>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="purchase-link text-right">
-                    <a href="#" class="themeix-purchase-btn-3">purchase now</a>
+                    <a href="#" class="themeix-purchase-btn-3">See Details</a>
                 </div>
             </div>
         </div>

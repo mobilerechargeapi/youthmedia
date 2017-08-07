@@ -20,7 +20,7 @@
         <meta property="og:description"   content="{{ strip_tags($settings['pageDescription']) }}" />
         
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@BAF" />
+        <meta name="twitter:site" content="@YouthMedia" />
         <meta name="twitter:description" content="{{ strip_tags($settings['pageDescription']) }}" />
         @if (!isset($facebookSetting))
         <meta property="og:title"         content="Youth Media" />
