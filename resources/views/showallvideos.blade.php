@@ -240,24 +240,5 @@
     </div>
 </div>
 <!-- End Wide Video Section -->
-
-<!-- Start Call To Action Area -->
-<div class="call-to-action-area hover-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="action-content">
-                    <h2>Do you want to get selected in our Prize Competition?</h2>
-                    <p>Register yourself at youthmedia and win different prizes.</p>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="purchase-link text-right">
-                    <a href="#" class="themeix-purchase-btn-3">See Details</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Call To Action Area -->
+@include('footerprize')
 @endsection
