@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="slider-wrapper">
+<!--                <div class="slider-wrapper">
                     <ul class="slider">
                         @foreach ($sliderVid as $sliderVidRow)
                         <li>
@@ -26,6 +26,44 @@
                         </li>
                         @endforeach
                     </ul>
+                </div>-->
+
+                <!-- Tab panes -->
+                <div class="main-view">
+                    <div class="row">
+                        <div class="col-sm-9">
+
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="home">
+                                    <iframe width="100%" height="623" src="https://www.youtube.com/embed/a3ICNMQW7Ok" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="profile">...</div>
+                                <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                            </div>
+                        </div>  
+                        <div class="col-sm-3">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                                        <img src="http://localhost/youthmedia/public/assets/images/posts/GomIFRh5QPs.jpg" class="img-responsive" alt="Wapda Ky Karnamy">
+                                        <span>Image first</span>
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                                        <img src="http://localhost/youthmedia/public/assets/images/posts/B_Zgeu08B6E.jpg" class="img-responsive" alt="Wapda Ky Karnamy">
+                                        <span>Image second</span>
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+                                        <img src="http://localhost/youthmedia/public/assets/images/posts/GomIFRh5QPs.jpg" class="img-responsive" alt="Wapda Ky Karnamy">
+                                        <span>Image third Image third Image third Image third</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

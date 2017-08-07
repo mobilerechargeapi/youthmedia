@@ -5,3 +5,26 @@
 .cancel-comment-reply{
     float: right;
 }
+.main-view .nav>li>a>img {
+    max-width: 100%;
+}
+.main-view ul.nav > li > a {
+    padding: 0;
+    border: 0;
+}
+.main-view ul.nav > li {
+    position: relative;
+    margin-bottom: 19px;
+}
+.main-view ul.nav > li span{
+    background: rgba(1,1,1,.7);
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 10px;
+}
+.message .alert {
+    margin-bottom: 0;
+    margin-top: 34px;
+}
