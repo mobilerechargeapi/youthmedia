@@ -20,7 +20,7 @@
         <meta property="og:description"   content="{{ strip_tags($settings['pageDescription']) }}" />
         
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@BAF" />
+        <meta name="twitter:site" content="@YouthMedia" />
         <meta name="twitter:description" content="{{ strip_tags($settings['pageDescription']) }}" />
         @if (!isset($facebookSetting))
         <meta property="og:title"         content="Youth Media" />
@@ -261,7 +261,6 @@
                                             <ul class="nav navbar-nav">
                                                 <li><a href="{{url('/')}}">Home</a></li>
                                                 <li><a href="{{url('contact')}}" title="contact">Contact</a></li>
-                                                <li><a href="single-blog.html" title="single blog">Single Blog</a></li>
                                             </ul>
                                         </div>
                                     </div>

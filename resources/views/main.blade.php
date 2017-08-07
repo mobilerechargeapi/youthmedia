@@ -345,23 +345,5 @@
     </div>
 </div>
 <!-- End Sports News Area -->
-<!-- Start Call To Action Area -->
-<div class="call-to-action-area hover-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="action-content">
-                    <h2>Enough imporessed to get own video blog?</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="purchase-link text-right">
-                    <a href="#" class="themeix-purchase-btn-3">purchase now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Call To Action Area -->
+@include('footerprize')
 @endsection

@@ -34,7 +34,7 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                 <div class="themeix-section-h">
                     <span class="heading-icon"><i class="fa fa-envelope"></i></span>
                     <h3>Send Message</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+                    <p>You can let us know anything that you want and members of our dedicate team will respond in a jiffy.</p>
                 </div>
                 <div class="row">
                     <div class="contact-form">
@@ -145,25 +145,7 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
     </div>
 </div>
 <!-- End Video Carousel -->
-<!-- Start Call To Action Area -->
-<div class="call-to-action-area hover-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="action-content">
-                    <h2>Do you want to get the latest version documenter?</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="purchase-link text-right">
-                    <a href="#" class="themeix-purchase-btn-3">purchase now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Call To Action Area -->
+@include('footerprize')
 <script>
     var lat = '<?php echo $locLat ?>';
     var long = '<?php echo $locLong ?>';

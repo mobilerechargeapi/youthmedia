@@ -118,23 +118,5 @@ $privacyText = $pageSettings->privacyText != '' ? $pageSettings->privacyText : '
     </div>
 </div>
 <!-- End Page Content Area -->
-<!-- Start Call To Action Area -->
-<div class="call-to-action-area hover-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="action-content">
-                    <h2>Do you want to get the latest version ?</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="purchase-link text-right">
-                    <a href="#" class="themeix-purchase-btn-3">purchase now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Call To Action Area -->
+@include('footerprize')
 @endsection
