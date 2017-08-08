@@ -64,15 +64,16 @@ class VideoController extends Controller {
             $message = "Video Submitted For Admin Review!" . $userMsg;
             PostsModel::SavePost($data);
         } else {
-            $message = "Upload Video!";
+            $message = "Upload mp4 Video!";
         }
-        \Session::flash('message', $message);
+        \Session::flash('videomessage', $message);
         return Redirect::back()->withErrors(['videomessage', $message]);
     }
 
     public function fileUpload($file, $isVideo = 0) {
-        $rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+        $rules = array('file' => 'required|mimetypes:video/mp4'); //'required|mimes:video/avi,video/mp3,'
         if (!$isVideo) {
+            $rules = array('file' => 'required|mimes:png,gif,jpeg,jpg'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
             $destinationPath = 'assets/images/posts';
         } else {
             $destinationPath = 'assets/videos';
