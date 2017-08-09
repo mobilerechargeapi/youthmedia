@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-4">
                 <div class="purchase-link text-right">
-                    <a href="#" class="themeix-purchase-btn-3">See Details</a>
+                    <a href="{{url('prize')}}" class="themeix-purchase-btn-3">See Details</a>
                 </div>
             </div>
         </div>

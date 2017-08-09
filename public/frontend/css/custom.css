@@ -28,3 +28,7 @@
     margin-bottom: 0;
     margin-top: 34px;
 }
+.toc-ul {
+    list-style: square;
+    margin-left: 15px;
+}

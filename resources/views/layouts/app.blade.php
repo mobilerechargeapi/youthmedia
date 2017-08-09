@@ -261,6 +261,7 @@
                                             <ul class="nav navbar-nav">
                                                 <li><a href="{{url('/')}}">Home</a></li>
                                                 <li><a href="{{url('contact')}}" title="contact">Contact</a></li>
+                                                <li><a href="{{url('prize')}}" title="prize">Prize</a></li>
                                             </ul>
                                         </div>
                                     </div>

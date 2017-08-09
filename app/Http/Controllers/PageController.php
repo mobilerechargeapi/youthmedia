@@ -76,6 +76,8 @@ class PageController extends Controller {
             $pageData = $this->missionStatementSettings($request);
         } else if ($request->pageCode == 'contact') {
             $pageData = $this->contactSettings($request);
+        } else if ($request->pageCode == 'prize') {
+            $pageData = $this->prizeSettings($request);
         }
         if ($pageData != '') {
             $pageData['navId'] = $request->navId;
@@ -117,6 +119,13 @@ class PageController extends Controller {
 
     public function homeSettings($request) {
         
+    }
+
+    public function prizeSettings($request) {
+        $pageData = array(
+            'prizeText' => $request->prizeText
+        );
+        return $pageData;
     }
 
     public function privacyPolicySettings($request) {
