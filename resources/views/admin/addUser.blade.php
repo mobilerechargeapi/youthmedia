@@ -56,6 +56,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Phone Number</label>
+                        <div class="col-md-9">
+                            <input type="text" id="userPhone" name="userPhone" class="form-control" value="{{ old('userPhone') }}">
+                        </div>
+                    </div>
                     <div class="form-group margin-top-class">
                         <label class="col-md-3 control-label">Profile Image</label>
                         <div class="col-md-9">

@@ -54,6 +54,11 @@
                                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password">
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="userPhone" id="userPhone" class="form-control" placeholder="Phone Number" required value="{{$user['attributes']['userPhone']}}">
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="userProfileImg" class="custom-file-upload">Profile Image

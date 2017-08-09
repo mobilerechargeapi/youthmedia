@@ -75,6 +75,7 @@ class UserController extends Controller {
             'name' => $request->name,
             'email' => $request->email,
             'userRole' => $request->userRole,
+            'userPhone' => $request->userPhone,
             'profileImg' => $request->profileImg
         );
         if ($request->password != '' && $request->password == $request->password_confirmation) {
@@ -125,6 +126,7 @@ class UserController extends Controller {
             'name' => $request->name,
             'email' => $request->email,
             'userRole' => $request->userRole,
+            'userPhone' => $request->userPhone,
             'password' => bcrypt($request->password),
             'profileImg' => $request->profileImg
         );
