@@ -6,27 +6,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-<!--                <div class="slider-wrapper">
-                    <ul class="slider">
-                        @foreach ($sliderVid as $sliderVidRow)
-                        <li>
-                            @if ($sliderVidRow->postThumbnail && !$sliderVidRow->isScrapped)
-                            <img src="{{ asset('assets/images/posts') }}/{{ $sliderVidRow->postThumbnail }}" alt="{{$sliderVidRow->postTitle}}">
-                            @elseif($sliderVidRow->postThumbnail)
-                            <img src="{{ $sliderVidRow->postThumbnail }}" alt="{{$sliderVidRow->postTitle}}">
-                            @else
-                            <img src="{{ asset('frontend/images/slider/1.jpg') }}" alt="{{$sliderVidRow->postTitle}}">
-                            @endif
-                            <span>
-                                {{$sliderVidRow->postTitle}} <br>
-                                <i class="fa fa-eye"> {{$sliderVidRow->postViewed}}</i>
-                                <i class=" fa fa-thumbs-o-up">{{App\PostsModel::GetPostLikes(array('postId' => $sliderVidRow->postId))}}</i> 
-                                <i class="fa fa-thumbs-o-down">{{App\PostsModel::GetPostUnLikes(array('postId' => $sliderVidRow->postId))}}</i> 
-                            </span>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>-->
 
                 <!-- Tab panes -->
                 <div class="main-view">
@@ -35,7 +14,7 @@
                             <div class="tab-content">
                                 <?php $activeClass = 'active'; ?>
                                 @foreach ($sliderVid as $sliderVidRow)
-                                <div role="tabpanel" class="tab-pane {{$activeClass}}" id="{{ $sliderVidRow->postId }}">
+                                <div role="tabpanel" class="framediv tab-pane {{$activeClass}}" id="{{ $sliderVidRow->postId }}">
                                     <iframe width="100%" height="580" src="{{ $sliderVidRow->post }}" frameborder="0" allowfullscreen></iframe>
                                 </div>
                                 <?php $activeClass = ''; ?>
@@ -47,7 +26,7 @@
                                 <?php $activeClass = 'active'; ?>
                                 @foreach ($sliderVid as $sliderVidRow)
                                 <li role="presentation" class="{{$activeClass}}">
-                                    <a class="reloadIframe" href="#{{ $sliderVidRow->postId }}" aria-controls="{{ $sliderVidRow->postId }}" role="tab" data-toggle="tab">
+                                    <a onclick="reloadPostIframe('<?php echo $sliderVidRow->post ?>','<?php echo $sliderVidRow->postId ?>')" href="#{{ $sliderVidRow->postId }}" aria-controls="{{ $sliderVidRow->postId }}" role="tab" data-toggle="tab">
                                         @if ($sliderVidRow->postThumbnail && !$sliderVidRow->isScrapped)
                                         <img src="{{ asset('assets/images/posts') }}/{{ $sliderVidRow->postThumbnail }}" alt="{{$sliderVidRow->postTitle}}" class="img-responsive">
                                         @elseif($sliderVidRow->postThumbnail)

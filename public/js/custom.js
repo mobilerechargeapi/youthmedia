@@ -199,3 +199,9 @@ function cancelReplyComment() {
     $('#parentUser').html('');
     $('#parent').val(0);
 }
+
+function reloadPostIframe(post, postId) {
+    var html = '<iframe width="100%" height="580" src="'+post+'" frameborder="0" allowfullscreen></iframe>';
+    $('.framediv').html('');
+    $('#'+postId).html(html);
+}
