@@ -105,7 +105,7 @@
                         <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
                         @endif
                         <a href="{{url('video/'.base64_encode($userOwnVideosRow->postId))}}">
-                            <img src="{{ $userOwnVideosRow->postThumbnail }}" alt="{{$userOwnVideosRow->postTitle}}">
+                            <img width="360px" height="201px" src="{{ $userOwnVideosRow->postThumbnail }}" alt="{{$userOwnVideosRow->postTitle}}">
                         </a>
                     </div>
                     <h4>
