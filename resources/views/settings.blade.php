@@ -115,7 +115,7 @@
                     </h4>
                     <div class="blog-text">
                         <p>{{$userOwnVideosRow->postDescription}}</p>
-                        <a href="single-blog.html" class="read-more-btn">Read More</a>
+                        <a href="#" class="read-more-btn">Delete</a>
                     </div>
                 </div>
             </div>
