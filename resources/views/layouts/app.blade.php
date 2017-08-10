@@ -194,6 +194,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                                        <a onclick="closeLoginModal();" href="#reset-pass" data-toggle="modal">Forgot Password</a>
                                                     </div>
                                                 </form>
                                             </div>
@@ -229,6 +230,28 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="reset-pass" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">Reset Password</h3>
+                                                <button data-dismiss="modal" class="btn btn-sm btn-default close-btn">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('password.email') }}" method="post" class="upload-form">
+                                                    {{ csrf_field() }}
+                                                    <div class="form-group">
+                                                        <label for="email">Email : *</label>
+                                                        <input required="" type="email" name="email" class="form-control" id="email" placeholder="Email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-primary btn-lg">Send Password Reset Link</button>
                                                     </div>
                                                 </form>
                                             </div>

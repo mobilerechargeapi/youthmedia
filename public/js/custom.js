@@ -205,3 +205,7 @@ function reloadPostIframe(post, postId) {
     $('.framediv').html('');
     $('#'+postId).html(html);
 }
+
+function closeLoginModal() {
+    $('#login-info').modal('toggle');
+}
