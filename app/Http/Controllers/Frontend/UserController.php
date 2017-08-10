@@ -15,6 +15,7 @@ use App\NavigationModel;
 use App\PostsModel;
 use App\UserModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 /**
@@ -38,12 +39,16 @@ class UserController extends Controller {
 
     public function index() {
         $data = array(
-            'pageCode' => $this->pageCode
+            'pageCode' => $this->pageCode,
+            'id' => $this->user['attributes']['id']
         );
         $page = NavigationModel::GetPageSettings($data);
         $pageSettings = json_decode($page[0]->pageSettings);
         $userUpload = PostsModel::GetAllUserUploadPost();
-        return view('settings')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('userUpload', $userUpload);
+        $userOwnVideos = DB::table('posts')->where('posts.postStatus', '=', 1)->where('posts.userId', '=', $this->user['attributes']['id'])
+                ->paginate(12);
+        return view('settings')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('userUpload', $userUpload)
+                        ->with('userOwnVideos', $userOwnVideos);
     }
 
     public function userSettings(Request $request) {

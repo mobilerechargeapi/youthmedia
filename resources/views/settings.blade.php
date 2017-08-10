@@ -20,7 +20,7 @@
     </div>
 </div>
 <!-- End Page Banner -->
-<!-- Start Contat Page -->
+<!-- Start Contact Page -->
 <div class="contact-page-area themeix-ptb bg-info"> 
     <div class="container">
         <div class="row">
@@ -91,6 +91,46 @@
 
 </div>
 <!-- End Contact Page -->
+<!-- Start Blog Posts -->
+<div class="blog-posts-area themeix-ptb-3 bg-info">
+    <div class="container">
+        <div class="row">
+            @foreach ($userOwnVideos as $userOwnVideosRow)
+            <div class="col-sm-4">
+                <div class="single-blog">
+                    <div class="blog-img">
+                        @if ($userOwnVideosRow->postThumbnail)
+                        <?php $image = asset('assets/images/posts') . '/' . $userOwnVideosRow->postThumbnail; ?>
+                        @else
+                        <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
+                        @endif
+                        <a href="{{url('video/'.base64_encode($userOwnVideosRow->postId))}}">
+                            <img src="{{ $userOwnVideosRow->postThumbnail }}" alt="{{$userOwnVideosRow->postTitle}}">
+                        </a>
+                    </div>
+                    <h4>
+                        <a class="blog-title" href="{{url('video/'.base64_encode($userOwnVideosRow->postId))}}">
+                            {{$userOwnVideosRow->postTitle}}
+                        </a>
+                    </h4>
+                    <div class="blog-text">
+                        <p>{{$userOwnVideosRow->postDescription}}</p>
+                        <a href="single-blog.html" class="read-more-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <!-- Start Pagination -->
+        <div class="posts-pagination">
+            <ul class="pagination">
+                @include('pagination', ['paginator' => $userOwnVideos])
+            </ul>
+        </div>
+        <!-- End Pagination -->
+    </div>
+</div>
+<!-- End Blog Posts -->
 <!-- Start Video Carousel -->
 <div class="video-carousel-area themeix-ptb bg-semi-white">
     <div class="container">
