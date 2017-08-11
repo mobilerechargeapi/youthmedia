@@ -83,6 +83,7 @@
         $contactEmail = $settings['generalSettings'][0]->contactEmail != '' ? $settings['generalSettings'][0]->contactEmail : '';
 
         $categories = $settings['categories'];
+        $topUsers = $settings['topUsers'];
         ?>
         <!-- Start Header -->
         <header>
@@ -311,16 +312,24 @@
                                                         </li>
                                                         <li><span class="subtitle">Top Users</span> <span class="arrow"></span>
                                                             <ul class="mega-list">
-                                                                <li><a href="blog.html"><i class="fa fa-angle-right"></i>Blog Grid Style</a></li>
-                                                                <li><a href="single-blog.html"><i class="fa fa-angle-right"></i>Blog Single Page</a></li>
-                                                                <li><a href="single-video.html"><i class="fa fa-angle-right"></i>Single Video</a></li>
+                                                                <?php $counter = 0; ?>
+                                                                @foreach ($topUsers as $topUsersRow)
+                                                                @if($counter < 3)
+                                                                <li>
+                                                                    <a href="{{url('user/'.base64_encode($topUsersRow->id))}}">
+                                                                        <i class="fa fa-angle-right"></i>{{$topUsersRow->name}}
+                                                                    </a>
+                                                                </li>
+                                                                <?php $counter++; ?>
+                                                                @endif
+                                                                @endforeach
                                                             </ul>
                                                         </li>
                                                         <li><span class="subtitle">Top Categories</span><span class="arrow"></span>
                                                             <ul class="mega-list">
-                                                                <li><a href="videos.html"><i class="fa fa-angle-right"></i>All Videos</a></li>
-                                                                <li><a href="single-video.html"><i class="fa fa-angle-right"></i>Single Video V1</a></li>
-                                                                <li><a href="single-video-2.html"><i class="fa fa-angle-right"></i>Single Video V2</a></li>
+                                                                <li><a href="{{url('videoTag/'.base64_encode('news'))}}"><i class="fa fa-angle-right"></i>News</a></li>
+                                                                <li><a href="{{url('videoTag/'.base64_encode('politics'))}}"><i class="fa fa-angle-right"></i>Politics</a></li>
+                                                                <li><a href="{{url('videoTag/'.base64_encode('pakistan'))}}"><i class="fa fa-angle-right"></i>Pakistan</a></li>
                                                             </ul>
                                                         </li>
                                                         <li><span class="subtitle">Social Links</span> <span class="arrow"></span>

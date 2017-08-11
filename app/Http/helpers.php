@@ -11,6 +11,7 @@ function productImagePath($pageCode) {
     $socialSettings = App\SocialSettingsModel::GetSocialSettings();
     $navigation = App\NavigationModel::GetNavigation();
     $categories = App\CategoriesModel::GetAllCategories();
+    $topUsers = App\UserModel::GetTopUsers();
     $headerNav = array();
 
     foreach ($navigation as $navigationRow) {
@@ -25,7 +26,8 @@ function productImagePath($pageCode) {
         'headerNav' => $headerNav,
         'pageDescription' => $pageDescription,
         'pageKeywords' => $pageKeywords,
-        'categories' => $categories
+        'categories' => $categories,
+        'topUsers' => $topUsers
     );
     return $data;
 }
