@@ -25,10 +25,10 @@
         @if (!isset($facebookSetting))
         <meta property="og:title"         content="Youth Media" />
         <meta property="og:url"           content="http://localhost/youthmedia/public/" />
-        <meta property="og:image"         content="http://localhost/youthmedia/public/frontend/images/logo.png" />
+        <meta property="og:image"         content="{{ asset('frontend/images/logo.png') }}" />
 
         <meta name="twitter:title" content="Youth Media" />
-        <meta name="twitter:image" content="http://localhost/youthmedia/public/frontend/images/logo.png" />
+        <meta name="twitter:image" content="{{ asset('frontend/images/logo.png') }}" />
         @else
         <meta property="og:title"         content="{{ $facebookSetting['title'] }}" />
         <meta property="og:url"           content="{{ $facebookSetting['url'] }}" />
@@ -289,7 +289,7 @@
                         <div class="mod-menu">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <a href="{{url('/')}}" title="logo" class="logo"><img src="<?php echo asset('frontend/images/logo.png') ?>" alt="logo"></a>
+                                    <a href="{{url('/')}}" title="logo" class="logo"><img src="{{ asset('frontend/images/logo.png') }}" alt="logo"></a>
                                 </div>
                                 <div class="col-sm-9 nopadding">
                                     <div class="main-nav rightnav">
@@ -437,7 +437,7 @@
                         <div class="col-sm-12">
                             <div class="footer-bottom">
                                 <div class="footer-logo">
-                                    <a href="{{url('/')}}"><img src="<?php echo asset('frontend/images/logo.png') ?>" alt="logo"></a>
+                                    <a href="{{url('/')}}"><img src="{{ asset('frontend/images/logo.png') }}" alt="logo"></a>
                                 </div>
                                 <div class="footer-links">
                                     <ul>
