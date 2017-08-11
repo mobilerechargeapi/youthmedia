@@ -251,7 +251,6 @@
                                 <img width="320px" height="180px" src="{{$image}}" alt="{{$mostLikedVidRow->postTitle}}" />
                                 </noscript>
                             </a>
-                            <span class="video-duration">5.28</span>
                         </div>
                         <div class="video-content">
                             <h4>
@@ -311,7 +310,6 @@
                                 <img width="320px" height="180px" src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
                                 </noscript>
                             </a>
-                            <span class="video-duration">5.28</span>
                         </div>
                         <div class="video-content">
                             <h4><a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}" class="video-title">{{$recentUploadRow->postTitle}} </a></h4>
@@ -368,7 +366,6 @@
                                 <img width="320px" height="180px" src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 </noscript>
                             </a>
-                            <span class="video-duration">8.17</span>
                         </div>
                         <div class="video-content">
                             <h4><a href="{{url('video/'.base64_encode($userUploadRow->postId))}}" class="video-title">{{$userUploadRow->postTitle}}</a></h4>

@@ -208,7 +208,6 @@
                             <img width="320px" height="180px" src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
                             </noscript>
                         </a>
-                        <span class="video-duration">5.28</span>
                     </div>
                     <div class="video-content">
                         <h4>

@@ -159,7 +159,6 @@
                                 <img width="320px" height="180px" src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 </noscript>
                             </a>
-                            <span class="video-duration">8.17</span>
                         </div>
                         <div class="video-content">
                             <h4><a href="{{url('video/'.base64_encode($userUploadRow->postId))}}" class="video-title">{{$userUploadRow->postTitle}}</a></h4>
