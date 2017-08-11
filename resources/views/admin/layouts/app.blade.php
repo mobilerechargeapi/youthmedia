@@ -62,6 +62,7 @@
                             </a>
                         </li>
                         @endif
+                        @if ($userRoles[0]->websites == 1)
                         <li id="nav-website">
                             <a href="{{url('websites')}}">
                                 <div class="icon">
@@ -70,6 +71,8 @@
                                 <div class="title">Websites</div>
                             </a>
                         </li>
+                        @endif
+                        @if ($userRoles[0]->categories == 1)
                         <li id="nav-category">
                             <a href="{{url('categories')}}">
                                 <div class="icon">
@@ -78,6 +81,8 @@
                                 <div class="title">Categories</div>
                             </a>
                         </li>
+                        @endif
+                        @if ($userRoles[0]->posts == 1)
                         <li id="nav-post">
                             <a href="{{url('posts')}}">
                                 <div class="icon">
@@ -86,6 +91,8 @@
                                 <div class="title">Posts</div>
                             </a>
                         </li>
+                        @endif
+                        @if ($userRoles[0]->pending == 1)
                         <li id="nav-pending">
                             <a href="{{url('pending')}}">
                                 <div class="icon">
@@ -94,6 +101,8 @@
                                 <div class="title">Pending Posts</div>
                             </a>
                         </li>
+                        @endif
+                        @if ($userRoles[0]->subscription == 1)
                         <li id="nav-subscribe">
                             <a href="{{url('usersubscription')}}">
                                 <div class="icon">
@@ -102,6 +111,7 @@
                                 <div class="title">Subscription</div>
                             </a>
                         </li>
+                        @endif
                         @if ($userRoles[0]->permissions == 1)
                         <li id="nav-permissions">
                             <a href="{{url('permissions')}}">

@@ -32,10 +32,11 @@ class Permissions extends Model {
     }
 
     public static function ClearValuesModules() {
-        DB::table('roles')->update(['dashboard' => 0, 'users' => 0, 'pages' => 0]);
+        DB::table('roles')->update(['dashboard' => 0, 'users' => 0, 'pages' => 0, 'websites' => 0, 'categories' => 0, 'posts' => 0,
+            'pending' => 0, 'subscription' => 0]);
 
-        DB::table('roles')->where('name', 'Admin')->update(['dashboard' => 1, 'users' => 1,
-            'pages' => 1, 'permissions' => 1]);
+        DB::table('roles')->where('name', 'Admin')->update(['dashboard' => 1, 'users' => 1, 'pages' => 1, 'websites' => 1,
+            'permissions' => 1, 'categories' => 1, 'posts' => 1, 'pending' => 1, 'subscription' => 1]);
     }
 
     public static function SetPermissions($data, $columnName) {

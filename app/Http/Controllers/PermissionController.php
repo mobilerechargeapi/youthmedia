@@ -51,6 +51,11 @@ class PermissionController extends Controller {
             'dashboard' => $request->dashboard,
             'users' => $request->users,
             'pages' => $request->pages,
+            'websites' => $request->websites,
+            'categories' => $request->categories,
+            'posts' => $request->posts,
+            'pending' => $request->pending,
+            'subscription' => $request->subscription,
             'permissions' => $request->permissions
         );
         //clear old roles values

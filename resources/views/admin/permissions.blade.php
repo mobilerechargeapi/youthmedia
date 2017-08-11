@@ -21,6 +21,11 @@
                         <th>Dashboard</th>
                         <th>Users</th>
                         <th>Pages</th>
+                        <th>Websites</th>
+                        <th>Categories</th>
+                        <th>Posts</th>
+                        <th>Pending Posts</th>
+                        <th>Subscription</th>
                         <th>Permissions</th>
                     </tr>
                 </thead>
@@ -32,6 +37,11 @@
                         <td><input type="checkbox" name="dashboard[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->dashboard == 1) ? 'checked' : '' }}></td>
                         <td><input type="checkbox" name="users[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->users == 1) ? 'checked' : '' }}></td>
                         <td><input type="checkbox" name="pages[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->pages == 1) ? 'checked' : '' }}></td>
+                        <td><input type="checkbox" name="websites[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->websites == 1) ? 'checked' : '' }}></td>
+                        <td><input type="checkbox" name="categories[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->categories == 1) ? 'checked' : '' }}></td>
+                        <td><input type="checkbox" name="posts[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->posts == 1) ? 'checked' : '' }}></td>
+                        <td><input type="checkbox" name="pending[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->pending == 1) ? 'checked' : '' }}></td>
+                        <td><input type="checkbox" name="subscription[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->subscription == 1) ? 'checked' : '' }}></td>
                         <td><input type="checkbox" name="permissions[]" value="{{ $permissionsRow->roleId }}" {{ ($permissionsRow->permissions == 1) ? 'checked' : '' }}></td>
                     </tr>
                     @endif
