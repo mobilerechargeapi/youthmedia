@@ -83,6 +83,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::post('userSettings', ['as' => 'userSettings', 'uses' => 'Frontend\UserController@userSettings']);
     //route for comments
     Route::post('postComment', ['as' => 'postComment', 'uses' => 'Frontend\CommentsController@postComment']);
+    //route for deleting post by both admin or frontend side
+    Route::post('deleteUserPost', ['as' => 'deleteUserPost', 'uses' => 'Frontend\PostsController@deleteUserPost']);
 });
 Auth::routes();
 //routes for frontend

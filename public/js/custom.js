@@ -201,11 +201,36 @@ function cancelReplyComment() {
 }
 
 function reloadPostIframe(post, postId) {
-    var html = '<iframe width="100%" height="580" src="'+post+'" frameborder="0" allowfullscreen></iframe>';
+    var html = '<iframe width="100%" height="580" src="' + post + '" frameborder="0" allowfullscreen></iframe>';
     $('.framediv').html('');
-    $('#'+postId).html(html);
+    $('#' + postId).html(html);
 }
 
 function closeLoginModal() {
     $('#login-info').modal('toggle');
+}
+
+//confirm box for delete user video settings page frontend
+function confirmDeletePost(postId) {
+    $('#deleteUserVideo').val(postId);
+}
+
+//delete user video on frontend setting page
+function deleteUserPost() {
+    var url = 'deleteUserPost';
+    var postId = $('#deleteUserVideo').val();
+    var token = $('input[name=_token]').val();
+    var data = {postId: postId};
+    $.ajax({
+        url: url,
+        headers: {'X-CSRF-TOKEN': token},
+        data: data,
+        type: 'POST',
+        datatype: 'JSON',
+        success: function (resp) {
+            if(resp.status) {
+                $('#userPost-' + postId).addClass('hide');
+            }
+        }
+    });
 }

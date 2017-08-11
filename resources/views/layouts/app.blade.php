@@ -15,10 +15,10 @@
         <meta name="description" content="{{ strip_tags($settings['pageDescription']) }}">
         <meta name="author" content="">
         <meta name="keywords" content="{{ $settings['pageKeywords'] }}">
-        
+
         <meta property="og:type"          content="website" />
         <meta property="og:description"   content="{{ strip_tags($settings['pageDescription']) }}" />
-        
+
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@YouthMedia" />
         <meta name="twitter:description" content="{{ strip_tags($settings['pageDescription']) }}" />
@@ -69,7 +69,7 @@
 
         <!-- Demo Panel Style -->
         <link rel="stylesheet" href="<?php echo asset('frontend/css/demo-panels.css') ?>">
-        
+
         <!-- Custom CSS -->
         <link rel="stylesheet" href="<?php echo asset('frontend/css/custom.css') ?>">
     </head>
@@ -254,6 +254,23 @@
                                                         <button type="submit" class="btn btn-primary btn-lg">Send Password Reset Link</button>
                                                     </div>
                                                 </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="delete-video" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">Delete Your Video</h3>
+                                                <button class="btn btn-sm btn-default close-btn" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3>Are You Sure You Want To Delete This Video?</h3>
+                                                <p>Remember This Action Can't Reverted.</p>
+                                                <input type="hidden" name="deleteUserVideo" id="deleteUserVideo" value="">
+                                                <button onclick="deleteUserPost();" class="btn btn-primary btn-lg">Delete</button>
+                                                <button class="btn btn-default btn-lg close-btn" data-dismiss="modal">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
@@ -449,9 +466,9 @@
         <script src="<?php echo asset('js/custom.js') ?>" type="text/javascript"></script>
         @if(isset($post[0]->postId))
         <script>
-if ($("#detail-video-post").length > 0) {
-    updateVideoView('<?php echo $post[0]->postId ?>', '<?php echo $post[0]->postViewed + 1 ?>');
-}
+                                                            if ($("#detail-video-post").length > 0) {
+                                                                updateVideoView('<?php echo $post[0]->postId ?>', '<?php echo $post[0]->postViewed + 1 ?>');
+                                                            }
         </script>
         @endif
     </body>

@@ -155,4 +155,29 @@ class PostsController extends Controller {
         PostsModel::UpdateVideoView($data);
     }
 
+    public function deleteUserPost(Request $request) {
+        $status = 0;
+        $message = 'Something Went Wrong!';
+        $auth = Auth::guard();
+        if ($auth->check()) {
+            $user = Auth::user();
+            $userId = $user['attributes']['id'];
+            $data = array(
+                'userId' => $userId,
+                'postId' => $request->postId
+            );
+            $postFound = PostsModel::CountSinglePostByUser($data);
+            if ($postFound > 0) {
+                PostsModel::DeletePost($request->postId);
+                $status = 1;
+                $message = 'Post Deleted!';
+            }
+        }
+        if ($request->ajax()) {
+            return response()->json([
+                        'status' => $status, 'message' => $message
+            ]);
+        }
+    }
+
 }

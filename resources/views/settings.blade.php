@@ -96,16 +96,18 @@
     <div class="container">
         <div class="row">
             @foreach ($userOwnVideos as $userOwnVideosRow)
-            <div class="col-sm-4">
+            <div class="col-sm-4" id="userPost-{{$userOwnVideosRow->postId}}">
                 <div class="single-blog">
                     <div class="blog-img">
-                        @if ($userOwnVideosRow->postThumbnail)
+                        @if ($userOwnVideosRow->postThumbnail && !$userOwnVideosRow->isScrapped)
                         <?php $image = asset('assets/images/posts') . '/' . $userOwnVideosRow->postThumbnail; ?>
+                        @elseif($userOwnVideosRow->postThumbnail)
+                        <?php $image = $userOwnVideosRow->postThumbnail; ?>
                         @else
                         <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
                         @endif
                         <a href="{{url('video/'.base64_encode($userOwnVideosRow->postId))}}">
-                            <img width="360px" height="201px" src="{{ $userOwnVideosRow->postThumbnail }}" alt="{{$userOwnVideosRow->postTitle}}">
+                            <img width="360px" height="201px" src="{{ $image }}" alt="{{$userOwnVideosRow->postTitle}}">
                         </a>
                     </div>
                     <h4>
@@ -115,7 +117,7 @@
                     </h4>
                     <div class="blog-text">
                         <p>{{$userOwnVideosRow->postDescription}}</p>
-                        <a href="#" class="read-more-btn">Delete</a>
+                        <a onclick="confirmDeletePost({{$userOwnVideosRow->postId}})" href="#delete-video" data-toggle="modal" class="read-more-btn">Delete</a>
                     </div>
                 </div>
             </div>

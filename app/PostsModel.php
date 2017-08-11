@@ -220,4 +220,12 @@ class PostsModel extends Model {
         DB::table('posts')->where('postId', $data['postId'])->update(['postThumbnail' => $data['postThumbnail']]);
     }
 
+    public static function CountSinglePostByUser($data) {
+        return DB::table('posts')
+                        ->select('posts.*')
+                        ->where('posts.postId', '=', $data['postId'])
+                        ->where('posts.userId', '=', $data['userId'])
+                        ->count();
+    }
+
 }
