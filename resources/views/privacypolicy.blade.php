@@ -38,21 +38,7 @@ $privacyText = $pageSettings->privacyText != '' ? $pageSettings->privacyText : '
             </div>
             <!-- Start Popular Videos -->
             <div class="col-md-offset-1 col-md-3 col-sm-4">
-                <!-- Start Search Box -->
-                <div class="search-box-wrapper">
-                    <div class="themeix-section-h">
-                        <span class="heading-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></span>
-                        <h3>Search Videos</h3>
-                    </div>
-                    <form action="{{ URL::route('search') }}" method="post" class="subscribe-form">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <input type="text" name="search" id="search" placeholder="Search Videos.." required>
-                            <button type="submit">Go</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- End Search Box -->
+                @include('searchform')
                 <!-- Start Popular Videos -->
                 <div class="popular-videos">
                     <div class="themeix-section-h">
