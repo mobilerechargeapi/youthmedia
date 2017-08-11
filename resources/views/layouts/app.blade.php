@@ -300,6 +300,37 @@
                                         <div id="menu" class="collapse header-menu">
                                             <ul class="nav navbar-nav">
                                                 <li><a href="{{url('/')}}">Home</a></li>
+                                                <li class="mega-menu remove-border active"><a href="#">Quick Links</a><span class="arrow"></span>
+                                                    <ul>
+                                                        <li><span class="subtitle">Quick links</span> <span class="arrow"></span>
+                                                            <ul class="mega-list">
+                                                                <li><a href="{{url('popular-videos')}}"><i class="fa fa-home"></i>Popular Videos</a></li>
+                                                                <li><a href="{{url('trending-videos')}}"><i class="fa fa-home"></i>Trending Videos</a></li>
+                                                                <li><a href="{{url('recent-videos')}}"><i class="fa fa-home"></i>Recent Videos</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><span class="subtitle">Top Users</span> <span class="arrow"></span>
+                                                            <ul class="mega-list">
+                                                                <li><a href="blog.html"><i class="fa fa-angle-right"></i>Blog Grid Style</a></li>
+                                                                <li><a href="single-blog.html"><i class="fa fa-angle-right"></i>Blog Single Page</a></li>
+                                                                <li><a href="single-video.html"><i class="fa fa-angle-right"></i>Single Video</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><span class="subtitle">Top Categories</span><span class="arrow"></span>
+                                                            <ul class="mega-list">
+                                                                <li><a href="videos.html"><i class="fa fa-angle-right"></i>All Videos</a></li>
+                                                                <li><a href="single-video.html"><i class="fa fa-angle-right"></i>Single Video V1</a></li>
+                                                                <li><a href="single-video-2.html"><i class="fa fa-angle-right"></i>Single Video V2</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><span class="subtitle">Social Links</span> <span class="arrow"></span>
+                                                            <ul class="mega-list">
+                                                                <li><a target="_blank" href="#"><i class="fa fa-facebook"></i>FaceBook</a></li>
+                                                                <li><a target="_blank" href="https://www.youtube.com/channel/UCrmX1CHUI9V5guPLDhzjJlQ"><i class="fa fa-youtube"></i>YouTube</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                                 <li><a href="{{url('contact')}}" title="contact">Contact</a></li>
                                                 <li><a href="{{url('prize')}}" title="prize">Prize</a></li>
                                             </ul>
@@ -345,7 +376,7 @@
                                 <div class="single-footer">
                                     <div class="footer-heading-wrap">
                                         <span class="heading-icon"><i class="fa fa fa-link" aria-hidden="true"></i></span>
-                                        <h3 class="footer-heading">Important links</h3>
+                                        <h3 class="footer-heading">Quick links</h3>
                                     </div>
                                     <div class="footer-list">
                                         <ul>
@@ -466,9 +497,9 @@
         <script src="<?php echo asset('js/custom.js') ?>" type="text/javascript"></script>
         @if(isset($post[0]->postId))
         <script>
-                                                            if ($("#detail-video-post").length > 0) {
-                                                                updateVideoView('<?php echo $post[0]->postId ?>', '<?php echo $post[0]->postViewed + 1 ?>');
-                                                            }
+                                                    if ($("#detail-video-post").length > 0) {
+                                                        updateVideoView('<?php echo $post[0]->postId ?>', '<?php echo $post[0]->postViewed + 1 ?>');
+                                                    }
         </script>
         @endif
     </body>
