@@ -44,9 +44,10 @@ $privacyText = $pageSettings->privacyText != '' ? $pageSettings->privacyText : '
                         <span class="heading-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></span>
                         <h3>Search Videos</h3>
                     </div>
-                    <form action="#" method="post" class="subscribe-form">
+                    <form action="{{ URL::route('search') }}" method="post" class="subscribe-form">
+                        {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder="Search Videos.." required>
+                            <input type="text" name="search" id="search" placeholder="Search Videos.." required>
                             <button type="submit">Go</button>
                         </div>
                     </form>

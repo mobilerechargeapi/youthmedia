@@ -9,6 +9,7 @@ use App\PostsModel;
 use App\CommentModel;
 use App\LikesSharesModel;
 use Auth;
+use App\Http\Requests\SearchRequest;
 
 class PostsController extends Controller {
 
@@ -180,6 +181,19 @@ class PostsController extends Controller {
                         'status' => $status, 'message' => $message
             ]);
         }
+    }
+
+    public function search(SearchRequest $request) {
+        $data = array(
+            'pageCode' => $this->pageCode,
+            'search' => $request->search
+        );
+        $page = NavigationModel::GetPageSettings($data);
+        $pageSettings = json_decode($page[0]->pageSettings);
+        $bannerTitle = $request->search;
+        $recentUpload = PostsModel::SearchVideos($data);
+        return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
+                        ->with('bannerTitle', $bannerTitle)->with('recentUpload', $recentUpload);
     }
 
 }

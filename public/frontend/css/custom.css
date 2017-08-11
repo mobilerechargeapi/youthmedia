@@ -32,3 +32,9 @@
     list-style: square;
     margin-left: 15px;
 }
+.subscribe-form input[type="text"] {
+    border: 1px solid #b7b7b7;
+    height: 40px;
+    padding-left: 10px;
+    width: 260px;
+}

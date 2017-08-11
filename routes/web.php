@@ -117,6 +117,9 @@ Route::post('updateVideoLikes', ['as' => 'updateVideoLikes', 'uses' => 'Frontend
 Route::post('updateVideoUnLikes', ['as' => 'updateVideoUnLikes', 'uses' => 'Frontend\PostsLikesController@updateVideoUnLikes']);
 //route for user subscription
 Route::post('subscription', ['as' => 'subscription', 'uses' => 'Frontend\SubscriptionController@index']);
+//route for video search
+Route::post('search', ['as' => 'search', 'uses' => 'Frontend\PostsController@search']);
+Route::get('search', ['as' => 'search', 'uses' => 'Frontend\MainController@index']);
 //route for logout
 Route::get('logout', 'Auth\LoginController@logout');
 //route for error page

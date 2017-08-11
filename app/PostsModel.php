@@ -228,4 +228,14 @@ class PostsModel extends Model {
                         ->count();
     }
 
+    public static function SearchVideos($data) {
+        $search = $data['search'];
+        return DB::table('posts')
+                        ->select('posts.*')
+                        ->where('posts.postTitle', 'Like', '%'.$search.'%')
+                        ->orWhere('posts.postTags', 'Like', '%'.$search.'%')
+                        ->orderBy('posts.createdOn', 'desc')
+                        ->get();
+    }
+
 }
