@@ -169,6 +169,8 @@ class PostsController extends Controller {
             $postFound = PostsModel::CountSinglePostByUser($data);
             if ($postFound > 0) {
                 PostsModel::DeletePost($request->postId);
+                LikesSharesModel::DeleteVideoHistory($data);
+                CommentModel::DeletePostAllComments($data);
                 $status = 1;
                 $message = 'Post Deleted!';
             }

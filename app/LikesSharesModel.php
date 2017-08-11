@@ -52,4 +52,8 @@ class LikesSharesModel extends Model {
                         ->count();
     }
 
+    public static function DeleteVideoHistory($data) {
+        DB::table('likes_shares')->where('postId', '=', $data['postId'])->delete();
+    }
+
 }

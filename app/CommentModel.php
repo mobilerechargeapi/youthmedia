@@ -40,4 +40,8 @@ class CommentModel extends Model {
                         ->count();
     }
 
+    public static function DeletePostAllComments($data) {
+        DB::table('comments')->where('postId', '=', $data['postId'])->delete();
+    }
+
 }

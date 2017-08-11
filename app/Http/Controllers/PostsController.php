@@ -16,6 +16,8 @@ use App\Permissions;
 use App\WebsitesModel;
 use App\CategoriesModel;
 use App\PostsModel;
+use App\CommentModel;
+use App\LikesSharesModel;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Input;
 use Validator;
@@ -126,7 +128,12 @@ class PostsController extends Controller {
     }
 
     public function deletePost(Request $request) {
+        $data = array(
+            'postId' => $request->postId
+        );
         PostsModel::DeletePost($request->postId);
+        LikesSharesModel::DeleteVideoHistory($data);
+        CommentModel::DeletePostAllComments($data);
         if ($request->ajax()) {
             return response()->json([
                         'status' => 1, 'message' => 'Post Deleted'
