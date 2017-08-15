@@ -99,10 +99,8 @@
             <div class="col-sm-4" id="userPost-{{$userOwnVideosRow->postId}}">
                 <div class="single-blog">
                     <div class="blog-img">
-                        @if ($userOwnVideosRow->postThumbnail && !$userOwnVideosRow->isScrapped)
+                        @if ($userOwnVideosRow->postThumbnail)
                         <?php $image = asset('assets/images/posts') . '/' . $userOwnVideosRow->postThumbnail; ?>
-                        @elseif($userOwnVideosRow->postThumbnail)
-                        <?php $image = $userOwnVideosRow->postThumbnail; ?>
                         @else
                         <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
                         @endif

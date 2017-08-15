@@ -52,10 +52,8 @@ $privacyText = $pageSettings->privacyText != '' ? $pageSettings->privacyText : '
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($mostLikedVidRow->postId))}}">
                                 <?php $image = ''; ?>
-                                @if ($mostLikedVidRow->postThumbnail && !$mostLikedVidRow->isScrapped)
+                                @if ($mostLikedVidRow->postThumbnail)
                                 <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail; ?>
-                                @elseif($mostLikedVidRow->postThumbnail)
-                                <?php $image = $mostLikedVidRow->postThumbnail; ?>
                                 @else
                                 <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
                                 @endif

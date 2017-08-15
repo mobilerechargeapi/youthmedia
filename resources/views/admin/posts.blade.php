@@ -27,10 +27,8 @@
                     <td>{{ $postRow->categoryName }}</td>
                     <td>{!! $postRow->post !!}</td>
                     <td>
-                        @if ($postRow->postThumbnail && !$postRow->isScrapped)
+                        @if ($postRow->postThumbnail)
                         <img src="{{ asset('assets/images/posts') }}/{{ $postRow->postThumbnail }}" width="100" height="100">
-                        @elseif($postRow->postThumbnail)
-                        <img src="{{ $postRow->postThumbnail }}" width="100" height="100">
                         @endif
                     </td>
                     <td>{{ $postRow->postTags }}</td>

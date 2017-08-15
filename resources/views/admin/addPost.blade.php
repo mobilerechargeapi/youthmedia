@@ -123,13 +123,9 @@
                         <div class="col-md-9">
                             <input class="form-control" type="file" name="postThumbnail" id="postThumbnail">
                         </div>
-                        @if ($postThumbnail != '' && !$isScrapped)
+                        @if ($postThumbnail != '')
                         <div class="col-md-offset-3 col-md-6">
                             <img src="{{ asset('assets/images/posts') }}/{{ $postThumbnail }}" alt="Image Not Found" width="100" height="80"> 
-                        </div>
-                        @elseif($postThumbnail != '')
-                        <div class="col-md-offset-3 col-md-6">
-                            <img src="{{ $postThumbnail }}" alt="Image Not Found" width="100" height="80"> 
                         </div>
                         @elseif($postThumbnail == '' && $websiteId == 3 && $postId != 'add' && $isScrapped == 0 && $postText != '')
                         <?php

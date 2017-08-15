@@ -239,10 +239,8 @@
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($mostLikedVidRow->postId))}}">
                                 <?php $image = ''; ?>
-                                @if ($mostLikedVidRow->postThumbnail && !$mostLikedVidRow->isScrapped)
+                                @if ($mostLikedVidRow->postThumbnail)
                                 <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail; ?>
-                                @elseif($mostLikedVidRow->postThumbnail)
-                                <?php $image = $mostLikedVidRow->postThumbnail; ?>
                                 @else
                                 <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
                                 @endif
@@ -298,10 +296,8 @@
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}">
                                 <?php $image = ''; ?>
-                                @if ($recentUploadRow->postThumbnail && !$recentUploadRow->isScrapped)
+                                @if ($recentUploadRow->postThumbnail)
                                 <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail; ?>
-                                @elseif($recentUploadRow->postThumbnail)
-                                <?php $image = $recentUploadRow->postThumbnail; ?>
                                 @else
                                 <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
                                 @endif

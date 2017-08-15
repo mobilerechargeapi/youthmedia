@@ -27,10 +27,8 @@
                                 @foreach ($sliderVid as $sliderVidRow)
                                 <li role="presentation" class="{{$activeClass}}">
                                     <a onclick="reloadPostIframe('<?php echo $sliderVidRow->post ?>','<?php echo $sliderVidRow->postId ?>')" href="#{{ $sliderVidRow->postId }}" aria-controls="{{ $sliderVidRow->postId }}" role="tab" data-toggle="tab">
-                                        @if ($sliderVidRow->postThumbnail && !$sliderVidRow->isScrapped)
+                                        @if ($sliderVidRow->postThumbnail)
                                         <img src="{{ asset('assets/images/posts') }}/{{ $sliderVidRow->postThumbnail }}" alt="{{$sliderVidRow->postTitle}}" class="img-responsive">
-                                        @elseif($sliderVidRow->postThumbnail)
-                                        <img src="{{ $sliderVidRow->postThumbnail }}" alt="{{$sliderVidRow->postTitle}}" class="img-responsive">
                                         @else
                                         <img src="{{ asset('frontend/images/slider/1.jpg') }}" alt="{{$sliderVidRow->postTitle}}" class="img-responsive">
                                         @endif
@@ -64,10 +62,8 @@
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($mostLikedVidRow->postId))}}">
                                 <?php $image = ''; ?>
-                                @if ($mostLikedVidRow->postThumbnail && !$mostLikedVidRow->isScrapped)
+                                @if ($mostLikedVidRow->postThumbnail)
                                 <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail; ?>
-                                @elseif($mostLikedVidRow->postThumbnail)
-                                <?php $image = $mostLikedVidRow->postThumbnail; ?>
                                 @else
                                 <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
                                 @endif
@@ -128,10 +124,8 @@
                     <div class="video-img">
                         <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}">
                             <?php $image = ''; ?>
-                            @if ($recentUploadRow->postThumbnail && !$recentUploadRow->isScrapped)
+                            @if ($recentUploadRow->postThumbnail)
                             <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail; ?>
-                            @elseif($recentUploadRow->postThumbnail)
-                            <?php $image = $recentUploadRow->postThumbnail; ?>
                             @else
                             <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
                             @endif
@@ -314,10 +308,8 @@
                     <div class="video-img">
                         <a href="{{url('video/'.base64_encode($trendingVideosRow->postId))}}">
                             <?php $image = ''; ?>
-                            @if ($trendingVideosRow->postThumbnail && !$trendingVideosRow->isScrapped)
+                            @if ($trendingVideosRow->postThumbnail)
                             <?php $image = asset('assets/images/posts') . '/' . $trendingVideosRow->postThumbnail; ?>
-                            @elseif($trendingVideosRow->postThumbnail)
-                            <?php $image = $trendingVideosRow->postThumbnail; ?>
                             @else
                             <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
                             @endif
