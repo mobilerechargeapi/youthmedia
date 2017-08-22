@@ -26,4 +26,16 @@ class SubscriptionRequest extends FormRequest {
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages() {
+        return [
+            'email.required' => 'Please Add Your Email Address!',
+            'email.email' => 'Please Enter Valid Email Address!'
+        ];
+    }
+
 }

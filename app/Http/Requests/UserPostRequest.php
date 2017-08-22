@@ -23,7 +23,21 @@ class UserPostRequest extends FormRequest {
     public function rules() {
         return [
             'postTitle' => 'required',
-            'categoryId' => 'required'
+            'categoryId' => 'required',
+            'uploadVideo' => 'required'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages() {
+        return [
+            'postTitle.required' => 'Please Add Video Title!',
+            'categoryId.required' => 'Please Select Category!',
+            'uploadVideo.required' => 'Please Upload mp4 Video File!'
         ];
     }
 

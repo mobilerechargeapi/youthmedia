@@ -18,7 +18,7 @@ class VideoController extends Controller {
         
     }
 
-    public function uploadVideo(Request $request) {
+    public function uploadVideo(UserPostRequest $request) {
         $userId = 4;
         $userMsg = '';
         if ($user = Auth::user()) {

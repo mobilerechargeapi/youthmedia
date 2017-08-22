@@ -139,7 +139,7 @@
                                                 <button class="btn btn-sm btn-default close-btn" data-dismiss="modal">&times;</button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ URL::route('uploadVideo') }}" method="post" class="upload-form" enctype="multipart/form-data">
+                                                <form action="{{ URL::route('uploadVideo') }}" method="post" class="upload-form upload-video-form" enctype="multipart/form-data">
                                                     {{ csrf_field() }}
                                                     <div class="form-group">
                                                         <label for="video_title">Video Title *</label>
@@ -159,7 +159,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="upload_file" class="custom-file-upload">Select Your File *
-                                                            <input required="" type="file" name="uploadVideo" id="upload_file">
+                                                            <input required="" type="file" name="uploadVideo" id="upload_file" class="required" accept="image/*,audio/*">
                                                         </label>
                                                     </div>
                                                     <div class="form-group">
@@ -210,7 +210,7 @@
                                                 <button data-dismiss="modal" class="btn btn-sm btn-default close-btn">&times;</button>
                                             </div>
                                             <div class="modal-body">
-                                                <form enctype="multipart/form-data" action="{{ route('register') }}" method="post" class="upload-form">
+                                                <form enctype="multipart/form-data" action="{{ route('register') }}" method="post" class="upload-form register-form">
                                                     {{ csrf_field() }}
                                                     <div class="form-group">
                                                         <label for="name">Name : *</label>
@@ -245,7 +245,7 @@
                                                 <button data-dismiss="modal" class="btn btn-sm btn-default close-btn">&times;</button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('password.email') }}" method="post" class="upload-form">
+                                                <form action="{{ route('password.email') }}" method="post" class="upload-form forgot-form">
                                                     {{ csrf_field() }}
                                                     <div class="form-group">
                                                         <label for="email">Email : *</label>
@@ -501,6 +501,42 @@
         <!-- Main JS -->
         <script src="<?php echo asset('frontend/js/main.js') ?>"></script>
 
+        <!-- Form Validation JS -->
+        <script src="<?php echo asset('frontend/js/jquery.validate.min.js') ?>"></script>
+        <script src="<?php echo asset('frontend/js/additional-methods.min.js') ?>"></script>
+        <script>
+                                                    $(document).ready(function () {
+                                                        $(".upload-video-form").validate({
+                                                            rules: {
+                                                                postTitle: {
+                                                                    required: true
+                                                                },
+                                                                categoryId: {
+                                                                    required: true
+                                                                },
+                                                                upload_file: {
+                                                                    required: true
+                                                                }
+                                                            },
+                                                            messages: {
+                                                                postTitle: {
+                                                                    required: 'Please Add Video Title!'
+                                                                },
+                                                                categoryId: {
+                                                                    required: 'Please Select Category!'
+                                                                },
+                                                                upload_file: {
+                                                                    required: 'Please Upload mp4 Video File!'
+                                                                },
+                                                            }
+                                                        });
+                                                        $(".login-form").validate();
+                                                        $(".register-form").validate();
+                                                        $(".forgot-form").validate();
+                                                        $(".subscribe-form").validate();
+                                                    });
+        </script>
+        <script src="<?php echo asset('frontend/js/main.js') ?>"></script>
 
         <!-- Custom JS -->
         <script src="<?php echo asset('js/custom.js') ?>" type="text/javascript"></script>
