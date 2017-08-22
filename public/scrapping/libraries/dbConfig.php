@@ -6,6 +6,12 @@
  * and open the template in the editor.
  */
 
+//live
+//$servername = "localhost";
+//$username = "youthmedia";
+//$password = "youthmedia100";
+//$dbname = "youthmedia";
+//local
 $servername = "localhost";
 $username = "root";
 $password = "";
