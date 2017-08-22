@@ -39,7 +39,7 @@ $locLat = $pageSettings->locLat != '' ? $pageSettings->locLat : '';
                 <div class="row">
                     <div class="contact-form">
                         @include('admin.layouts.errorView')
-                        <form id="contactForm" method="POST" action="{{ URL::route('contactApplication') }}">
+                        <form id="contactForm" class="user-contact-form" method="POST" action="{{ URL::route('contactApplication') }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="sendTo" value="{{ $sendTo }}">
                             <div class="col-md-6">

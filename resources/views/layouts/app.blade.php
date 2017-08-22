@@ -534,6 +534,7 @@
                                                         $(".register-form").validate();
                                                         $(".forgot-form").validate();
                                                         $(".subscribe-form").validate();
+                                                        $(".user-contact-form").validate();
                                                     });
         </script>
         <script src="<?php echo asset('frontend/js/main.js') ?>"></script>
