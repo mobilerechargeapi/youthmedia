@@ -159,7 +159,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="upload_file" class="custom-file-upload">Select Your File *
-                                                            <input required="" type="file" name="uploadVideo" id="upload_file" class="required" accept="image/*,audio/*">
+                                                            <input required="" type="file" name="uploadVideo" id="upload_file" class="required" accept="video/*">
                                                         </label>
                                                     </div>
                                                     <div class="form-group">
