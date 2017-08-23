@@ -29,4 +29,20 @@ class UsersRequest extends FormRequest {
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages() {
+        return [
+            'name.required' => 'Please Enter Name!',
+            'email.required' => 'Please Enter Email!',
+            'email.email' => 'Please Enter Valid Email!',
+            'email.unique' => 'User With This Email Already Exist!',
+            'password.required' => 'Please Enter Password!',
+            'password.min' => 'Password Strength Is Weak!',
+        ];
+    }
+
 }

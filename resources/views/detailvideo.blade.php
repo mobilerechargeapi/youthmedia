@@ -181,7 +181,8 @@
                                         $email = $user['attributes']['email'];
                                     }
                                     ?>
-                                    <form action="{{ URL::route('postComment') }}" method="post">
+                                    @include('admin.layouts.videoErrorView')
+                                    <form class="comments-form" action="{{ URL::route('postComment') }}" method="post">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="postId" value="{{$post[0]->postId}}">
                                         <input type="hidden" name="parent" id="parent" value="0">
@@ -198,12 +199,12 @@
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <input class="form-control" name="website" placeholder="Website" type="text">
+                                                    <input class="form-control" name="website" placeholder="Website" type="text" value="{{ old('website') }}">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <textarea rows="5" class="form-control" name="comment" placeholder="Comment *" required></textarea>
+                                                    <textarea rows="5" class="form-control" name="comment" placeholder="Comment *" required>{{ old('comment') }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">

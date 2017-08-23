@@ -27,4 +27,16 @@ class CommentRequest extends FormRequest {
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages() {
+        return [
+            'postId.required' => 'Something Went Wrong Please Try Again!',
+            'comment.required' => 'Please Add Your Comment!'
+        ];
+    }
+
 }

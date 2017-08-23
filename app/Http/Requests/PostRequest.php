@@ -28,4 +28,17 @@ class PostRequest extends FormRequest {
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages() {
+        return [
+            'postTitle.required' => 'Please Enter Post Title!',
+            'websiteId.required' => 'Please Select Website!',
+            'categoryId.required' => 'Please Select Category!'
+        ];
+    }
+
 }
