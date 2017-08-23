@@ -3,7 +3,7 @@
     <head>
         <title>Youth Media</title>
 
-        <link href="<?php echo asset('assets/images/favicon.ico') ?>" rel="Shortcut Icon" type="image/ico"/>
+        <link href="<?php echo asset('assets/images/logo.png') ?>" rel="Shortcut Icon" type="image/ico"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/vendor.css') ?>">

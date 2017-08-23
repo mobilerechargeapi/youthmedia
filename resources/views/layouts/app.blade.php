@@ -15,6 +15,7 @@
         <meta name="description" content="{{ strip_tags($settings['pageDescription']) }}">
         <meta name="author" content="">
         <meta name="keywords" content="{{ $settings['pageKeywords'] }}">
+        <link href="<?php echo asset('assets/images/logo.png') ?>" rel="Shortcut Icon" type="image/ico"/>
 
         <meta property="og:type"          content="website" />
         <meta property="og:description"   content="{{ strip_tags($settings['pageDescription']) }}" />
