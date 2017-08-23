@@ -28,7 +28,7 @@ class PostsController extends Controller {
         $pageSettings = json_decode($page[0]->pageSettings);
         if ($videoType == 'recent-videos') {
             $recentUpload = PostsModel::GetAllRecentUploadPost();
-            $bannerTitle = 'Recent Videos';
+            $bannerTitle = 'Recent Uploaded';
             return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else if ($videoType == 'trending-videos') {

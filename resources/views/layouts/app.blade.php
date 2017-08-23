@@ -307,7 +307,7 @@
                                                             <ul class="mega-list">
                                                                 <li><a href="{{url('popular-videos')}}"><i class="fa fa-home"></i>Popular Videos</a></li>
                                                                 <li><a href="{{url('trending-videos')}}"><i class="fa fa-home"></i>Trending Videos</a></li>
-                                                                <li><a href="{{url('recent-videos')}}"><i class="fa fa-home"></i>Recent Videos</a></li>
+                                                                <li><a href="{{url('recent-videos')}}"><i class="fa fa-home"></i>Recent Uploaded</a></li>
                                                             </ul>
                                                         </li>
                                                         <li><span class="subtitle">Top Users</span> <span class="arrow"></span>
@@ -391,7 +391,7 @@
                                         <ul>
                                             <li><a href="{{url('popular-videos')}}">Popular Videos</a></li>
                                             <li><a href="{{url('trending-videos')}}">Trending Videos</a></li>
-                                            <li><a href="{{url('recent-videos')}}">Recent Videos</a></li>
+                                            <li><a href="{{url('recent-videos')}}">Recent Uploaded</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -287,7 +287,7 @@
                 <div class="popular-videos">
                     <div class="themeix-section-h">
                         <span class="heading-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
-                        <h3>Recent Videos</h3>
+                        <h3>Recent Uploaded</h3>
                     </div>
                     <?php $counter = 0; ?>
                     @foreach ($recentUpload as $recentUploadRow)
