@@ -52,3 +52,20 @@
     height: 3em;
     overflow: hidden;
 }
+
+.custom-alert {
+    position: fixed;
+    left: 50%;
+    z-index: 9999;
+    top: 47px;
+    transform: translateX(-50%);
+    /*display: none;*/
+}
+.custom-alert i{margin-right: 10px;}
+.custom-alert button {
+    font-size: 14px;
+    margin-left: 38px;
+    color: #111;
+    opacity: 1 !important;
+    margin-top: 2px;
+}

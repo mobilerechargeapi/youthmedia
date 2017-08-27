@@ -116,5 +116,17 @@
         });
     });
 
+    function alertsMsg() {
+        $(".custom-alert").show();
+        console.log('working')
+        setTimeout(function () {
+            $(".custom-alert").hide();
+        }, 3000);
+    }
+//    alertsMsg();
+    $(document).on('ready', function () {
+        alertsMsg();
+    });
+   
 
 })(jQuery);
