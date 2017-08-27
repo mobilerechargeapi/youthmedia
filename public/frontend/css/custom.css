@@ -57,7 +57,20 @@
     position: fixed;
     left: 10px;
     z-index: 9999;
-    bottom: 10px;
+    bottom: 5px;
+    min-width: 280px;
+}
+.custom-alert+.custom-alert {
+    bottom: 62px;
+}
+.custom-alert+.custom-alert+.custom-alert {
+    bottom: 119px;
+}
+.custom-alert+.custom-alert+.custom-alert+.custom-alert {
+    bottom: 176px;
+}
+.custom-alert+.custom-alert+.custom-alert+.custom-alert+.custom-alert {
+    bottom: 233px;
 }
 .custom-alert i{margin-right: 10px;}
 .custom-alert button {
