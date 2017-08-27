@@ -23,7 +23,8 @@ class CommentRequest extends FormRequest {
     public function rules() {
         return [
             'postId' => 'required',
-            'comment' => 'required'
+            'comment' => 'required',
+            'website' => 'required'
         ];
     }
 
@@ -35,7 +36,8 @@ class CommentRequest extends FormRequest {
     public function messages() {
         return [
             'postId.required' => 'Something Went Wrong Please Try Again!',
-            'comment.required' => 'Please Add Your Comment!'
+            'comment.required' => 'Please Add Your Comment!',
+            'website.required' => 'Please Add Your website!'
         ];
     }
 
