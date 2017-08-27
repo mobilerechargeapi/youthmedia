@@ -22,6 +22,7 @@ class CommentRequest extends FormRequest {
      */
     public function rules() {
         return [
+            'name' => 'required',
             'postId' => 'required',
             'comment' => 'required',
             'website' => 'required'
@@ -37,7 +38,8 @@ class CommentRequest extends FormRequest {
         return [
             'postId.required' => 'Something Went Wrong Please Try Again!',
             'comment.required' => 'Please Add Your Comment!',
-            'website.required' => 'Please Add Your website!'
+            'website.required' => 'Please Add Your website!',
+            'name.required' => 'Please Add Your name!'
         ];
     }
 

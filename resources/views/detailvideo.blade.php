@@ -188,7 +188,7 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
-                                                    <input readonly="" class="form-control" name="name" placeholder="Name *" type="text" required value="{{$name}}">
+                                                    <input class="form-control" name="name" placeholder="Name *" type="text" value="{{$name}}">
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">

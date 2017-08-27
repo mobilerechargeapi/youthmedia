@@ -31,7 +31,7 @@
                 </div>
                 <div class="row">
                     <div class="contact-form">
-                        @include('admin.layouts.errorView')
+                        @include('admin.layouts.videoErrorView')
                         <form class="upload-form" enctype="multipart/form-data" method="POST" action="{{ URL::route('userSettings') }}">
                             {{ csrf_field() }}
                             <div class="col-md-6">

@@ -259,7 +259,7 @@
                             $userEmail = $user['attributes']['email'];
                         }
                         ?>
-                        @include('admin.layouts.errorView')
+                        @include('admin.layouts.videoErrorView')
                         <form action="{{ URL::route('subscription') }}" method="post" class="subscribe-form">
                             {{ csrf_field() }}
                             <div class="form-group">

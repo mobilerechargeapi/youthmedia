@@ -117,16 +117,25 @@
     });
 
     function alertsMsg() {
-        $(".custom-alert").show();
-        console.log('working')
-        setTimeout(function () {
-            $(".custom-alert").hide();
-        }, 6000);
+        var i;
+        for (i = 1; i < 10; i++) {
+            if ($(".custom-alert-" + i).length > 0 && i > 1) {
+                $(".custom-alert-" + i).show();
+                setTimeout(function () {
+                    $(".custom-alert-" + i).hide();
+                }, 10000);
+            } else if (i == 1){
+                $(".custom-alert-1").show();
+                setTimeout(function () {
+                    $(".custom-alert-1").hide();
+                }, 10000);
+            }
+        }
     }
 //    alertsMsg();
     $(document).on('ready', function () {
         alertsMsg();
     });
-   
+
 
 })(jQuery);

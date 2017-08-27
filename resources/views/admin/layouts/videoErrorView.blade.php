@@ -9,6 +9,14 @@
                 </button>
             </div>
             @endif
+            @if(Session::has('message'))
+            <div class="alert custom-alert alert-success" style="display: none;" role="alert"> 
+                <i class="glyphicon glyphicon-ok"></i> {!! session('message') !!}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+            @endif
             @if(Session::has('error_message'))
             <div class="alert custom-alert alert-danger" style="display: none;" role="alert"> 
                 <i class="glyphicon glyphicon-warning-sign"></i> {!! session('error_message') !!}
@@ -18,13 +26,15 @@
             </div>
             @endif
             @if (isset($errors) && count($errors) > 0)
+            <?php $classCounter = 1; ?>
             @foreach ($errors->all() as $error)
-            <div class="alert custom-alert alert-danger" style="display: none;" role="alert"> 
+            <div class="alert custom-alert custom-alert-{{$classCounter}} alert-danger" style="display: none;" role="alert"> 
                 <i class="glyphicon glyphicon-warning-sign"></i> {{ $error }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
                 </button>
             </div>
+            <?php $classCounter++; ?>
             @endforeach
             @endif
         </div>
