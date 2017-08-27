@@ -181,7 +181,6 @@
                                         $email = $user['attributes']['email'];
                                     }
                                     ?>
-                                    @include('admin.layouts.videoErrorView')
                                     <form class="comments-form" action="{{ URL::route('postComment') }}" method="post">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="postId" value="{{$post[0]->postId}}">

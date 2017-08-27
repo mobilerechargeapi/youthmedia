@@ -2,19 +2,30 @@
     <div class="row">
         <div class="col-md-12">
             @if(Session::has('videomessage'))
-            <div class="alert alert-success"><em> {!! session('videomessage') !!}</em></div>
+            <div class="alert custom-alert alert-success" style="display: none;" role="alert"> 
+                <i class="glyphicon glyphicon-ok"></i> {!! session('videomessage') !!}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
             @endif
             @if(Session::has('error_message'))
-            <div class="alert alert-danger"><em> {!! session('error_message') !!}</em></div>
+            <div class="alert custom-alert alert-danger" style="display: none;" role="alert"> 
+                <i class="glyphicon glyphicon-warning-sign"></i> {!! session('error_message') !!}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
             @endif
             @if (isset($errors) && count($errors) > 0)
-            <div style="width: 50%; margin-left: 1%; margin-top: 1%;" class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            @foreach ($errors->all() as $error)
+            <div class="alert custom-alert alert-danger" style="display: none;" role="alert"> 
+                <i class="glyphicon glyphicon-warning-sign"></i> {{ $error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+                </button>
             </div>
+            @endforeach
             @endif
         </div>
     </div>

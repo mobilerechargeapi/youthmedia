@@ -285,12 +285,6 @@
             <!-- Navigation area starts -->
             <div class="main-menu">
                 <!-- Start Navigation -->
-                <div class="alert custom-alert alert-success" style="display: none;" role="alert"> 
-                    <i class="glyphicon glyphicon-ok"></i> Your video is uploaded successfully  
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
                 <nav class="header-section pin-style">
                     <div class="container">
                         <div class="mod-menu">
