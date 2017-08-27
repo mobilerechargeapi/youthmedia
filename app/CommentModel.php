@@ -22,7 +22,7 @@ class CommentModel extends Model {
 
     public static function SaveComment($data) {
         return DB::table('comments')->insertGetId(['userId' => $data['userId'], 'postId' => $data['postId'], 'parent' => $data['parent'],
-                    'commentText' => $data['commentText'], 'createdAt' => $data['createdAt']]);
+                    'commentText' => $data['commentText'], 'website' => $data['website'], 'createdAt' => $data['createdAt']]);
     }
 
     public static function GetPostComments($data) {

@@ -23,6 +23,7 @@ class CommentsController extends Controller {
             'postId' => $request->postId,
             'parent' => $request->parent,
             'commentText' => $request->comment,
+            'website' => $request->website,
             'createdAt' => date("Y-m-d")
         );
         $message = 'Comment Added!';
