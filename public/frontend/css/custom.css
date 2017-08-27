@@ -55,11 +55,9 @@
 
 .custom-alert {
     position: fixed;
-    left: 50%;
+    left: 10px;
     z-index: 9999;
-    top: 47px;
-    transform: translateX(-50%);
-    /*display: none;*/
+    bottom: 10px;
 }
 .custom-alert i{margin-right: 10px;}
 .custom-alert button {

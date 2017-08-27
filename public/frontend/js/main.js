@@ -121,7 +121,7 @@
         console.log('working')
         setTimeout(function () {
             $(".custom-alert").hide();
-        }, 3000);
+        }, 6000);
     }
 //    alertsMsg();
     $(document).on('ready', function () {
