@@ -25,7 +25,7 @@
                 </button>
             </div>
             @endif
-            @if (isset($errors) && count($errors) > 0 && !Session::has('message'))
+            @if (isset($errors) && count($errors) > 0 && !Session::has('message') && !Session::has('videomessage'))
             <?php $classCounter = 1; ?>
             @foreach ($errors->all() as $error)
             <div class="alert custom-alert custom-alert-{{$classCounter}} alert-danger" style="display: none;" role="alert"> 

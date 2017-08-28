@@ -18,10 +18,12 @@ use App\CategoriesModel;
 use App\PostsModel;
 use App\CommentModel;
 use App\LikesSharesModel;
+use App\UserModel;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Dawson\Youtube\Facades\Youtube as Youtube;
+use Mail;
 
 /**
  * Description of PostsController
@@ -122,6 +124,20 @@ class PostsController extends Controller {
             $data['userId'] = $post[0]->userId;
             $message = "Post Updated Successfully";
             PostsModel::UpdatePost($data);
+            //send email to user when post is approved b admin
+            $userData = array(
+                'id' => $post[0]->userId
+            );
+            $userDetails = UserModel::GetSingleUser($userData);
+            if ($userDetails[0]->userRole != 4 && $userDetails[0]->email != '' && $post[0]->postStatus == 0 && $data['postStatus'] == 1) {
+                //send email to user
+                $EmailSubject = "Video Approved";
+                $videoData = array(
+                    'title' => $data['postTitle'],
+                    'url' => url('video/'.base64_encode($data['postId']))
+                );
+                $this->SendEmail($userDetails[0]->email, $EmailSubject, 'emails.videoStatusEmail', $videoData);
+            }
         }
         \Session::flash('message', $message);
         return redirect()->route('posts');
@@ -177,6 +193,17 @@ class PostsController extends Controller {
         } else {
             return '';
         }
+    }
+
+    public function SendEmail($EmailTo, $Subject, $body, $data) {
+        $userEmail = 'umair.malik@purelogics.net';
+        $data = array('data' => $data, 'email' => $EmailTo, 'subject' => $Subject, 'userEmail' => $userEmail);
+        $result = Mail::send($body, $data, function ($message) use ($data) {
+                    $message->from($data['userEmail'], 'Youth Media');
+                    $message->to($data['email']);
+                    $message->subject($data['subject']);
+                });
+        return $result;
     }
 
 }
