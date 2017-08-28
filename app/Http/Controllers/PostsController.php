@@ -140,7 +140,8 @@ class PostsController extends Controller {
             }
         }
         \Session::flash('message', $message);
-        return redirect()->route('posts');
+        return Redirect::back()->withErrors(['message', $message]);
+//        return redirect()->route('posts');
     }
 
     public function deletePost(Request $request) {

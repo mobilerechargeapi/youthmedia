@@ -13,15 +13,6 @@
         Add Post
     </div>
     @include('admin.layouts.errorView')
-    @if (isset($errors) && count($errors) > 0)
-    <div style="width: 50%; margin-left: 1%; margin-top: 1%;" class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
     <?php
     if ($post != '') {
         $postId = $post[0]->postId;
