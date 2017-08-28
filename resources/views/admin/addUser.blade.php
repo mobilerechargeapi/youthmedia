@@ -6,15 +6,6 @@
         Add User
     </div>
     @include('admin.layouts.errorView')
-    @if (isset($errors) && count($errors) > 0)
-    <div style="width: 50%; margin-left: 1%; margin-top: 1%;" class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
     <div class="card-body">
         <form enctype="multipart/form-data" id="addUserForm" class="form form-horizontal" method="POST" action="{{ URL::route('insertUser') }}">
             {{ csrf_field() }}
