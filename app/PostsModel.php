@@ -240,4 +240,12 @@ class PostsModel extends Model {
                         ->get();
     }
 
+    public static function GetUserVideosCount($userId) {
+        return DB::table('posts')
+                        ->select('posts.*')
+                        ->where('posts.postStatus', '=', 1)
+                        ->where('posts.userId', '=', $userId)
+                        ->count();
+    }
+
 }

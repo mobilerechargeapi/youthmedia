@@ -87,8 +87,15 @@
             </div>
             <!-- End Contact Page Video -->
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bluehostix-title wow zoomIn animated">
+                    <h3>Total Uploaded Videos: <span>{{$userOwnVideosCount}}</span></h3>
+                    <span class="heading-border"></span>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
 <!-- End Contact Page -->
 <!-- Start Blog Posts -->

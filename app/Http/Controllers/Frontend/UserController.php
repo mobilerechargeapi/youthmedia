@@ -47,8 +47,9 @@ class UserController extends Controller {
         $userUpload = PostsModel::GetAllUserUploadPost();
         $userOwnVideos = DB::table('posts')->where('posts.postStatus', '=', 1)->where('posts.userId', '=', $this->user['attributes']['id'])
                 ->paginate(12);
+        $userOwnVideosCount = PostsModel::GetUserVideosCount($this->user['attributes']['id']);
         return view('settings')->with('settings', $this->settings)->with('pageSettings', $pageSettings)->with('userUpload', $userUpload)
-                        ->with('userOwnVideos', $userOwnVideos);
+                        ->with('userOwnVideos', $userOwnVideos)->with('userOwnVideosCount', $userOwnVideosCount);
     }
 
     public function userSettings(Request $request) {
