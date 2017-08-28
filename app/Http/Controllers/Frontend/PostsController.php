@@ -10,6 +10,7 @@ use App\CommentModel;
 use App\LikesSharesModel;
 use Auth;
 use App\Http\Requests\SearchRequest;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller {
 
@@ -27,17 +28,21 @@ class PostsController extends Controller {
         $page = NavigationModel::GetPageSettings($data);
         $pageSettings = json_decode($page[0]->pageSettings);
         if ($videoType == 'recent-videos') {
-            $recentUpload = PostsModel::GetAllRecentUploadPost();
+            $recentUpload = DB::table('posts')->leftJoin('users', 'users.id', '=', 'posts.userId')->select('posts.*', 'users.userRole')
+                            ->where('posts.postStatus', '=', 1)->where('users.userRole', '!=', 4)->orderBy('posts.createdOn', 'desc')->paginate(12);
             $bannerTitle = 'Recent Uploaded';
             return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else if ($videoType == 'trending-videos') {
-            $recentUpload = PostsModel::GetAllTrendingPost();
+            $recentUpload = DB::table('posts')->select('posts.*')->where('posts.postStatus', '=', 1)->where('posts.postViewed', '>', 30)
+                            ->orderBy('posts.createdOn', 'desc')->orderBy('posts.postViewed', 'desc')->paginate(12);
             $bannerTitle = 'Trending Videos';
             return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);
         } else if ($videoType == 'popular-videos') {
-            $recentUpload = PostsModel::GetAllMostLikedPost();
+            $recentUpload = DB::table('posts')->leftJoin('likes_shares', 'likes_shares.postId', '=', 'posts.postId')->select('posts.*', DB::raw('COUNT(`likes_shares`.`postId`) AS videoLikeCount'))
+                            ->where('posts.postStatus', '=', 1)->where('likes_shares.liked', '=', 1)->groupBy('posts.postId')
+                            ->orderBy('videoLikeCount', 'desc')->paginate(12);
             $bannerTitle = 'Popular Videos';
             return view('showallvideos')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)
                             ->with('recentUpload', $recentUpload)->with('bannerTitle', $bannerTitle);

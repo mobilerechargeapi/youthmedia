@@ -94,16 +94,6 @@ class PostsModel extends Model {
                         ->get();
     }
 
-    public static function GetAllRecentUploadPost() {
-        return DB::table('posts')
-                        ->leftJoin('users', 'users.id', '=', 'posts.userId')
-                        ->select('posts.*', 'users.userRole')
-                        ->where('posts.postStatus', '=', 1)
-                        ->where('users.userRole', '!=', 4)
-                        ->orderBy('posts.createdOn', 'desc')
-                        ->get();
-    }
-
     public static function GetAllUserUploadPost() {
         return DB::table('posts')
                         ->leftJoin('users', 'users.id', '=', 'posts.userId')
@@ -161,16 +151,6 @@ class PostsModel extends Model {
                         ->get();
     }
 
-    public static function GetAllTrendingPost() {
-        return DB::table('posts')
-                        ->select('posts.*')
-                        ->where('posts.postStatus', '=', 1)
-                        ->where('posts.postViewed', '>', 30)
-                        ->orderBy('posts.createdOn', 'desc')
-                        ->orderBy('posts.postViewed', 'desc')
-                        ->get();
-    }
-
     public static function UpdateVideoView($data) {
         DB::table('posts')->where('postId', $data['postId'])->update(['postViewed' => $data['postViewed']]);
     }
@@ -200,17 +180,6 @@ class PostsModel extends Model {
                         ->where('posts.postStatus', '=', 1)
                         ->where('likes_shares.liked', '=', 1)
                         ->take(8)
-                        ->groupBy('posts.postId')
-                        ->orderBy('videoLikeCount', 'desc')
-                        ->get();
-    }
-
-    public static function GetAllMostLikedPost() {
-        return DB::table('posts')
-                        ->leftJoin('likes_shares', 'likes_shares.postId', '=', 'posts.postId')
-                        ->select('posts.*', DB::raw('COUNT(`likes_shares`.`postId`) AS videoLikeCount'))
-                        ->where('posts.postStatus', '=', 1)
-                        ->where('likes_shares.liked', '=', 1)
                         ->groupBy('posts.postId')
                         ->orderBy('videoLikeCount', 'desc')
                         ->get();

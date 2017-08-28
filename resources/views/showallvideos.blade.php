@@ -234,6 +234,13 @@
             </div>
             @endforeach
         </div>
+        <!-- Start Pagination -->
+        <div class="posts-pagination">
+            <ul class="pagination">
+                @include('pagination', ['paginator' => $recentUpload])
+            </ul>
+        </div>
+        <!-- End Pagination -->
     </div>
 </div>
 <!-- End Wide Video Section -->
