@@ -2,21 +2,21 @@
 <html>
     <head>
         <title>Youth Media</title>
-        <link href="<?php echo asset('assets/images/favicon.ico') ?>" rel="Shortcut Icon" type="image/ico"/>
+        <link href="{{ asset('assets/images/logo.png') }}" rel="Shortcut Icon" type="image/ico"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/vendor.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/flat-admin.css') ?>">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flat-admin.css') }}">
 
         <!-- Theme -->
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/blue-sky.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/blue.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/red.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/yellow.css') ?>">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/blue-sky.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/blue.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/red.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/yellow.css') }}">
         <!-- Custome Design -->
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('css/style.css') ?>">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     </head>
     <body>
         <div class="app app-default">
@@ -77,8 +77,8 @@
 
         </div>
 
-        <script type="text/javascript" src="<?php echo asset('assets/js/vendor.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('assets/js/app.js') ?>"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/vendor.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
         <script>
 $(document).ready(function () {
     $('#loginBtn').click(function () {

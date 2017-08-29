@@ -3,22 +3,22 @@
     <head>
         <title>Youth Media</title>
 
-        <link href="<?php echo asset('assets/images/logo.png') ?>" rel="Shortcut Icon" type="image/ico"/>
+        <link href="{{ asset('assets/images/logo.png') }}" rel="Shortcut Icon" type="image/ico"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/vendor.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/flat-admin.css') ?>">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flat-admin.css') }}">
 
         <!-- Theme -->
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/blue-sky.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/blue.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/red.css') ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('assets/css/theme/yellow.css') ?>">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/blue-sky.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/blue.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/red.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme/yellow.css') }}">
         <!-- Custome Design -->
-        <link rel="stylesheet" type="text/css" href="<?php echo asset('css/style.css') ?>">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
         <!-- Custome JS -->
-        <script src="<?php echo asset('js/jquery-1.9.1.min.js') ?>" type="text/javascript"></script>
-        <script src="<?php echo asset('js/custom.js') ?>" type="text/javascript"></script>
+        <script src="{{ asset('js/jquery-1.9.1.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
     </head>
     <body>
         <div class="app app-default">
@@ -198,12 +198,11 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="<?php echo asset('assets/js/vendor.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('assets/js/app.js') ?>"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/vendor.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
         <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('js/colorpicker/css/colorpicker.css') }}" />
         <script type="text/javascript" src="{{ asset('js/colorpicker/js/colorpicker.js') }}"></script>
-        <link rel="stylesheet" href="<?php echo asset('css/jquery-ui.css') ?>"/>
-        <script src="<?php echo asset('js/jquery-ui.js') ?>"></script>
-
+        <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}"/>
+        <script src="{{ asset('js/jquery-ui.js') }}"></script>
     </body>
 </html>

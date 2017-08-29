@@ -15,7 +15,7 @@
         <meta name="description" content="{{ strip_tags($settings['pageDescription']) }}">
         <meta name="author" content="">
         <meta name="keywords" content="{{ $settings['pageKeywords'] }}">
-        <link href="<?php echo asset('assets/images/logo.png') ?>" rel="Shortcut Icon" type="image/ico"/>
+        <link href="{{ asset('assets/images/logo.png') }}" rel="Shortcut Icon" type="image/ico"/>
 
         <meta property="og:type"          content="website" />
         <meta property="og:description"   content="{{ strip_tags($settings['pageDescription']) }}" />
@@ -45,34 +45,34 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/bootstrap.min.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
 
         <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/font-awesome.min.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
 
         <!-- Slider CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/pgwslider.min.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/pgwslider.min.css') }}">
 
         <!-- Owl Carousel CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/owl.carousel.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css') }}">
 
         <!-- pgwSlideshow CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/pgwslideshow.min.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/pgwslideshow.min.css') }}">
 
         <!-- Megamenu CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/megamenu.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/megamenu.css') }}">
 
         <!-- Main CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/style.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
 
         <!-- Responsive CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/responsive.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
 
         <!-- Demo Panel Style -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/demo-panels.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/demo-panels.css') }}">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="<?php echo asset('frontend/css/custom.css') ?>">
+        <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
     </head>
 
     <body id=test>
@@ -466,28 +466,28 @@
 
 
         <!-- jQuery -->
-        <script src="<?php echo asset('frontend/js/jquery-1.12.4.min.js') ?>"></script>
+        <script src="{{ asset('frontend/js/jquery-1.12.4.min.js') }}"></script>
 
         <!-- jQuery Easing -->
-        <script src="<?php echo asset('frontend/js/jquery.easing.js') ?>"></script>
+        <script src="{{ asset('frontend/js/jquery.easing.js') }}"></script>
 
         <!-- Bootstrap JS -->
-        <script src="<?php echo asset('frontend/js/bootstrap.min.js') ?>"></script>
+        <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 
         <!-- pgwSlideshow JS -->
-        <script src="<?php echo asset('frontend/js/pgwslideshow.min.js') ?>"></script>
+        <script src="{{ asset('frontend/js/pgwslideshow.min.js') }}"></script>
 
         <!-- Slider JS -->
-        <script src="<?php echo asset('frontend/js/pgwslider.min.js') ?>"></script>
+        <script src="{{ asset('frontend/js/pgwslider.min.js') }}"></script>
 
         <!-- Owl Carousel JS -->
-        <script src="<?php echo asset('frontend/js/owl.carousel.min.js') ?>"></script>
+        <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
 
         <!-- lazyload JS -->
-        <script src="<?php echo asset('frontend/js/jquery.lazyload.js') ?>"></script>
+        <script src="{{ asset('frontend/js/jquery.lazyload.js') }}"></script>
 
         <!-- Mega Menu JS -->
-        <script src="<?php echo asset('frontend/js/megamenu.js') ?>"></script>
+        <script src="{{ asset('frontend/js/megamenu.js') }}"></script>
 
         <!-- Js Color -->
         <!--<script src="<?php echo asset('frontend/js/jscolor.min.js') ?>"></script>-->
@@ -500,11 +500,11 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnh74UN6BKgq9U5fMNGhdZOSpmM_QnZqs"></script>
 
         <!-- Main JS -->
-        <script src="<?php echo asset('frontend/js/main.js') ?>"></script>
+        <script src="{{ asset('frontend/js/main.js') }}"></script>
 
         <!-- Form Validation JS -->
-        <script src="<?php echo asset('frontend/js/jquery.validate.min.js') ?>"></script>
-        <script src="<?php echo asset('frontend/js/additional-methods.min.js') ?>"></script>
+        <script src="{{ asset('frontend/js/jquery.validate.min.js') }}"></script>
+        <script src="{{ asset('frontend/js/additional-methods.min.js') }}"></script>
         <script>
                                                     $(document).ready(function () {
                                                         $(".upload-video-form").validate({
@@ -539,10 +539,10 @@
                                                         $(".comments-form").validate();
                                                     });
         </script>
-        <script src="<?php echo asset('frontend/js/main.js') ?>"></script>
+        <script src="{{ asset('frontend/js/main.js') }}"></script>
 
         <!-- Custom JS -->
-        <script src="<?php echo asset('js/custom.js') ?>" type="text/javascript"></script>
+        <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
         @if(isset($post[0]->postId))
         <script>
                                                     if ($("#detail-video-post").length > 0) {
