@@ -11,7 +11,7 @@
             <div style="font-family:Arial, Helvetica, sans-serif; font-style: normal; font-weight: normal; font-size: 13px; vertical-align: top; text-align: left; background-color:#FFFFFF; width: 700px; ">
                 <h1>Congratulation!</h1>
                 <p>
-                    You video {{ $data['title'] }} is now approved. You can view it at <a href="{{ $data['url'] }}">{{ $data['title'] }}</a>. 
+                    You video <b>{{ $data['title'] }}</b> is now approved. You can view it at <a href="{{ $data['url'] }}">{{ $data['title'] }}</a>. 
                 </p>
                 <table id="tblMain" width="700" style="" border="0" cellspacing="0"> 
                     <tr>
