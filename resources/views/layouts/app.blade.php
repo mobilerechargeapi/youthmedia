@@ -24,11 +24,11 @@
         <meta name="twitter:site" content="@YouthMedia" />
         <meta name="twitter:description" content="{{ strip_tags($settings['pageDescription']) }}" />
         @if (!isset($facebookSetting))
-        <meta property="og:title"         content="Youth Media" />
-        <meta property="og:url"           content="http://localhost/youthmedia/public/" />
+        <meta property="og:title"         content="{{ $settings['generalSettings'][0]->webTitle }}" />
+        <meta property="og:url"           content="{{ url('/') }}" />
         <meta property="og:image"         content="{{ asset('frontend/images/logo.png') }}" />
 
-        <meta name="twitter:title" content="Youth Media" />
+        <meta name="twitter:title" content="{{ $settings['generalSettings'][0]->webTitle }}" />
         <meta name="twitter:image" content="{{ asset('frontend/images/logo.png') }}" />
         @else
         <meta property="og:title"         content="{{ $facebookSetting['title'] }}" />
