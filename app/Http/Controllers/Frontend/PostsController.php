@@ -93,7 +93,7 @@ class PostsController extends Controller {
             }
             $facebookSetting = array(
                 'title' => $post[0]->postTitle,
-                'url' => 'http://localhost/youthmedia/public/video/' . $postId,
+                'url' => url("video") . '/' . $postId,
                 'image' => $image
             );
             return view('detailvideo')->with('pageSettings', $pageSettings)->with('settings', $this->settings)->with('pageSettings', $pageSettings)

@@ -1,6 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+    window.fbAsyncInit = function() {
+    FB.init({
+    appId: '1849371805390659',
+            xfbml: true,
+            version: 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+    };
+    (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    function shareFunction(postId) {
+    FB.ui({
+    method: 'share',
+            mobile_iframe: true,
+            href: '{{url("video/")}}' + postId,
+    }, function (response) {});
+    }
+</script>
 <!-- Start Page Banner -->
 <div class="page-banner-area">
     <div class="container">
@@ -106,7 +130,7 @@
                             <h4>Share On</h4>
                             <ul class="social-share">
                                 <li class="twitter-bg"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li class="facebook-bg"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="facebook-bg"><a onclick="shareFunction('{{ base64_encode($post[0]->postId) }}')" href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
                                 <li class="google-bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
