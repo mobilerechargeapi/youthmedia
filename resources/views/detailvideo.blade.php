@@ -158,7 +158,7 @@
                                             </h5>
                                             <span class="comment-date">Posted on {{date('F d, Y', strtotime($commentsRow->createdAt))}}</span>
                                             <p>{{$commentsRow->commentText}}</p>
-                                            <a onclick="setCommentParent(<?php echo $commentsRow->commentId ?>);" href="javascript:void(0);" class="comment-reply">Reply</a>
+                                            <a onclick="setCommentParent({{ $commentsRow->commentId }});" href="javascript:void(0);" class="comment-reply">Reply</a>
                                         </div>
                                     </div>
                                 </li>
@@ -172,7 +172,7 @@
                                             </h5>
                                             <span class="comment-date">Posted on {{date('F d, Y', strtotime($commentsRow->createdAt))}}</span>
                                             <p>{{$commentsRow->commentText}}</p>
-                                            <a onclick="setCommentParent(<?php echo $commentsRow->parent ?>);" href="javascript:void(0);" class="comment-reply">Reply</a>
+                                            <a onclick="setCommentParent({{ $commentsRow->parent }});" href="javascript:void(0);" class="comment-reply">Reply</a>
                                         </div>
                                     </div>
                                 </li>
