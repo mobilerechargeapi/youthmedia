@@ -5,6 +5,12 @@
 $pageTitle = $pageSettings->pageTitle != '' ? $pageSettings->pageTitle : 'Privacy Policy';
 $privacyText = $pageSettings->privacyText != '' ? $pageSettings->privacyText : '';
 ?>
+<style>
+    ul {
+        list-style: square;
+        margin-left: 15px;
+    }
+</style>
 <!-- Start Page Banner -->
 <div class="page-banner-area-3">
     <div class="container">
