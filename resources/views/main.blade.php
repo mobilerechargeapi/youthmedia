@@ -12,18 +12,18 @@
                     <div class="row">
                         <div class="col-sm-9">
                             <div class="tab-content">
-                                <?php $activeClass = 'active'; ?>
+                                <?php $activeClass = 'active';?>
                                 @foreach ($sliderVid as $sliderVidRow)
                                 <div role="tabpanel" class="framediv tab-pane {{$activeClass}}" id="{{ $sliderVidRow->postId }}">
                                     <iframe width="100%" height="580" src="{{ $sliderVidRow->post }}" frameborder="0" allowfullscreen></iframe>
                                 </div>
-                                <?php $activeClass = ''; ?>
+                                <?php $activeClass = '';?>
                                 @endforeach
                             </div>
-                        </div>  
+                        </div>
                         <div class="col-sm-3">
                             <ul class="nav nav-tabs" role="tablist">
-                                <?php $activeClass = 'active'; ?>
+                                <?php $activeClass = 'active';?>
                                 @foreach ($sliderVid as $sliderVidRow)
                                 <li role="presentation" class="{{$activeClass}}">
                                     <a onclick="reloadPostIframe('<?php echo $sliderVidRow->post ?>','<?php echo $sliderVidRow->postId ?>')" href="#{{ $sliderVidRow->postId }}" aria-controls="{{ $sliderVidRow->postId }}" role="tab" data-toggle="tab">
@@ -35,7 +35,7 @@
                                         <span>{{$sliderVidRow->postTitle}}</span>
                                     </a>
                                 </li>
-                                <?php $activeClass = ''; ?>
+                                <?php $activeClass = '';?>
                                 @endforeach
                             </ul>
                         </div>
@@ -61,11 +61,11 @@
                     <div class="single-video">
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($mostLikedVidRow->postId))}}">
-                                <?php $image = ''; ?>
+                                <?php $image = '';?>
                                 @if ($mostLikedVidRow->postThumbnail)
-                                <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail; ?>
+                                <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail;?>
                                 @else
-                                <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                                <?php $image = asset('frontend/images/thumbnails/6.jpg')?>
                                 @endif
                                 <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$mostLikedVidRow->postTitle}}" />
                                 <noscript>
@@ -104,7 +104,7 @@
         </div>
     </div>
 </div>
-<!-- End Video Carousel -->  
+<!-- End Video Carousel -->
 <!-- Start Wide Video Section -->
 <div class="wide-video-section themeix-ptb bg-info">
     <div class="container">
@@ -112,10 +112,10 @@
             <div class="col-sm-12">
                 <div class="themeix-section-h">
                     <span class="heading-icon"><i class="fa fa-book"></i></span>
-                    <h3>Recent Uploaded</h3> 
+                    <h3>Recent Uploaded</h3>
                     <a href="{{url('recent-videos')}}" class="see-all-link">See all videos</a>
                 </div>
-            </div>   
+            </div>
         </div>
         <div class="row">
             @foreach ($recentUpload as $recentUploadRow)
@@ -123,11 +123,11 @@
                 <div class="single-video">
                     <div class="video-img">
                         <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}">
-                            <?php $image = ''; ?>
+                            <?php $image = '';?>
                             @if ($recentUploadRow->postThumbnail)
-                            <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail; ?>
+                            <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail;?>
                             @else
-                            <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                            <?php $image = asset('frontend/images/thumbnails/6.jpg')?>
                             @endif
                             <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
                             <noscript>
@@ -180,9 +180,9 @@
                         <div class="review-img">
                             <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}">
                                 @if ($userUploadRow->postThumbnail)
-                                <?php $image = asset('assets/images/posts') . '/' . $userUploadRow->postThumbnail; ?>
+                                <?php $image = asset('assets/images/posts') . '/' . $userUploadRow->postThumbnail;?>
                                 @else
-                                <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
+                                <?php $image = asset('frontend/images/thumbnails/41.jpg');?>
                                 @endif
                                 <img width="320px" height="180px" class="lazy" data-src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 <noscript>
@@ -252,13 +252,13 @@
                             <h3>Subscribe now</h3>
                         </div>
                         <?php
-                        $userEmail = '';
-                        $auth = Auth::guard();
-                        if ($auth->check()) {
-                            $user = Auth::user();
-                            $userEmail = $user['attributes']['email'];
-                        }
-                        ?>
+$userEmail = '';
+$auth = Auth::guard();
+if ($auth->check()) {
+	$user = Auth::user();
+	$userEmail = $user['attributes']['email'];
+}
+?>
                         @include('admin.layouts.videoErrorView')
                         <form action="{{ URL::route('subscription') }}" method="post" class="subscribe-form">
                             {{ csrf_field() }}
@@ -307,11 +307,12 @@
                 <div class="single-video">
                     <div class="video-img">
                         <a href="{{url('video/'.base64_encode($trendingVideosRow->postId))}}">
-                            <?php $image = ''; ?>
+                            <?php $image = '';?>
+
                             @if ($trendingVideosRow->postThumbnail)
-                            <?php $image = asset('assets/images/posts') . '/' . $trendingVideosRow->postThumbnail; ?>
+                            <?php $image = asset('assets/images/posts') . '/' . $trendingVideosRow->postThumbnail;?>
                             @else
-                            <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                            <?php $image = asset('frontend/images/thumbnails/6.jpg')?>
                             @endif
                             <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$trendingVideosRow->postTitle}}" />
                             <noscript>

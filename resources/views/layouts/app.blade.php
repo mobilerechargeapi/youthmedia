@@ -4,9 +4,9 @@
     <head>
         <!--google tag manager-->
         {!! $settings['generalSettings'][0]->googleAnalytics !!}
-        <!--Facebook--> 
+        <!--Facebook-->
         {!! $settings['generalSettings'][0]->fbAnalytics !!}
-        <!--Other Analytics--> 
+        <!--Other Analytics-->
         {!! $settings['generalSettings'][0]->otherAnalyticsHead !!}
         <meta charset="UTF-8">
         <meta name="robots" content="all,follow">
@@ -76,16 +76,30 @@
     </head>
 
     <body id=test>
-        <?php
-        $aboutUs = $settings['generalSettings'][0]->aboutUs != '' ? $settings['generalSettings'][0]->aboutUs : '';
-        $contactAddress = $settings['generalSettings'][0]->contactAddress != '' ? $settings['generalSettings'][0]->contactAddress : '';
-        $contactPhoneOne = $settings['generalSettings'][0]->contactPhoneOne != '' ? $settings['generalSettings'][0]->contactPhoneOne : '';
-        $contactPhoneTwo = $settings['generalSettings'][0]->contactPhoneTwo != '' ? $settings['generalSettings'][0]->contactPhoneTwo : '';
-        $contactEmail = $settings['generalSettings'][0]->contactEmail != '' ? $settings['generalSettings'][0]->contactEmail : '';
+     <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
-        $categories = $settings['categories'];
-        $topUsers = $settings['topUsers'];
-        ?>
+
+
+
+        <?php
+$aboutUs = $settings['generalSettings'][0]->aboutUs != '' ? $settings['generalSettings'][0]->aboutUs : '';
+$contactAddress = $settings['generalSettings'][0]->contactAddress != '' ? $settings['generalSettings'][0]->contactAddress : '';
+$contactPhoneOne = $settings['generalSettings'][0]->contactPhoneOne != '' ? $settings['generalSettings'][0]->contactPhoneOne : '';
+$contactPhoneTwo = $settings['generalSettings'][0]->contactPhoneTwo != '' ? $settings['generalSettings'][0]->contactPhoneTwo : '';
+$contactEmail = $settings['generalSettings'][0]->contactEmail != '' ? $settings['generalSettings'][0]->contactEmail : '';
+
+$categories = $settings['categories'];
+$topUsers = $settings['topUsers'];
+$socailIcons = $settings['socialSettings'];
+?>
         <!-- Start Header -->
         <header>
             <div class="header-top hidden-xs">
@@ -110,7 +124,7 @@
                                         <a href="#upload-options" data-toggle="modal">upload video</a>
                                         <span class="sepator">|</span>
                                     </div>
-                                    <?php $auth = Auth::guard(); ?>
+                                    <?php $auth = Auth::guard();?>
                                     @if(!$auth->check())
                                     <div class="login-info">
                                         <i class="fa fa-lock"></i>
@@ -121,7 +135,7 @@
                                         <a href="#register-info" data-toggle="modal">Register</a>
                                     </div>
                                     @else
-                                    <?php $user = Auth::user(); ?>
+                                    <?php $user = Auth::user();?>
                                     <div class="login-info">
                                         <i class="fa fa-sign-in"></i>
                                         <a href="{{ URL::route('settings') }}">{{$user['attributes']['name']}}</a>
@@ -313,7 +327,7 @@
                                                         </li>
                                                         <li><span class="subtitle">Top Users</span> <span class="arrow"></span>
                                                             <ul class="mega-list">
-                                                                <?php $counter = 0; ?>
+                                                                <?php $counter = 0;?>
                                                                 @foreach ($topUsers as $topUsersRow)
                                                                 @if($counter < 3)
                                                                 <li>
@@ -321,7 +335,7 @@
                                                                         <i class="fa fa-angle-right"></i>{{$topUsersRow->name}}
                                                                     </a>
                                                                 </li>
-                                                                <?php $counter++; ?>
+                                                                <?php $counter++;?>
                                                                 @endif
                                                                 @endforeach
                                                             </ul>
@@ -373,11 +387,19 @@
                                     <div class="single-footer-text">
                                         <p>{{$aboutUs}}</p>
                                     </div>
-                                    <div class="social-links">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li class="fb-link"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li class="gp-link"><a target="_blank" href="https://www.youtube.com/channel/UCrmX1CHUI9V5guPLDhzjJlQ"><i class="fa fa-youtube"></i></a></li>
+                                    <div >
+
+                                        <ul style="overflow-x:hidden;
+                                                white-space:nowrap;
+
+                                                width: 100%;">
+                                    @foreach($socailIcons as $socailIcon)
+
+                                       @if($socailIcon)
+                                        <li style="display:inline; "><a target="_blank" href="{{$socailIcon->socialLink}}">
+                            <img src="{{asset('/assets/images/settings/'.$socailIcon->socialIcon)}}" height="35px" width="35px" style="margin-left: 2px"></a></li>
+                                       @endif
+                                    @endforeach
                                         </ul>
                                     </div>
                                 </div>

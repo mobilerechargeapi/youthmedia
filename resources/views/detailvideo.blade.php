@@ -77,16 +77,16 @@
                                 <h3>{{$post[0]->postViewed + 1}} views</h3>
                             </div>
                             <?php
-                            $userId = 0;
-                            if ($user = Auth::user()) {
-                                $userId = $user['attributes']['id'];
-                            }
-                            ?>
+$userId = 0;
+if ($user = Auth::user()) {
+	$userId = $user['attributes']['id'];
+}
+?>
                             <div <?php
-                            if ($userId) {
-                                echo 'onclick="likeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
-                            }
-                            ?> class="video-like">
+if ($userId) {
+	echo 'onclick="likeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
+}
+?> class="video-like">
                                 @if($userId && $userLike)
                                 <span id="videoLikeSpan"><i class="fa fa-thumbs-o-up"></i></span>
                                 @else
@@ -95,10 +95,10 @@
                                 <p id="vidTotalLikes">{{$totalLikes}}</p>
                             </div>
                             <div <?php
-                            if ($userId) {
-                                echo 'onclick="unlikeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
-                            }
-                            ?> class="video-dislike">
+if ($userId) {
+	echo 'onclick="unlikeVideo(' . $userId . ', ' . $post[0]->postId . ')"';
+}
+?> class="video-dislike">
                                 @if($userId && $userUnLike)
                                 <span id="videoUnlikeSpan"><i class="fa fa-thumbs-o-down"></i></span>
                                 @else
@@ -117,9 +117,9 @@
                             <ul class="tagcloud">
                                 @if($post[0]->postTags != '')
                                 <?php
-                                $postTags = '';
-                                $postTags = explode(',', $post[0]->postTags);
-                                ?>
+$postTags = '';
+$postTags = explode(',', $post[0]->postTags);
+?>
                                 @foreach ($postTags as $postTagsRow)
                                 <li><a href="{{url('videoTag/'.base64_encode($postTagsRow))}}">{{$postTagsRow}}</a></li>
                                 @endforeach
@@ -129,6 +129,16 @@
                         <div class="share-options">
                             <h4>Share On</h4>
                             <ul class="social-share">
+                                <li class="facebook-bg">
+                                    <!-- Your share button code -->
+                                      <div class="fb-share-button"
+                                        data-href="{{$post[0]->post}}"
+                                        data-layout="button_count">
+                                      </div>
+                                  </li>
+
+
+
                                 <li class="twitter-bg"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li class="facebook-bg"><a onclick="shareFunction('{{ base64_encode($post[0]->postId) }}')" href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
                                 <li class="google-bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -196,15 +206,15 @@
                                         </p>
                                     </div>
                                     <?php
-                                    $name = '';
-                                    $email = '';
-                                    $auth = Auth::guard();
-                                    if ($auth->check()) {
-                                        $user = Auth::user();
-                                        $name = $user['attributes']['name'];
-                                        $email = $user['attributes']['email'];
-                                    }
-                                    ?>
+$name = '';
+$email = '';
+$auth = Auth::guard();
+if ($auth->check()) {
+	$user = Auth::user();
+	$name = $user['attributes']['name'];
+	$email = $user['attributes']['email'];
+}
+?>
                                     <form class="comments-form" action="{{ URL::route('postComment') }}" method="post">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="postId" value="{{$post[0]->postId}}">
@@ -256,17 +266,17 @@
                         <span class="heading-icon"><i class="fa fa-fire" aria-hidden="true"></i></span>
                         <h3>Popular Videos</h3>
                     </div>
-                    <?php $counter = 0; ?>
+                    <?php $counter = 0;?>
                     @foreach ($mostLikedVid as $mostLikedVidRow)
                     @if ($mostLikedVidRow->postId != '' && $counter < 5)
                     <div class="single-video">
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($mostLikedVidRow->postId))}}">
-                                <?php $image = ''; ?>
+                                <?php $image = '';?>
                                 @if ($mostLikedVidRow->postThumbnail)
-                                <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail; ?>
+                                <?php $image = asset('assets/images/posts') . '/' . $mostLikedVidRow->postThumbnail;?>
                                 @else
-                                <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                                <?php $image = asset('frontend/images/thumbnails/6.jpg')?>
                                 @endif
                                 <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$mostLikedVidRow->postTitle}}" />
                                 <noscript>
@@ -298,7 +308,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php $counter++; ?>
+                    <?php $counter++;?>
                     @endif
                     @endforeach
                     <!-- Start Sidebar Adds -->
@@ -313,17 +323,17 @@
                         <span class="heading-icon"><i class="fa fa-play" aria-hidden="true"></i></span>
                         <h3>Recent Uploaded</h3>
                     </div>
-                    <?php $counter = 0; ?>
+                    <?php $counter = 0;?>
                     @foreach ($recentUpload as $recentUploadRow)
                     @if ($counter < 3)
                     <div class="single-video">
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}">
-                                <?php $image = ''; ?>
+                                <?php $image = '';?>
                                 @if ($recentUploadRow->postThumbnail)
-                                <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail; ?>
+                                <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail;?>
                                 @else
-                                <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                                <?php $image = asset('frontend/images/thumbnails/6.jpg')?>
                                 @endif
                                 <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
                                 <noscript>
@@ -351,7 +361,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php $counter++; ?>
+                    <?php $counter++;?>
                     @endif
                     @endforeach
                 </div>
@@ -377,9 +387,9 @@
                         <div class="video-img">
                             <a href="{{url('video/'.base64_encode($userUploadRow->postId))}}">
                                 @if ($userUploadRow->postThumbnail)
-                                <?php $image = asset('assets/images/posts') . '/' . $userUploadRow->postThumbnail; ?>
+                                <?php $image = asset('assets/images/posts') . '/' . $userUploadRow->postThumbnail;?>
                                 @else
-                                <?php $image = asset('frontend/images/thumbnails/41.jpg'); ?>
+                                <?php $image = asset('frontend/images/thumbnails/41.jpg');?>
                                 @endif
                                 <img width="320px" height="180px" class="lazy" data-src="{{ $image }}" alt="{{$userUploadRow->postTitle}}" />
                                 <noscript>
