@@ -349,7 +349,8 @@ $socailIcons = $settings['socialSettings'];
                                                         </li>
                                                         <li><span class="subtitle">Social Links</span> <span class="arrow"></span>
                                                             <ul class="mega-list">
-                                                                <li><a target="_blank" href="#"><i class="fa fa-facebook"></i>FaceBook</a></li>
+                                            <li><a target="_blank"
+                                    href="https://www.facebook.com/"><i class="fa fa-facebook"></i>FaceBook</a></li>
                                                                 <li><a target="_blank" href="https://www.youtube.com/channel/UCrmX1CHUI9V5guPLDhzjJlQ"><i class="fa fa-youtube"></i>YouTube</a></li>
                                                             </ul>
                                                         </li>
@@ -389,17 +390,16 @@ $socailIcons = $settings['socialSettings'];
                                     </div>
                                     <div >
 
-                                        <ul style="overflow-x:hidden;
-                                                white-space:nowrap;
-
-                                                width: 100%;">
-                                    @foreach($socailIcons as $socailIcon)
-
-                                       @if($socailIcon)
-                                        <li style="display:inline; "><a target="_blank" href="{{$socailIcon->socialLink}}">
-                            <img src="{{asset('/assets/images/settings/'.$socailIcon->socialIcon)}}" height="35px" width="35px" style="margin-left: 2px"></a></li>
-                                       @endif
-                                    @endforeach
+                                      <ul style="overflow-x:hidden;
+                                           white-space:nowrap;
+                                           width: 100%;">
+                                           @foreach($socailIcons as $socailIcon)
+                                           @if($socailIcon)
+                                           <li style="display:inline; "><a target="_blank" title="{{$socailIcon->socialName}}" href="{{$socailIcon->socialLink}}">
+                                              <img alt="No Icon Image" src="{{asset('/assets/images/settings/'.$socailIcon->socialIcon)}}" height="35px" width="35px" style="margin-left: 2px"></a>
+                                           </li>
+                                           @endif
+                                           @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -427,7 +427,8 @@ $socailIcons = $settings['socialSettings'];
                                     </div>
                                     <div class="footer-list">
                                         <ul>
-                                            <li><a target="_blank" href="#">Facebook Page</a></li>
+                        <li><a target="_blank"
+                            href="https://www.facebook.com/">Facebook Page</a></li>
                                             <li><a target="_blank" href="https://www.youtube.com/channel/UCrmX1CHUI9V5guPLDhzjJlQ">YouTube Channel</a></li>
                                         </ul>
                                     </div>

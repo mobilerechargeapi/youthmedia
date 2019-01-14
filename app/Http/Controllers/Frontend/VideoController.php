@@ -48,6 +48,7 @@ class VideoController extends Controller {
 		$result = $this->fileUpload($file, 1);
 		if ($result != '') {
 			$fullPathToVideo = public_path('assets/videos/' . $result);
+
 			$video = Youtube::upload($fullPathToVideo, [
 				'title' => $request->postTitle,
 				'description' => $request->postDescription,

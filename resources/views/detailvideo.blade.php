@@ -25,6 +25,10 @@
     }, function (response) {});
     }
 </script>
+{{-- to share video on google+ --}}
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
 <!-- Start Page Banner -->
 <div class="page-banner-area">
     <div class="container">
@@ -128,21 +132,18 @@ $postTags = explode(',', $post[0]->postTags);
                         </div>
                         <div class="share-options">
                             <h4>Share On</h4>
-                            <ul class="social-share">
-                                <li class="facebook-bg">
-                                    <!-- Your share button code -->
-                                      <div class="fb-share-button"
-                                        data-href="{{$post[0]->post}}"
-                                        data-layout="button_count">
-                                      </div>
-                                  </li>
 
 
-
-                                <li class="twitter-bg"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li class="facebook-bg"><a onclick="shareFunction('{{ base64_encode($post[0]->postId) }}')" href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
-                                <li class="google-bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
+                          <ul class="social-share">
+                           <li class="twitter-bg"><a target="_blank" href="http://twitter.com/share?text={{$post[0]->postTitle}}&url={{$post[0]->post}}">
+                              <i class="fa fa-twitter"></i></a>
+                           </li>
+                           <li class="facebook-bg"><a onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('{{$post[0]->post}}'),'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook" ></i></a></li>
+                           <li class="google-bg"><a
+                              href="https://plus.google.com/share?text={{$post[0]->postTitle}}&url={{$post[0]->post}}">
+                              <i class="fa fa-google-plus"></i></a>
+                           </li>
+                        </ul>
                         </div>
                     </div>
                     <!-- End Tags And Share Options -->

@@ -185,7 +185,7 @@
         </div>
     </div>
 </div>
-<!-- End Video Carousel -->  
+<!-- End Video Carousel -->
 <!-- Start Wide Video Section -->
 <div class="wide-video-section themeix-ptb">
     <div class="container">
@@ -195,11 +195,11 @@
                 <div class="single-video">
                     <div class="video-img">
                         <a href="{{url('video/'.base64_encode($recentUploadRow->postId))}}">
-                            <?php $image = ''; ?>
+                            <?php $image = '';?>
                             @if ($recentUploadRow->postThumbnail)
-                            <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail; ?>
+                            <?php $image = asset('assets/images/posts') . '/' . $recentUploadRow->postThumbnail;?>
                             @else
-                            <?php $image = asset('frontend/images/thumbnails/6.jpg') ?>
+                            <?php $image = asset('frontend/images/thumbnails/6.jpg')?>
                             @endif
                             <img width="320px" height="180px" class="lazy" data-src="{{$image}}" alt="{{$recentUploadRow->postTitle}}" />
                             <noscript>
@@ -237,7 +237,7 @@
         <!-- Start Pagination -->
         <div class="posts-pagination">
             <ul class="pagination">
-                @include('pagination', ['paginator' => $recentUpload])
+                {{-- @include('pagination', ['paginator' => $recentUpload]) --}}
             </ul>
         </div>
         <!-- End Pagination -->
