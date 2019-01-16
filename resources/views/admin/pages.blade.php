@@ -17,6 +17,7 @@
                 @foreach ($navigation as $navigationRow)
                 <tr>
                     <td>
+
                         <a href="editPage/{{ $navigationRow->navId }}">
                             {{ $navigationRow->pageName }}
                         </a>

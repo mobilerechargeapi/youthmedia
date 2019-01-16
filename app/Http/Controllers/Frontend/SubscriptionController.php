@@ -43,14 +43,21 @@ class SubscriptionController extends Controller {
 	}
 
 	public function SendEmail($EmailTo, $Subject, $body) {
-		$data = array('email' => $EmailTo, 'subject' => $Subject);
-		$result = Mail::send($body, $data, function ($message) use ($data) {
-			$message->from('umair.malik@purelogics.net', 'Youth Media');
-			$message->to($EmailTo);
-			$message->replyTo('umair.malik@purelogics.net', 'Youth Media');
-			$message->subject($data['subject']);
-		});
+		try
+		{
+			$data = array('email' => $EmailTo, 'subject' => $Subject);
+			$result = Mail::send($body, $data, function ($message) use ($data) {
+				$message->from('umair.malik@purelogics.net', 'Youth Media');
+				$message->to($EmailTo);
+				$message->replyTo('umair.malik@purelogics.net', 'Youth Media');
+				$message->subject($data['subject']);
+			});
 		return $result;
+		} catch (\Exception $e) {
+			$message="something went wrong";
+			\Session::flash('error_message', $message);
+			return Redirect::back()->withErrors(['error_message', $message]);
+		}
 	}
 
 }

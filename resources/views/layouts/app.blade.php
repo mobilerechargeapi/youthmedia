@@ -393,10 +393,12 @@ $socailIcons = $settings['socialSettings'];
                                       <ul style="overflow-x:hidden;
                                            white-space:nowrap;
                                            width: 100%;">
-                                           @foreach($socailIcons as $socailIcon)
-                                           @if($socailIcon)
-                                           <li style="display:inline; "><a target="_blank" title="{{$socailIcon->socialName}}" href="{{$socailIcon->socialLink}}">
-                                              <img alt="No Icon Image" src="{{asset('/assets/images/settings/'.$socailIcon->socialIcon)}}" height="35px" width="35px" style="margin-left: 2px"></a>
+                                        @foreach($socailIcons as $socialIcon)
+                                           @if($socialIcon->socialName && $socialIcon->socialLink)
+                                           <li style="display:inline; "><a target="_blank" title="{{$socialIcon->socialName}}" href="{{$socialIcon->socialLink}}">
+                                            @endif
+                                            @if($socialIcon->socialIcon)
+                                              <img alt="No Icon Image" src="{{asset('/assets/images/settings/'.$socialIcon->socialIcon)}}" height="35px" width="35px" style="margin-left: 2px"></a>
                                            </li>
                                            @endif
                                            @endforeach
