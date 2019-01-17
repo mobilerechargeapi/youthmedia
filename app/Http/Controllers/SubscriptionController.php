@@ -8,12 +8,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\SubscriptionRequest;
 use App\Permissions;
 use App\SubscriptionModel;
 use App\UserModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Mail;
 
 /**
  * Description of SubscriptionController
@@ -46,6 +48,48 @@ class SubscriptionController extends Controller {
 		return view('admin.subscriptionList')->with('pageheader', $this->pageheader)->with('userName', $this->userName)->with('userImg', $this->userImg)
 			->with('userRoles', $this->userRoles)->with('user', $users);
 	}
+	public function emailToSubscribers() {
+		$users = SubscriptionModel::GetAllUser();
+		return view('admin.emailToSubscribers')->with('pageheader', 'Send Email To Subscribers')->with('userName', $this->userName)->with('userImg', $this->userImg)
+			->with('userRoles', $this->userRoles)->with('user', $users);
+	}
+	public function sendMailToSubscribers(Request $request)
+	{
+		  $emailSubject = $request->emailSubject;
+		  $emailBody = $request->emailBody;
+		  $subscribersList = $request->subscribersList;
+		 
+		 // $subscribers_list = explode(',', json_encode($request->select_user));
+		$r = $this->SendEmail($subscribersList, $emailSubject, $emailBody);
+		if ($r=="TRUE") {
+			$message= "Emails Send Successfully";
+		 	 \Session::flash('message', $message);
+		 	 return Redirect::back()->withErrors(['message', $message]);
+		}
+		 return Redirect::back();
+	
+		 
+		
+	}
+	
+	public function SendEmail($EmailTo, $Subject, $body) {
+		try
+		{
+			$data = array('email' => $EmailTo, 'subject' => $Subject);
+			$result = Mail::send($body, $data, function ($message) use ($data) {
+				$message->from('umair.malik@purelogics.net', 'Youth Media');
+				$message->to($EmailTo);
+				$message->replyTo('umair.malik@purelogics.net', 'Youth Media');
+				$message->subject($data['subject']);
+			});
+		return $result;
+		} catch (\Exception $e) {
+			$message="something went wrong";
+			\Session::flash('error_message', $message);
+			return Redirect::back()->withErrors(['error_message', $message]);
+		}
+	}
+
 
 	public function addSubscriber() {
 		$subscriber = '';

@@ -51,13 +51,22 @@ class CommentsController extends Controller {
     }
 
     public function SendEmail($EmailTo, $Subject, $body, $data) {
-        $data = array('data' => $data, 'email' => $EmailTo, 'subject' => $Subject);
-        $result = Mail::send($body, $data, function ($message) use ($data) {
+        try{
+             $data = array('data' => $data, 'email' => $EmailTo, 'subject' => $Subject);
+            $result = Mail::send($body, $data, function ($message) use ($data) {
                     $message->from('umair.malik@purelogics.net', 'Youth Media');
                     $message->to($data['email']);
                     $message->subject($data['subject']);
                 });
         return $result;
+             }
+        catch(\Exception $e)
+        {
+            $message= "Something Went Wrong";
+        \Session::flash('message', $message); 
+        return Redirect::back()->withErrors(['message', $message]);
+        }
+       
     }
 
 }

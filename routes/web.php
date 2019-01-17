@@ -69,6 +69,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 	Route::post('deletePost', ['as' => 'deletePost', 'uses' => 'PostsController@deletePost']);
 	//route for subscription settings
 	Route::get('usersubscription', ['as' => 'usersubscription', 'uses' => 'SubscriptionController@index']);
+	Route::get('emailToSubscribers', ['as' => 'emailToSubscribers', 'uses' => 'SubscriptionController@emailToSubscribers']);
 	Route::get('addSubscriber', ['as' => 'addSubscriber', 'uses' => 'SubscriptionController@addSubscriber']);
 	Route::get('editSubscriber/{subscriptionId}', ['as' => 'editSubscriber', 'uses' => 'SubscriptionController@getSubscriber']);
 	Route::get('deleteSubscriber/{subscriptionId}', ['as' => 'deleteSubscriber', 'uses' => 'SubscriptionController@deleteSubscriber']);
@@ -118,6 +119,8 @@ Route::post('updateVideoLikes', ['as' => 'updateVideoLikes', 'uses' => 'Frontend
 Route::post('updateVideoUnLikes', ['as' => 'updateVideoUnLikes', 'uses' => 'Frontend\PostsLikesController@updateVideoUnLikes']);
 //route for user subscription
 Route::post('subscription', ['as' => 'subscription', 'uses' => 'Frontend\SubscriptionController@index']);
+
+Route::post('sendMailToSubscribers', ['as' => 'sendMailToSubscribers', 'uses' => 'SubscriptionController@sendMailToSubscribers']);
 //route for video search
 Route::post('search', ['as' => 'search', 'uses' => 'Frontend\PostsController@search']);
 Route::get('search', ['as' => 'search', 'uses' => 'Frontend\MainController@index']);

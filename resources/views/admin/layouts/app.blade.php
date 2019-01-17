@@ -111,6 +111,17 @@
                                 <div class="title">Subscription</div>
                             </a>
                         </li>
+                        @endif 
+
+                        @if ($userRoles[0]->subscription == 1)
+                        <li id="nav-subscribe">
+                            <a href="{{url('emailToSubscribers')}}">
+                                <div class="icon">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </div>
+                                <div class="title">Send Mails</div>
+                            </a>
+                        </li>
                         @endif
                         @if ($userRoles[0]->permissions == 1)
                         <li id="nav-permissions">
